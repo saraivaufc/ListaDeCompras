@@ -13,8 +13,23 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    gerenciadordecompras.cpp \
+    dialogeditarcompra.cpp \
+    dialogeditarproduto.cpp \
+    compra.cpp \
+    produto.cpp \
+    controladordosistema.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    gerenciadordecompras.h \
+    dialogeditarcompra.h \
+    dialogeditarproduto.h \
+    compra.h \
+    produto.h \
+    Macros.h \
+    controladordosistema.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    dialogeditarcompra.ui \
+    dialogeditarproduto.ui
