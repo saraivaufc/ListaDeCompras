@@ -34,6 +34,7 @@ public:
     void operator =(Produto p);
     bool operator ==(Produto p);
     void operator ++(int);
+    void operator --(int);
 };
 
 #endif // PRODUTO_H

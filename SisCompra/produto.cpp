@@ -91,3 +91,8 @@ bool Produto::operator ==(Produto p) {
 void Produto::operator ++(int) {
     this->quantidade++;
 }
+
+void Produto::operator --(int)
+{
+    this->quantidade--;
+}

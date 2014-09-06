@@ -25,6 +25,7 @@ public:
     Produto* getProduto(int id);
     QList<Produto*> getProdutos();
 
+    int getID();
     QString getTitulo();
     QDate getData();
     int getQuantidadeProduto();
