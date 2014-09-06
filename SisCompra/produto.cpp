@@ -55,7 +55,14 @@ float Produto::getValorTotal() {
 }
 
 QString Produto::toString() {
-    return "Produto " + QString::number(id) + ": " + nome;
+    return "Produto [" + QString::number(id) + ": " +\
+            nome + ": " +\
+            QString::number(quantidade) + " unidades: R$ " +\
+            QString::number(valorUnit) + "]";
+}
+
+void Produto::setId(int id) {
+    this->id = id;
 }
 
 void Produto::setNome(QString nome) {
@@ -68,6 +75,13 @@ void Produto::setQuantidade(int quant) {
 
 void Produto::setValorUnit(float valor) {
     valorUnit = valor;
+}
+
+void Produto::operator =(Produto p) {
+    setId(p.getId());
+    setNome(p.getNome());
+    setQuantidade(p.getQuantidade());
+    setValorUnit(p.getValorUnit());;
 }
 
 bool Produto::operator ==(Produto p) {

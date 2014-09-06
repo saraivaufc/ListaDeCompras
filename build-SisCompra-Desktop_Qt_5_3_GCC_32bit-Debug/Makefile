@@ -52,7 +52,8 @@ SOURCES       = ../SisCompra/main.cpp \
 		../SisCompra/dialogeditarproduto.cpp \
 		../SisCompra/compra.cpp \
 		../SisCompra/produto.cpp \
-		../SisCompra/controladordosistema.cpp moc_mainwindow.cpp \
+		../SisCompra/controladordosistema.cpp \
+		../SisCompra/gerenciadordearquivos.cpp moc_mainwindow.cpp \
 		moc_dialogeditarcompra.cpp \
 		moc_dialogeditarproduto.cpp
 OBJECTS       = main.o \
@@ -63,6 +64,7 @@ OBJECTS       = main.o \
 		compra.o \
 		produto.o \
 		controladordosistema.o \
+		gerenciadordearquivos.o \
 		moc_mainwindow.o \
 		moc_dialogeditarcompra.o \
 		moc_dialogeditarproduto.o
@@ -180,7 +182,8 @@ DIST          = /opt/Qt5.3.1/5.3/gcc/mkspecs/features/spec_pre.prf \
 		../SisCompra/dialogeditarproduto.cpp \
 		../SisCompra/compra.cpp \
 		../SisCompra/produto.cpp \
-		../SisCompra/controladordosistema.cpp
+		../SisCompra/controladordosistema.cpp \
+		../SisCompra/gerenciadordearquivos.cpp
 QMAKE_TARGET  = SisCompra
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = SisCompra
@@ -443,7 +446,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d .tmp/SisCompra1.0.0 || mkdir -p .tmp/SisCompra1.0.0
-	$(COPY_FILE) --parents $(DIST) .tmp/SisCompra1.0.0/ && $(COPY_FILE) --parents ../SisCompra/mainwindow.h ../SisCompra/gerenciadordecompras.h ../SisCompra/dialogeditarcompra.h ../SisCompra/dialogeditarproduto.h ../SisCompra/compra.h ../SisCompra/produto.h ../SisCompra/Macros.h ../SisCompra/controladordosistema.h .tmp/SisCompra1.0.0/ && $(COPY_FILE) --parents ../SisCompra/main.cpp ../SisCompra/mainwindow.cpp ../SisCompra/gerenciadordecompras.cpp ../SisCompra/dialogeditarcompra.cpp ../SisCompra/dialogeditarproduto.cpp ../SisCompra/compra.cpp ../SisCompra/produto.cpp ../SisCompra/controladordosistema.cpp .tmp/SisCompra1.0.0/ && $(COPY_FILE) --parents ../SisCompra/mainwindow.ui ../SisCompra/dialogeditarcompra.ui ../SisCompra/dialogeditarproduto.ui .tmp/SisCompra1.0.0/ && (cd `dirname .tmp/SisCompra1.0.0` && $(TAR) SisCompra1.0.0.tar SisCompra1.0.0 && $(COMPRESS) SisCompra1.0.0.tar) && $(MOVE) `dirname .tmp/SisCompra1.0.0`/SisCompra1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/SisCompra1.0.0
+	$(COPY_FILE) --parents $(DIST) .tmp/SisCompra1.0.0/ && $(COPY_FILE) --parents ../SisCompra/mainwindow.h ../SisCompra/gerenciadordecompras.h ../SisCompra/dialogeditarcompra.h ../SisCompra/dialogeditarproduto.h ../SisCompra/compra.h ../SisCompra/produto.h ../SisCompra/Macros.h ../SisCompra/controladordosistema.h ../SisCompra/gerenciadordearquivos.h .tmp/SisCompra1.0.0/ && $(COPY_FILE) --parents ../SisCompra/main.cpp ../SisCompra/mainwindow.cpp ../SisCompra/gerenciadordecompras.cpp ../SisCompra/dialogeditarcompra.cpp ../SisCompra/dialogeditarproduto.cpp ../SisCompra/compra.cpp ../SisCompra/produto.cpp ../SisCompra/controladordosistema.cpp ../SisCompra/gerenciadordearquivos.cpp .tmp/SisCompra1.0.0/ && $(COPY_FILE) --parents ../SisCompra/mainwindow.ui ../SisCompra/dialogeditarcompra.ui ../SisCompra/dialogeditarproduto.ui .tmp/SisCompra1.0.0/ && (cd `dirname .tmp/SisCompra1.0.0` && $(TAR) SisCompra1.0.0.tar SisCompra1.0.0 && $(COMPRESS) SisCompra1.0.0.tar) && $(MOVE) `dirname .tmp/SisCompra1.0.0`/SisCompra1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/SisCompra1.0.0
 
 
 clean:compiler_clean 
@@ -676,6 +679,13 @@ moc_dialogeditarcompra.cpp: /opt/Qt5.3.1/5.3/gcc/include/QtWidgets/QDialog \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qfiledevice.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qvector2d.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qtouchdevice.h \
+		../SisCompra/compra.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/QList \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/QDate \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qdatetime.h \
+		../SisCompra/produto.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/QString \
+		../SisCompra/Macros.h \
 		../SisCompra/dialogeditarcompra.h
 	/opt/Qt5.3.1/5.3/gcc/bin/moc $(DEFINES) -I/opt/Qt5.3.1/5.3/gcc/mkspecs/linux-g++ -I/home/felipe/Dropbox/QT_Programs/GitListaDeCompras/ListaDeCompras/SisCompra -I/opt/Qt5.3.1/5.3/gcc/include -I/opt/Qt5.3.1/5.3/gcc/include/QtWidgets -I/opt/Qt5.3.1/5.3/gcc/include/QtGui -I/opt/Qt5.3.1/5.3/gcc/include/QtCore -I. ../SisCompra/dialogeditarcompra.h -o moc_dialogeditarcompra.cpp
 
@@ -780,6 +790,8 @@ moc_dialogeditarproduto.cpp: /opt/Qt5.3.1/5.3/gcc/include/QtWidgets/QDialog \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qfiledevice.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qvector2d.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qtouchdevice.h \
+		../SisCompra/produto.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/QString \
 		../SisCompra/dialogeditarproduto.h
 	/opt/Qt5.3.1/5.3/gcc/bin/moc $(DEFINES) -I/opt/Qt5.3.1/5.3/gcc/mkspecs/linux-g++ -I/home/felipe/Dropbox/QT_Programs/GitListaDeCompras/ListaDeCompras/SisCompra -I/opt/Qt5.3.1/5.3/gcc/include -I/opt/Qt5.3.1/5.3/gcc/include/QtWidgets -I/opt/Qt5.3.1/5.3/gcc/include/QtGui -I/opt/Qt5.3.1/5.3/gcc/include/QtCore -I. ../SisCompra/dialogeditarproduto.h -o moc_dialogeditarproduto.cpp
 
@@ -843,23 +855,20 @@ main.o: ../SisCompra/main.cpp ../SisCompra/controladordosistema.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qiterator.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qrefcount.h \
 		../SisCompra/compra.h \
-		../SisCompra/produto.h \
-		../SisCompra/Macros.h \
-		../SisCompra/mainwindow.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/QMainWindow \
-		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qmainwindow.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qwidget.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qwindowdefs.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qobjectdefs.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qnamespace.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qobjectdefs_impl.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qwindowdefs_win.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qobject.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/QDate \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qdatetime.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qstring.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qchar.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qbytearray.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qnamespace.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qarraydata.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qstringbuilder.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qsharedpointer.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qshareddata.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qsharedpointer_impl.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qobject.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qobjectdefs.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qobjectdefs_impl.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qcoreevent.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qscopedpointer.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qmetatype.h \
@@ -867,6 +876,17 @@ main.o: ../SisCompra/main.cpp ../SisCompra/controladordosistema.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qcontainerfwd.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qisenum.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qobject_impl.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qhash.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qpair.h \
+		../SisCompra/produto.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/QString \
+		../SisCompra/Macros.h \
+		../SisCompra/mainwindow.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/QMainWindow \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qmainwindow.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qwidget.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qwindowdefs.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qwindowdefs_win.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qmargins.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qpaintdevice.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qrect.h \
@@ -878,7 +898,6 @@ main.o: ../SisCompra/main.cpp ../SisCompra/controladordosistema.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qstringlist.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qdatastream.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qiodevice.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qpair.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qregexp.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qstringmatcher.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qbrush.h \
@@ -891,10 +910,6 @@ main.o: ../SisCompra/main.cpp ../SisCompra/controladordosistema.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qpainterpath.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qimage.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qpixmap.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qsharedpointer.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qshareddata.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qsharedpointer_impl.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qhash.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qfont.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qfontmetrics.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qfontinfo.h \
@@ -917,6 +932,10 @@ main.o: ../SisCompra/main.cpp ../SisCompra/controladordosistema.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qtouchdevice.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qtabwidget.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qicon.h \
+		../SisCompra/dialogeditarproduto.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/QDialog \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qdialog.h \
+		../SisCompra/dialogeditarcompra.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/QApplication \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qapplication.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qcoreapplication.h \
@@ -1107,7 +1126,31 @@ gerenciadordecompras.o: ../SisCompra/gerenciadordecompras.cpp ../SisCompra/geren
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qiterator.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qrefcount.h \
 		../SisCompra/compra.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/QDate \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qdatetime.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qstring.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qchar.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qbytearray.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qnamespace.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qarraydata.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qstringbuilder.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qsharedpointer.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qshareddata.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qsharedpointer_impl.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qobject.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qobjectdefs.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qobjectdefs_impl.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qcoreevent.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qscopedpointer.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qmetatype.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qvarlengtharray.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qcontainerfwd.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qisenum.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qobject_impl.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qhash.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qpair.h \
 		../SisCompra/produto.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/QString \
 		../SisCompra/Macros.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gerenciadordecompras.o ../SisCompra/gerenciadordecompras.cpp
 
@@ -1213,6 +1256,13 @@ dialogeditarcompra.o: ../SisCompra/dialogeditarcompra.cpp ../SisCompra/dialogedi
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qfiledevice.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qvector2d.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qtouchdevice.h \
+		../SisCompra/compra.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/QList \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/QDate \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qdatetime.h \
+		../SisCompra/produto.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/QString \
+		../SisCompra/Macros.h \
 		ui_dialogeditarcompra.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/QVariant \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/QAction \
@@ -1228,8 +1278,18 @@ dialogeditarcompra.o: ../SisCompra/dialogeditarcompra.cpp ../SisCompra/dialogedi
 		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qinputmethod.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/QButtonGroup \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qbuttongroup.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/QDateEdit \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qdatetimeedit.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qabstractspinbox.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qvalidator.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qregularexpression.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/QDialogButtonBox \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qdialogbuttonbox.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/QHBoxLayout \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qboxlayout.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qlayout.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qlayoutitem.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qgridlayout.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/QHeaderView \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qheaderview.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qabstractitemview.h \
@@ -1239,15 +1299,22 @@ dialogeditarcompra.o: ../SisCompra/dialogeditarcompra.cpp ../SisCompra/dialogedi
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qitemselectionmodel.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qabstractitemdelegate.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qstyleoption.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qabstractspinbox.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qvalidator.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qregularexpression.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qslider.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qabstractslider.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qstyle.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qtabbar.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qtabwidget.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qrubberband.h
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qrubberband.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/QLabel \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qlabel.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/QLineEdit \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qlineedit.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qtextcursor.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qtextformat.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qpen.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qtextoption.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/QSpacerItem \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialogeditarcompra.o ../SisCompra/dialogeditarcompra.cpp
 
 dialogeditarproduto.o: ../SisCompra/dialogeditarproduto.cpp ../SisCompra/dialogeditarproduto.h \
@@ -1352,6 +1419,8 @@ dialogeditarproduto.o: ../SisCompra/dialogeditarproduto.cpp ../SisCompra/dialoge
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qfiledevice.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qvector2d.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qtouchdevice.h \
+		../SisCompra/produto.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/QString \
 		ui_dialogeditarproduto.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/QVariant \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/QAction \
@@ -1369,6 +1438,16 @@ dialogeditarproduto.o: ../SisCompra/dialogeditarproduto.cpp ../SisCompra/dialoge
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qbuttongroup.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/QDialogButtonBox \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qdialogbuttonbox.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/QDoubleSpinBox \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qspinbox.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qabstractspinbox.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qvalidator.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qregularexpression.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/QHBoxLayout \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qboxlayout.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qlayout.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qlayoutitem.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qgridlayout.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/QHeaderView \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qheaderview.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qabstractitemview.h \
@@ -1378,20 +1457,26 @@ dialogeditarproduto.o: ../SisCompra/dialogeditarproduto.cpp ../SisCompra/dialoge
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qitemselectionmodel.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qabstractitemdelegate.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qstyleoption.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qabstractspinbox.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qvalidator.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qregularexpression.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qslider.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qabstractslider.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qstyle.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qtabbar.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qtabwidget.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qrubberband.h
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qrubberband.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/QLabel \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qlabel.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/QLineEdit \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qlineedit.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qtextcursor.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qtextformat.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qpen.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qtextoption.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/QSpacerItem \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/QSpinBox \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialogeditarproduto.o ../SisCompra/dialogeditarproduto.cpp
 
-compra.o: ../SisCompra/compra.cpp ../SisCompra/compra.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtCore/QList \
-		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qlist.h \
+compra.o: ../SisCompra/compra.cpp /opt/Qt5.3.1/5.3/gcc/include/QtCore/qdebug.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qalgorithms.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qglobal.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qconfig.h \
@@ -1421,13 +1506,89 @@ compra.o: ../SisCompra/compra.cpp ../SisCompra/compra.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qglobalstatic.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qmutex.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qnumeric.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qhash.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qchar.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qiterator.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qlist.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qrefcount.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qpair.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qmap.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qtextstream.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qiodevice.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qobject.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qobjectdefs.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qnamespace.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qobjectdefs_impl.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qstring.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qbytearray.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qarraydata.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qstringbuilder.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qcoreevent.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qscopedpointer.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qmetatype.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qvarlengtharray.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qcontainerfwd.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qisenum.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qobject_impl.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qlocale.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qvariant.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qstringlist.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qdatastream.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qregexp.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qstringmatcher.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qshareddata.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qvector.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qpoint.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qset.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qcontiguouscache.h \
+		../SisCompra/compra.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/QList \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/QDate \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qdatetime.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qsharedpointer.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qsharedpointer_impl.h \
 		../SisCompra/produto.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/QString \
 		../SisCompra/Macros.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o compra.o ../SisCompra/compra.cpp
 
-produto.o: ../SisCompra/produto.cpp ../SisCompra/produto.h
+produto.o: ../SisCompra/produto.cpp ../SisCompra/produto.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/QString \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qstring.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qchar.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qglobal.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qconfig.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qfeatures.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qsystemdetection.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qprocessordetection.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qcompilerdetection.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qtypeinfo.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qtypetraits.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qsysinfo.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qlogging.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qflags.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qatomic.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qbasicatomic.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qatomic_bootstrap.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qgenericatomic.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qatomic_msvc.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qatomic_armv7.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qatomic_armv6.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qatomic_armv5.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qatomic_ia64.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qatomic_mips.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qatomic_x86.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qatomic_cxx11.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qatomic_gcc.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qatomic_unix.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qglobalstatic.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qmutex.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qnumeric.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qbytearray.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qrefcount.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qnamespace.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qarraydata.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qstringbuilder.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o produto.o ../SisCompra/produto.cpp
 
 controladordosistema.o: ../SisCompra/controladordosistema.cpp ../SisCompra/controladordosistema.h \
@@ -1466,23 +1627,20 @@ controladordosistema.o: ../SisCompra/controladordosistema.cpp ../SisCompra/contr
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qiterator.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qrefcount.h \
 		../SisCompra/compra.h \
-		../SisCompra/produto.h \
-		../SisCompra/Macros.h \
-		../SisCompra/mainwindow.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/QMainWindow \
-		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qmainwindow.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qwidget.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qwindowdefs.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qobjectdefs.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qnamespace.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qobjectdefs_impl.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qwindowdefs_win.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qobject.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/QDate \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qdatetime.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qstring.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qchar.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qbytearray.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qnamespace.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qarraydata.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qstringbuilder.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qsharedpointer.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qshareddata.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qsharedpointer_impl.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qobject.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qobjectdefs.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qobjectdefs_impl.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qcoreevent.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qscopedpointer.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qmetatype.h \
@@ -1490,6 +1648,17 @@ controladordosistema.o: ../SisCompra/controladordosistema.cpp ../SisCompra/contr
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qcontainerfwd.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qisenum.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qobject_impl.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qhash.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qpair.h \
+		../SisCompra/produto.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/QString \
+		../SisCompra/Macros.h \
+		../SisCompra/mainwindow.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/QMainWindow \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qmainwindow.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qwidget.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qwindowdefs.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qwindowdefs_win.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qmargins.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qpaintdevice.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qrect.h \
@@ -1501,7 +1670,6 @@ controladordosistema.o: ../SisCompra/controladordosistema.cpp ../SisCompra/contr
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qstringlist.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qdatastream.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qiodevice.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qpair.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qregexp.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qstringmatcher.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qbrush.h \
@@ -1514,10 +1682,6 @@ controladordosistema.o: ../SisCompra/controladordosistema.cpp ../SisCompra/contr
 		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qpainterpath.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qimage.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qpixmap.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qsharedpointer.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qshareddata.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qsharedpointer_impl.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qhash.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qfont.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qfontmetrics.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qfontinfo.h \
@@ -1539,8 +1703,75 @@ controladordosistema.o: ../SisCompra/controladordosistema.cpp ../SisCompra/contr
 		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qvector2d.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qtouchdevice.h \
 		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qtabwidget.h \
-		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qicon.h
+		/opt/Qt5.3.1/5.3/gcc/include/QtGui/qicon.h \
+		../SisCompra/dialogeditarproduto.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/QDialog \
+		/opt/Qt5.3.1/5.3/gcc/include/QtWidgets/qdialog.h \
+		../SisCompra/dialogeditarcompra.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o controladordosistema.o ../SisCompra/controladordosistema.cpp
+
+gerenciadordearquivos.o: ../SisCompra/gerenciadordearquivos.cpp ../SisCompra/gerenciadordearquivos.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/QList \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qlist.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qalgorithms.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qglobal.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qconfig.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qfeatures.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qsystemdetection.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qprocessordetection.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qcompilerdetection.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qtypeinfo.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qtypetraits.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qsysinfo.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qlogging.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qflags.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qatomic.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qbasicatomic.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qatomic_bootstrap.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qgenericatomic.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qatomic_msvc.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qatomic_armv7.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qatomic_armv6.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qatomic_armv5.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qatomic_ia64.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qatomic_mips.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qatomic_x86.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qatomic_cxx11.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qatomic_gcc.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qatomic_unix.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qglobalstatic.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qmutex.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qnumeric.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qiterator.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qrefcount.h \
+		../SisCompra/compra.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/QDate \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qdatetime.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qstring.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qchar.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qbytearray.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qnamespace.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qarraydata.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qstringbuilder.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qsharedpointer.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qshareddata.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qsharedpointer_impl.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qobject.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qobjectdefs.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qobjectdefs_impl.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qcoreevent.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qscopedpointer.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qmetatype.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qvarlengtharray.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qcontainerfwd.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qisenum.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qobject_impl.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qhash.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/qpair.h \
+		../SisCompra/produto.h \
+		/opt/Qt5.3.1/5.3/gcc/include/QtCore/QString \
+		../SisCompra/Macros.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gerenciadordearquivos.o ../SisCompra/gerenciadordearquivos.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

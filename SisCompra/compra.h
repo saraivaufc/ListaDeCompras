@@ -18,11 +18,15 @@ private:
 public:
     Compra();
     Compra(QString titulo);
+    Compra(QString titulo, QDate data);
 
     bool addProduto(Produto* prod);
     bool removeProduto(int idProduto);
-    Produto* getProduto();
+    Produto* getProduto(int id);
+    QList<Produto*> getProdutos();
 
+    QString getTitulo();
+    QDate getData();
     int getQuantidadeProduto();
     int getQuantidadeTotal();
     float getValorTotal();
@@ -30,6 +34,8 @@ public:
 
     void setTitulo(QString titulo);
     void setData(QDate data);
+
+    QString toString();
 };
 
 #endif // COMPRA_H

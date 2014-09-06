@@ -1,8 +1,11 @@
 #ifndef COMTROLADORDOSISTEMA_H
 #define COMTROLADORDOSISTEMA_H
 
+#include "gerenciadordearquivos.h"
 #include "gerenciadordecompras.h"
 #include "mainwindow.h"
+#include "dialogeditarproduto.h"
+#include "dialogeditarcompra.h"
 
 /*
  * Esta classe contem todos os métodos que serão acessados

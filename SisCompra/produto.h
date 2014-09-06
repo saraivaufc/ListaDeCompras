@@ -26,10 +26,12 @@ public:
     float getValorTotal();
     QString toString();
 
+    void setId(int id);
     void setNome(QString nome);
     void setQuantidade(int quant);
     void setValorUnit(float valor);
 
+    void operator =(Produto p);
     bool operator ==(Produto p);
     void operator ++(int);
 };
