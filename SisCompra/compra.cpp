@@ -35,7 +35,18 @@ bool Compra::addProduto(Produto *prod) {
 }
 
 bool Compra::removeProduto(int idProduto) {
-
+    int index=0;
+    foreach (Produto * p, listaDeProdutos) {
+        if(p->getId() == idProduto) {
+            if(p->getQuantidade() == 1){
+                listaDeProdutos.removeAt(index);
+            }else{
+                (*p)--;
+            }
+            return true;
+        }
+    }
+    return false;
 }
 
 Produto *Compra::getProduto(int id) {
@@ -44,6 +55,11 @@ Produto *Compra::getProduto(int id) {
 
 QList<Produto *> Compra::getProdutos() {
     return listaDeProdutos;
+}
+
+int Compra::getID()
+{
+    return this->id;
 }
 
 QString Compra::getTitulo() {

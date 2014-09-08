@@ -3,6 +3,8 @@
 
 #include <QList>
 #include "compra.h"
+#include "dialogeditarcompra.h"
+#include "dialogeditarproduto.h"
 
 /*
  * Classe responsável por gerenciar a lista de compras
@@ -11,13 +13,13 @@
 
 class GerenciadorDeCompras {
 private:
-    QList<Compra> listaDeCompras;
+    QList<Compra*> listaDeCompras;
 
 public:
     GerenciadorDeCompras();
 
     bool addCompra(Compra comp);
-    bool removeCompra(int idCompra);
+    bool removeCompra(QString tituloCompra);
 
     bool addProdutoCompra(Compra comp, Produto prod);
     bool removeProdutoCompra(int idCompra, int idProduto);

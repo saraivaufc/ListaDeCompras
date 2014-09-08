@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QStandardItemModel>
+#include "compra.h"
 
 namespace Ui {
 class MainWindow;
@@ -17,6 +19,14 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+    QStandardItemModel listaDeCompras;
+    QStandardItemModel listaDeProdutos;
+
+
+public:
+    void adicionaCompra(Compra * compra);
+
 };
 
 #endif // MAINWINDOW_H

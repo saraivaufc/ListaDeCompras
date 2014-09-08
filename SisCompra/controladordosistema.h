@@ -9,7 +9,7 @@
 
 /*
  * Esta classe contem todos os métodos que serão acessados
- * apartir da interface, bem como seus principais o bjetos
+ * apartir da interface, bem como seus principais objetos
  */
 
 class ControladorDoSistema {
