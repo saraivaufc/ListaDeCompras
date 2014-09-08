@@ -26,6 +26,7 @@ public:
 
     void editarCompra(int idCompra);
     void editarProdutoCompra(int idCompra, int idProduto);
+    QList<Compra *> getListaCompras();
 };
 
 #endif // GERENCIADORDECOMPRAS_H

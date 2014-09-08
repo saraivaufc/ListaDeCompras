@@ -1,35 +1,40 @@
-#ifndef COMTROLADORDOSISTEMA_H
-#define COMTROLADORDOSISTEMA_H
+#ifndef CONTROLADORDOSISTEMA_H
+#define CONTROLADORDOSISTEMA_H
+
+#include <QObject>
+#include <QMessageBox>
+#include <QDate>
+#include <QDebug>
 
 #include "gerenciadordearquivos.h"
 #include "gerenciadordecompras.h"
-#include "mainwindow.h"
-#include "dialogeditarproduto.h"
+
+#include "dialogadicionarcompra.h"
 #include "dialogeditarcompra.h"
+#include "dialogeditarproduto.h"
 
-/*
- * Esta classe contem todos os métodos que serão acessados
- * apartir da interface, bem como seus principais objetos
- */
+#include "mainwindow.h"
 
-class ControladorDoSistema {
+class ControladorDoSistema : public QObject
+{
+    Q_OBJECT
+public:
+    MainWindow * interface;
+
+    explicit ControladorDoSistema(QObject *parent = 0);
+    DialogAdicionarCompra dialogAddCompra;
+
+
 private:
-    MainWindow* window;
     GerenciadorDeCompras gerenciadorDeCompras;
 
 public:
-    ControladorDoSistema();
+    GerenciadorDeCompras *getGerenciadorCompras();
 
-    bool addCompra(Compra comp);
-    bool removeCompra(int idCompra);
 
-    bool addProdutoCompra(Compra comp, Produto prod);
-    bool removeProdutoCompra(int idCompra, int idProduto);
+public slots:
+    void addCompra(void);
 
-    void editarCompra(int idCompra);
-    void editarProdutoCompra(int idCompra, int idProduto);
-
-    GerenciadorDeCompras getGerenciadorCompras();
 };
 
-#endif // COMTROLADORDOSISTEMA_H
+#endif // CONTROLADORDOSISTEMA_H
