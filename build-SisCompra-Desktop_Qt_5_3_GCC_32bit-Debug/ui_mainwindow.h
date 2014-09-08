@@ -13,12 +13,18 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QFrame>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QSplitter>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
+#include <QtWidgets/QTreeView>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -26,41 +32,213 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
-    QAction *actionAdicionar_Lista;
+    QAction *action_Conta;
+    QAction *actionAdicionar_Produto;
+    QAction *actionEditar_Compra;
+    QAction *actionEditar_Produto;
+    QAction *actionSair;
+    QAction *actionCompra;
+    QAction *actionProduto;
+    QAction *actionCompra_2;
+    QAction *actionProdut;
     QWidget *centralWidget;
-    QMenuBar *menuBar;
-    QMenu *menuMenu;
-    QMenu *menuSair;
+    QVBoxLayout *verticalLayout_6;
+    QSplitter *splitter;
+    QFrame *frame;
+    QVBoxLayout *verticalLayout_5;
+    QVBoxLayout *verticalLayout_3;
+    QTreeView *treeViewCompras;
+    QWidget *widgetCompra;
+    QVBoxLayout *verticalLayout;
+    QHBoxLayout *horizontalLayout;
+    QPushButton *pushButton_5;
+    QPushButton *pushButton_4;
+    QPushButton *pushButton_6;
+    QFrame *frame_2;
+    QVBoxLayout *verticalLayout_4;
+    QVBoxLayout *verticalLayout_2;
+    QTreeView *treeViewProdutos;
+    QWidget *widgetProduto;
+    QHBoxLayout *horizontalLayout_2;
+    QPushButton *pushButton;
+    QPushButton *pushButton_2;
+    QPushButton *pushButton_3;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
+    QMenuBar *menuBar;
+    QMenu *menuMenu;
+    QMenu *menuEditar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(400, 300);
-        actionAdicionar_Lista = new QAction(MainWindow);
-        actionAdicionar_Lista->setObjectName(QStringLiteral("actionAdicionar_Lista"));
+        MainWindow->resize(602, 441);
+        action_Conta = new QAction(MainWindow);
+        action_Conta->setObjectName(QStringLiteral("action_Conta"));
+        actionAdicionar_Produto = new QAction(MainWindow);
+        actionAdicionar_Produto->setObjectName(QStringLiteral("actionAdicionar_Produto"));
+        actionEditar_Compra = new QAction(MainWindow);
+        actionEditar_Compra->setObjectName(QStringLiteral("actionEditar_Compra"));
+        actionEditar_Produto = new QAction(MainWindow);
+        actionEditar_Produto->setObjectName(QStringLiteral("actionEditar_Produto"));
+        actionSair = new QAction(MainWindow);
+        actionSair->setObjectName(QStringLiteral("actionSair"));
+        actionCompra = new QAction(MainWindow);
+        actionCompra->setObjectName(QStringLiteral("actionCompra"));
+        actionProduto = new QAction(MainWindow);
+        actionProduto->setObjectName(QStringLiteral("actionProduto"));
+        actionCompra_2 = new QAction(MainWindow);
+        actionCompra_2->setObjectName(QStringLiteral("actionCompra_2"));
+        actionProdut = new QAction(MainWindow);
+        actionProdut->setObjectName(QStringLiteral("actionProdut"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
+        verticalLayout_6 = new QVBoxLayout(centralWidget);
+        verticalLayout_6->setSpacing(6);
+        verticalLayout_6->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_6->setObjectName(QStringLiteral("verticalLayout_6"));
+        splitter = new QSplitter(centralWidget);
+        splitter->setObjectName(QStringLiteral("splitter"));
+        QSizePolicy sizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(splitter->sizePolicy().hasHeightForWidth());
+        splitter->setSizePolicy(sizePolicy);
+        splitter->setOrientation(Qt::Horizontal);
+        frame = new QFrame(splitter);
+        frame->setObjectName(QStringLiteral("frame"));
+        frame->setFrameShape(QFrame::StyledPanel);
+        frame->setFrameShadow(QFrame::Raised);
+        verticalLayout_5 = new QVBoxLayout(frame);
+        verticalLayout_5->setSpacing(6);
+        verticalLayout_5->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
+        verticalLayout_3 = new QVBoxLayout();
+        verticalLayout_3->setSpacing(6);
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        treeViewCompras = new QTreeView(frame);
+        treeViewCompras->setObjectName(QStringLiteral("treeViewCompras"));
+
+        verticalLayout_3->addWidget(treeViewCompras);
+
+        widgetCompra = new QWidget(frame);
+        widgetCompra->setObjectName(QStringLiteral("widgetCompra"));
+        verticalLayout = new QVBoxLayout(widgetCompra);
+        verticalLayout->setSpacing(6);
+        verticalLayout->setContentsMargins(11, 11, 11, 11);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        pushButton_5 = new QPushButton(widgetCompra);
+        pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
+        QSizePolicy sizePolicy1(QSizePolicy::Ignored, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(pushButton_5->sizePolicy().hasHeightForWidth());
+        pushButton_5->setSizePolicy(sizePolicy1);
+
+        horizontalLayout->addWidget(pushButton_5);
+
+        pushButton_4 = new QPushButton(widgetCompra);
+        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
+        sizePolicy1.setHeightForWidth(pushButton_4->sizePolicy().hasHeightForWidth());
+        pushButton_4->setSizePolicy(sizePolicy1);
+
+        horizontalLayout->addWidget(pushButton_4);
+
+        pushButton_6 = new QPushButton(widgetCompra);
+        pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
+        sizePolicy1.setHeightForWidth(pushButton_6->sizePolicy().hasHeightForWidth());
+        pushButton_6->setSizePolicy(sizePolicy1);
+
+        horizontalLayout->addWidget(pushButton_6);
+
+
+        verticalLayout->addLayout(horizontalLayout);
+
+
+        verticalLayout_3->addWidget(widgetCompra);
+
+
+        verticalLayout_5->addLayout(verticalLayout_3);
+
+        splitter->addWidget(frame);
+        frame_2 = new QFrame(splitter);
+        frame_2->setObjectName(QStringLiteral("frame_2"));
+        frame_2->setFrameShape(QFrame::StyledPanel);
+        frame_2->setFrameShadow(QFrame::Raised);
+        verticalLayout_4 = new QVBoxLayout(frame_2);
+        verticalLayout_4->setSpacing(6);
+        verticalLayout_4->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        treeViewProdutos = new QTreeView(frame_2);
+        treeViewProdutos->setObjectName(QStringLiteral("treeViewProdutos"));
+
+        verticalLayout_2->addWidget(treeViewProdutos);
+
+        widgetProduto = new QWidget(frame_2);
+        widgetProduto->setObjectName(QStringLiteral("widgetProduto"));
+        horizontalLayout_2 = new QHBoxLayout(widgetProduto);
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        pushButton = new QPushButton(widgetProduto);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        sizePolicy1.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
+        pushButton->setSizePolicy(sizePolicy1);
+
+        horizontalLayout_2->addWidget(pushButton);
+
+        pushButton_2 = new QPushButton(widgetProduto);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        sizePolicy1.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
+        pushButton_2->setSizePolicy(sizePolicy1);
+
+        horizontalLayout_2->addWidget(pushButton_2);
+
+        pushButton_3 = new QPushButton(widgetProduto);
+        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+        sizePolicy1.setHeightForWidth(pushButton_3->sizePolicy().hasHeightForWidth());
+        pushButton_3->setSizePolicy(sizePolicy1);
+
+        horizontalLayout_2->addWidget(pushButton_3);
+
+
+        verticalLayout_2->addWidget(widgetProduto);
+
+
+        verticalLayout_4->addLayout(verticalLayout_2);
+
+        splitter->addWidget(frame_2);
+
+        verticalLayout_6->addWidget(splitter);
+
         MainWindow->setCentralWidget(centralWidget);
-        menuBar = new QMenuBar(MainWindow);
-        menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 400, 28));
-        menuMenu = new QMenu(menuBar);
-        menuMenu->setObjectName(QStringLiteral("menuMenu"));
-        menuSair = new QMenu(menuBar);
-        menuSair->setObjectName(QStringLiteral("menuSair"));
-        MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
         MainWindow->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         MainWindow->setStatusBar(statusBar);
+        menuBar = new QMenuBar(MainWindow);
+        menuBar->setObjectName(QStringLiteral("menuBar"));
+        menuBar->setGeometry(QRect(0, 0, 602, 28));
+        menuMenu = new QMenu(menuBar);
+        menuMenu->setObjectName(QStringLiteral("menuMenu"));
+        menuEditar = new QMenu(menuBar);
+        menuEditar->setObjectName(QStringLiteral("menuEditar"));
+        MainWindow->setMenuBar(menuBar);
 
         menuBar->addAction(menuMenu->menuAction());
-        menuBar->addAction(menuSair->menuAction());
+        menuBar->addAction(menuEditar->menuAction());
+        menuMenu->addAction(actionSair);
+        menuEditar->addAction(actionEditar_Compra);
+        menuEditar->addAction(actionEditar_Produto);
 
         retranslateUi(MainWindow);
 
@@ -70,9 +248,23 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
-        actionAdicionar_Lista->setText(QApplication::translate("MainWindow", "Adicionar Lista", 0));
+        action_Conta->setText(QApplication::translate("MainWindow", "Adicionar Compra", 0));
+        actionAdicionar_Produto->setText(QApplication::translate("MainWindow", "Adicionar Produto", 0));
+        actionEditar_Compra->setText(QApplication::translate("MainWindow", "Compra", 0));
+        actionEditar_Produto->setText(QApplication::translate("MainWindow", "Produto", 0));
+        actionSair->setText(QApplication::translate("MainWindow", "Sair", 0));
+        actionCompra->setText(QApplication::translate("MainWindow", "Compra", 0));
+        actionProduto->setText(QApplication::translate("MainWindow", "Produto", 0));
+        actionCompra_2->setText(QApplication::translate("MainWindow", "Compra", 0));
+        actionProdut->setText(QApplication::translate("MainWindow", "Produto", 0));
+        pushButton_5->setText(QApplication::translate("MainWindow", "Novo", 0));
+        pushButton_4->setText(QApplication::translate("MainWindow", "Excluir", 0));
+        pushButton_6->setText(QApplication::translate("MainWindow", "Editar", 0));
+        pushButton->setText(QApplication::translate("MainWindow", "Novo", 0));
+        pushButton_2->setText(QApplication::translate("MainWindow", "Excluir", 0));
+        pushButton_3->setText(QApplication::translate("MainWindow", "Editar", 0));
         menuMenu->setTitle(QApplication::translate("MainWindow", "Menu", 0));
-        menuSair->setTitle(QApplication::translate("MainWindow", "Sair", 0));
+        menuEditar->setTitle(QApplication::translate("MainWindow", "Editar", 0));
     } // retranslateUi
 
 };
