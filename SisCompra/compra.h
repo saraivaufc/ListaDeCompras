@@ -9,7 +9,6 @@
 class Compra {
 private:
     static int CONTADOR_COMPRAS;
-
     int id;
     QString titulo;
     QDate data;

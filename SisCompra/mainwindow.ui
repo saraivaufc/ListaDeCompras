@@ -45,7 +45,7 @@
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout">
                <item>
-                <widget class="QPushButton" name="pushButton_5">
+                <widget class="QPushButton" name="adicionarCompra">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Ignored" vsizetype="Preferred">
                    <horstretch>0</horstretch>
@@ -58,7 +58,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton_4">
+                <widget class="QPushButton" name="excluirCompra">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Ignored" vsizetype="Preferred">
                    <horstretch>0</horstretch>
@@ -71,7 +71,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton_6">
+                <widget class="QPushButton" name="editarCompra">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Ignored" vsizetype="Preferred">
                    <horstretch>0</horstretch>
@@ -109,7 +109,7 @@
            <widget class="QWidget" name="widgetProduto" native="true">
             <layout class="QHBoxLayout" name="horizontalLayout_2">
              <item>
-              <widget class="QPushButton" name="pushButton">
+              <widget class="QPushButton" name="adicionarProduto">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Ignored" vsizetype="Preferred">
                  <horstretch>0</horstretch>
@@ -122,7 +122,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_2">
+              <widget class="QPushButton" name="excluirProduto">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Ignored" vsizetype="Preferred">
                  <horstretch>0</horstretch>
@@ -135,7 +135,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_3">
+              <widget class="QPushButton" name="editarProduto">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Ignored" vsizetype="Preferred">
                  <horstretch>0</horstretch>
