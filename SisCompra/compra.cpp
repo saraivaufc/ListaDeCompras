@@ -78,6 +78,11 @@ void Compra::setData(QDate data) {
     this->data = data;
 }
 
+bool Compra::operator ==(Compra * c) {
+    qDebug() << "operator";
+    return (data.toString() == c->getData().toString() && titulo == c->getTitulo());
+}
+
 QString Compra::toString() {
     QString s = "";
     foreach (Produto* p, listaDeProdutos) {

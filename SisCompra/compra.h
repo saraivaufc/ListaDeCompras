@@ -35,6 +35,8 @@ public:
     void setTitulo(QString titulo);
     void setData(QDate data);
 
+    bool operator ==(Compra *c);
+
     QString toString();
 };
 

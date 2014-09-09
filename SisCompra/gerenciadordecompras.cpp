@@ -1,15 +1,12 @@
+#include <QDebug>
 #include "gerenciadordecompras.h"
 
 GerenciadorDeCompras::GerenciadorDeCompras() {
 }
 
 bool GerenciadorDeCompras::addCompra(Compra* comp) {
-    if(!listaDeCompras.contains(comp)) {
-        listaDeCompras.append(comp);
-        return true;
-    } else {
-        return false;
-    }
+    listaDeCompras.append(comp);
+    return true;
 }
 
 bool GerenciadorDeCompras::removeCompra(QString tituloCompra)
@@ -78,4 +75,13 @@ void GerenciadorDeCompras::editarProdutoCompra(int idCompra, int idProduto)
 QList<Compra *> GerenciadorDeCompras::getListaCompras()
 {
     return listaDeCompras;
+}
+
+bool GerenciadorDeCompras::contains(Compra *c) {
+    foreach (Compra* c2, listaDeCompras) {
+        if(*c2 == c)
+            return true;
+    }
+
+    return false;
 }

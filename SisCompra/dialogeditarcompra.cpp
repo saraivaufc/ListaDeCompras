@@ -17,6 +17,7 @@ DialogEditarCompra::~DialogEditarCompra() {
 void DialogEditarCompra::on_buttonBox_accepted() {
     compra->setTitulo(ui->lineEditTitulo->text());
     compra->setData(ui->dateEdit->date());
+    acepted= true;
 }
 
 QString DialogEditarCompra::getTitulo()
@@ -27,4 +28,9 @@ QString DialogEditarCompra::getTitulo()
 QDate DialogEditarCompra::getData()
 {
     return ui->dateEdit->date();
+}
+
+void DialogEditarCompra::on_buttonBox_rejected()
+{
+    acepted = false;
 }

@@ -19,7 +19,6 @@ class ControladorDoSistema : public QObject {
 
 private:
     GerenciadorDeCompras gerenciadorDeCompras;
-    GerenciadorDeArquivos gerenciadorDeArquivos;
 
 public:
     MainWindow * interface;
@@ -31,7 +30,8 @@ public:
 public slots:
     void addCompra(Compra* c );
     void salvarCompras();
-    void carregarCompras();
+    void existeCompra(Compra *c,bool *a);
+
 
 };
 

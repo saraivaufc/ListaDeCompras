@@ -39,11 +39,11 @@ signals:
     void addCompra(Compra* c);
     void close();
     void inicializada();
+    void existeCompra(Compra *c, bool *existe);
 
 
 public slots:
     void atualizarCompras();
-    void aceitouCompra();
 
 private slots:
     void on_actionSair_triggered();

@@ -89,7 +89,7 @@ void GerenciadorDeArquivos::salvarCompra(Compra *c) {
     QJsonObject compra = getJsonFrom(c);
     QJsonDocument doc(compra);
 
-    QFile saveFile(QString(DIR_JSON) + "/" + c->getTitulo() + ".json");
+    QFile saveFile(QString(DIR_JSON) + "/" + c->getData().toString("dd-MM-yy") + "_"+ c->getTitulo() + ".json");
     saveFile.open(QIODevice::WriteOnly);
     saveFile.write(doc.toJson());
 

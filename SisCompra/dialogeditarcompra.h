@@ -14,9 +14,12 @@ class DialogEditarCompra : public QDialog {
 public:
     explicit DialogEditarCompra(Compra* c, QWidget *parent = 0);
     ~DialogEditarCompra();
+    bool acepted;
 
 private slots:
     void on_buttonBox_accepted();
+
+    void on_buttonBox_rejected();
 
 private:
     Ui::DialogEditarCompra *ui;
