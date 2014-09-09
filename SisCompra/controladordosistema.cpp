@@ -1,28 +1,18 @@
 #include "controladordosistema.h"
 
-ControladorDoSistema::ControladorDoSistema(QObject *parent) :
-    QObject(parent)
-{
+ControladorDoSistema::ControladorDoSistema(QObject *parent) : QObject(parent) {
     interface = new MainWindow;
     interface->show();
 
-    connect(interface, SIGNAL(addCompra()),this,SLOT(addCompra()));
+    connect(interface, SIGNAL(addCompra(Compra*)),this,SLOT(addCompra(Compra*)));
 }
 
-GerenciadorDeCompras *ControladorDoSistema::getGerenciadorCompras()
-{
+GerenciadorDeCompras *ControladorDoSistema::getGerenciadorCompras() {
     return &gerenciadorDeCompras;
 }
 
-void ControladorDoSistema::addCompra(void)
-{
-    dialogAddCompra.limparTudo();
-    dialogAddCompra.show();
-    dialogAddCompra.exec();
-    QString nomeCompra = dialogAddCompra.getNomeCompra();
-    QDate dataCompra = dialogAddCompra.getDataCompra();
-    Compra c(nomeCompra, dataCompra);
+void ControladorDoSistema::addCompra(Compra* c) {
     gerenciadorDeCompras.addCompra(c);
 
-    GerenciadorDeArquivos::salvarCompra(&c);
+    //GerenciadorDeArquivos::salvarCompra(&c);
 }

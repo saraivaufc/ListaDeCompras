@@ -51,18 +51,18 @@ public:
     QWidget *widgetCompra;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
-    QPushButton *pushButton_5;
-    QPushButton *pushButton_4;
-    QPushButton *pushButton_6;
+    QPushButton *adicionarCompra;
+    QPushButton *excluirCompra;
+    QPushButton *editarCompra;
     QFrame *frame_2;
     QVBoxLayout *verticalLayout_4;
     QVBoxLayout *verticalLayout_2;
     QTreeView *treeViewProdutos;
     QWidget *widgetProduto;
     QHBoxLayout *horizontalLayout_2;
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton_3;
+    QPushButton *adicionarProduto;
+    QPushButton *excluirProduto;
+    QPushButton *editarProduto;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
     QMenuBar *menuBar;
@@ -131,29 +131,29 @@ public:
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        pushButton_5 = new QPushButton(widgetCompra);
-        pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
+        adicionarCompra = new QPushButton(widgetCompra);
+        adicionarCompra->setObjectName(QStringLiteral("adicionarCompra"));
         QSizePolicy sizePolicy1(QSizePolicy::Ignored, QSizePolicy::Preferred);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(pushButton_5->sizePolicy().hasHeightForWidth());
-        pushButton_5->setSizePolicy(sizePolicy1);
+        sizePolicy1.setHeightForWidth(adicionarCompra->sizePolicy().hasHeightForWidth());
+        adicionarCompra->setSizePolicy(sizePolicy1);
 
-        horizontalLayout->addWidget(pushButton_5);
+        horizontalLayout->addWidget(adicionarCompra);
 
-        pushButton_4 = new QPushButton(widgetCompra);
-        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
-        sizePolicy1.setHeightForWidth(pushButton_4->sizePolicy().hasHeightForWidth());
-        pushButton_4->setSizePolicy(sizePolicy1);
+        excluirCompra = new QPushButton(widgetCompra);
+        excluirCompra->setObjectName(QStringLiteral("excluirCompra"));
+        sizePolicy1.setHeightForWidth(excluirCompra->sizePolicy().hasHeightForWidth());
+        excluirCompra->setSizePolicy(sizePolicy1);
 
-        horizontalLayout->addWidget(pushButton_4);
+        horizontalLayout->addWidget(excluirCompra);
 
-        pushButton_6 = new QPushButton(widgetCompra);
-        pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
-        sizePolicy1.setHeightForWidth(pushButton_6->sizePolicy().hasHeightForWidth());
-        pushButton_6->setSizePolicy(sizePolicy1);
+        editarCompra = new QPushButton(widgetCompra);
+        editarCompra->setObjectName(QStringLiteral("editarCompra"));
+        sizePolicy1.setHeightForWidth(editarCompra->sizePolicy().hasHeightForWidth());
+        editarCompra->setSizePolicy(sizePolicy1);
 
-        horizontalLayout->addWidget(pushButton_6);
+        horizontalLayout->addWidget(editarCompra);
 
 
         verticalLayout->addLayout(horizontalLayout);
@@ -187,26 +187,26 @@ public:
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        pushButton = new QPushButton(widgetProduto);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        sizePolicy1.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
-        pushButton->setSizePolicy(sizePolicy1);
+        adicionarProduto = new QPushButton(widgetProduto);
+        adicionarProduto->setObjectName(QStringLiteral("adicionarProduto"));
+        sizePolicy1.setHeightForWidth(adicionarProduto->sizePolicy().hasHeightForWidth());
+        adicionarProduto->setSizePolicy(sizePolicy1);
 
-        horizontalLayout_2->addWidget(pushButton);
+        horizontalLayout_2->addWidget(adicionarProduto);
 
-        pushButton_2 = new QPushButton(widgetProduto);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        sizePolicy1.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
-        pushButton_2->setSizePolicy(sizePolicy1);
+        excluirProduto = new QPushButton(widgetProduto);
+        excluirProduto->setObjectName(QStringLiteral("excluirProduto"));
+        sizePolicy1.setHeightForWidth(excluirProduto->sizePolicy().hasHeightForWidth());
+        excluirProduto->setSizePolicy(sizePolicy1);
 
-        horizontalLayout_2->addWidget(pushButton_2);
+        horizontalLayout_2->addWidget(excluirProduto);
 
-        pushButton_3 = new QPushButton(widgetProduto);
-        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
-        sizePolicy1.setHeightForWidth(pushButton_3->sizePolicy().hasHeightForWidth());
-        pushButton_3->setSizePolicy(sizePolicy1);
+        editarProduto = new QPushButton(widgetProduto);
+        editarProduto->setObjectName(QStringLiteral("editarProduto"));
+        sizePolicy1.setHeightForWidth(editarProduto->sizePolicy().hasHeightForWidth());
+        editarProduto->setSizePolicy(sizePolicy1);
 
-        horizontalLayout_2->addWidget(pushButton_3);
+        horizontalLayout_2->addWidget(editarProduto);
 
 
         verticalLayout_2->addWidget(widgetProduto);
@@ -257,12 +257,12 @@ public:
         actionProduto->setText(QApplication::translate("MainWindow", "Produto", 0));
         actionCompra_2->setText(QApplication::translate("MainWindow", "Compra", 0));
         actionProdut->setText(QApplication::translate("MainWindow", "Produto", 0));
-        pushButton_5->setText(QApplication::translate("MainWindow", "Novo", 0));
-        pushButton_4->setText(QApplication::translate("MainWindow", "Excluir", 0));
-        pushButton_6->setText(QApplication::translate("MainWindow", "Editar", 0));
-        pushButton->setText(QApplication::translate("MainWindow", "Novo", 0));
-        pushButton_2->setText(QApplication::translate("MainWindow", "Excluir", 0));
-        pushButton_3->setText(QApplication::translate("MainWindow", "Editar", 0));
+        adicionarCompra->setText(QApplication::translate("MainWindow", "Novo", 0));
+        excluirCompra->setText(QApplication::translate("MainWindow", "Excluir", 0));
+        editarCompra->setText(QApplication::translate("MainWindow", "Editar", 0));
+        adicionarProduto->setText(QApplication::translate("MainWindow", "Novo", 0));
+        excluirProduto->setText(QApplication::translate("MainWindow", "Excluir", 0));
+        editarProduto->setText(QApplication::translate("MainWindow", "Editar", 0));
         menuMenu->setTitle(QApplication::translate("MainWindow", "Menu", 0));
         menuEditar->setTitle(QApplication::translate("MainWindow", "Editar", 0));
     } // retranslateUi

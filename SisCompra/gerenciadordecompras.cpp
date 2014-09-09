@@ -3,10 +3,13 @@
 GerenciadorDeCompras::GerenciadorDeCompras() {
 }
 
-bool GerenciadorDeCompras::addCompra(Compra comp)
-{
-    this->listaDeCompras.append(&comp);
-    return true;
+bool GerenciadorDeCompras::addCompra(Compra* comp) {
+    if(!listaDeCompras.contains(comp)) {
+        listaDeCompras.append(comp);
+        return true;
+    } else {
+        return false;
+    }
 }
 
 bool GerenciadorDeCompras::removeCompra(QString tituloCompra)

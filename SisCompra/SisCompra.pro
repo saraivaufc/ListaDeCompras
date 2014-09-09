@@ -20,8 +20,7 @@ SOURCES += main.cpp\
     compra.cpp \
     produto.cpp \
     gerenciadordearquivos.cpp \
-    controladordosistema.cpp \
-    dialogadicionarcompra.cpp
+    controladordosistema.cpp
 
 HEADERS  += mainwindow.h \
     gerenciadordecompras.h \
@@ -31,10 +30,8 @@ HEADERS  += mainwindow.h \
     produto.h \
     Macros.h \
     gerenciadordearquivos.h \
-    controladordosistema.h \
-    dialogadicionarcompra.h
+    controladordosistema.h
 
 FORMS    += mainwindow.ui \
     dialogeditarcompra.ui \
-    dialogeditarproduto.ui \
-    dialogadicionarcompra.ui
+    dialogeditarproduto.ui

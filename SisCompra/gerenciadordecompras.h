@@ -18,7 +18,7 @@ private:
 public:
     GerenciadorDeCompras();
 
-    bool addCompra(Compra comp);
+    bool addCompra(Compra* comp);
     bool removeCompra(QString tituloCompra);
 
     bool addProdutoCompra(Compra comp, Produto prod);

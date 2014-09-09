@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+#include "dialogeditarcompra.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
@@ -16,9 +16,7 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
-QList<QStandardItem *> MainWindow::compraToItemList(  QString titulo,
-                                                     QDate data)
-{
+QList<QStandardItem *> MainWindow::compraToItemList(QString titulo, QDate data) {
     QList<QStandardItem*> res;
     res << new QStandardItem(titulo)
         << new QStandardItem(data.toString());
@@ -26,18 +24,24 @@ QList<QStandardItem *> MainWindow::compraToItemList(  QString titulo,
 }
 
 
-void MainWindow::atualizarCompras()
-{
+void MainWindow::atualizarCompras() {
 
 }
 
-void MainWindow::on_adicionarCompra_clicked()
-{
-    emit addCompra();
+void MainWindow::on_adicionarCompra_clicked() {
+    Compra* c = new Compra;
+    DialogEditarCompra d(c);
+    d.show();
+    d.exec();
+
+    //add compra na listView
+    adicionarCompra(*c);
+
+    //add compra no gerenciador de compras
+    emit addCompra(c);
 }
 
-void MainWindow::adicionarCompra(Compra c)
-{
+void MainWindow::adicionarCompra(Compra &c){
     if(c.getTitulo().isEmpty())
         return;
 
@@ -59,7 +63,7 @@ void MainWindow::loadCompras()
 {
     foreach (Compra * c, gerenciadorArquivos->getAllCompras()) {
         //controlador->getGerenciadorCompras()->addCompra(*c);
-        adicionarCompra(*c, false);
+        //adicionarCompra(*c, false);
     }
 }
 

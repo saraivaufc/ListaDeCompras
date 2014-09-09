@@ -26,7 +26,7 @@ public:
 
 
 signals:
-    void addCompra();
+    void addCompra(Compra* c);
 
 private:
     Ui::MainWindow *ui;
@@ -39,14 +39,13 @@ private:
 public slots:
     void atualizarCompras();
 
-
 private slots:
     void on_adicionarCompra_clicked();
 
     void on_actionSair_triggered();
 
 public:
-    void adicionarCompra(Compra c);
+    void adicionarCompra(Compra &c);
     void loadCompras();
 
 };
