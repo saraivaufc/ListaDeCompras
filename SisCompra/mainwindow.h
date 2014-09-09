@@ -43,14 +43,19 @@ signals:
 
 public slots:
     void atualizarCompras();
+    void aceitouCompra();
 
 private slots:
     void on_actionSair_triggered();
     void on_adicionarCompra_clicked();
 
+    void on_excluirCompra_clicked();
+
+    void on_treeViewCompras_clicked(const QModelIndex &index);
+
 public:
-    void adicionarCompra(Compra * c);
     void carregarCompras();
+    void adicionarCompra(Compra *c);
 };
 
 #endif // MAINWINDOW_H

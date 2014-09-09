@@ -23,6 +23,10 @@ private:
 
     Compra* compra;
 
+public:
+    QString getTitulo();
+    QDate getData();
+
 };
 
 #endif // DIALOGEDITARCOMPRA_H

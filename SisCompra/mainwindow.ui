@@ -37,7 +37,11 @@
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
-           <widget class="QTreeView" name="treeViewCompras"/>
+           <widget class="QTreeView" name="treeViewCompras">
+            <property name="animated">
+             <bool>false</bool>
+            </property>
+           </widget>
           </item>
           <item>
            <widget class="QWidget" name="widgetCompra" native="true">
