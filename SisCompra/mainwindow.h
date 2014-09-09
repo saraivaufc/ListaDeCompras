@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QStandardItemModel>
+#include <QTreeView>
 #include "compra.h"
 #include <QDebug>
 
@@ -15,22 +16,24 @@ namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow
-{
+class MainWindow : public QMainWindow {
     Q_OBJECT
-    QStandardItemModel* model;
-    QList<QStandardItem *> compraToItemList(QString titulo,
-                                            QDate data);
-
-private:
-    Ui::MainWindow *ui;
-    QStandardItemModel listaDeCompras;
-    QStandardItemModel listaDeProdutos;
-
 
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+private:
+    enum TypeView{COMPRAS, PRODUTO};
+
+    TypeView typeView;
+    Ui::MainWindow *ui;
+    QStandardItemModel listaDeCompras;
+    QStandardItemModel listaDeProdutos;
+    QStandardItemModel* model;
+
+    QList<QStandardItem *> compraToItemList(QString titulo,
+                                            QDate data);
 
 protected:
     void closeEvent (QCloseEvent *event);
@@ -47,11 +50,12 @@ public slots:
 
 private slots:
     void on_actionSair_triggered();
-    void on_adicionarCompra_clicked();
+    void on_actionAdd_triggered();
 
-    void on_excluirCompra_clicked();
+    //muda a view selecionada
+    void treeViewCompras_clicked();
+    void treeViewProdutos_clicked();
 
-    void on_treeViewCompras_clicked(const QModelIndex &index);
 
 public:
     void carregarCompras();

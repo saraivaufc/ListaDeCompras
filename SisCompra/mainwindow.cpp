@@ -4,8 +4,15 @@
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
+
     model = new QStandardItemModel(this);
     ui->treeViewCompras->setModel(model);
+
+    typeView = COMPRAS;
+    treeViewCompras_clicked();
+    connect(ui->treeViewCompras, SIGNAL(mouseClicked()), this, SLOT(treeViewCompras_clicked()));
+    connect(ui->treeViewProdutos, SIGNAL(mouseClicked()), this, SLOT(treeViewProdutos_clicked()));
+
     carregarCompras();
 }
 
@@ -13,14 +20,11 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
-void MainWindow::closeEvent(QCloseEvent *event)
-{
+void MainWindow::closeEvent(QCloseEvent *event) {
     emit close();
 }
 
-QList<QStandardItem *> MainWindow::compraToItemList(  QString titulo,
-                                                     QDate data)
-{
+QList<QStandardItem *> MainWindow::compraToItemList(QString titulo, QDate data) {
     QList<QStandardItem*> res;
     res << new QStandardItem(titulo)
         << new QStandardItem(data.toString());
@@ -29,7 +33,7 @@ QList<QStandardItem *> MainWindow::compraToItemList(  QString titulo,
 
 
 //adicionar nova compra
-void MainWindow::on_adicionarCompra_clicked()
+/*void MainWindow::on_adicionarCompra_clicked()
 {
     Compra * c = new Compra;
     DialogEditarCompra * editarcompra= new DialogEditarCompra(c);
@@ -40,7 +44,7 @@ void MainWindow::on_adicionarCompra_clicked()
     }
 
 }
-
+*/
 
 void MainWindow::atualizarCompras()
 {
@@ -76,25 +80,56 @@ void MainWindow::adicionarCompra(Compra *c)
     emit addCompra(c);
 }
 
+<<<<<<< HEAD
 void MainWindow::carregarCompras()
 {
     QList<Compra *> list = GerenciadorDeArquivos::getAllCompras();
     foreach (Compra * c,list){
+=======
+void MainWindow::carregarCompras() {
+    foreach (Compra * c, GerenciadorDeArquivos::getAllCompras()) {
+>>>>>>> b61df2783450638ba5a5378ba5f7712dc2f5f0e0
         adicionarCompra(c);
     }
 }
 
-void MainWindow::on_actionSair_triggered()
-{
+void MainWindow::on_actionSair_triggered() {
     exit(0);
 }
 
-void MainWindow::on_excluirCompra_clicked()
-{
-
+void MainWindow::treeViewCompras_clicked() {
+    QFont f, f2;
+    f = f2 = ui->labelCompras->font();
+    f.setBold(true);
+    f2.setBold(false);
+    ui->labelCompras->setFont(f);
+    ui->labelProdutos->setFont(f2);
+    typeView = COMPRAS;
+    qDebug() << "compras";
 }
 
-void MainWindow::on_treeViewCompras_clicked(const QModelIndex &index)
-{
+void MainWindow::treeViewProdutos_clicked() {
+    QFont f, f2;
+    f = f2 = ui->labelCompras->font();
+    f.setBold(true);
+    f2.setBold(false);
+    ui->labelCompras->setFont(f2);
+    ui->labelProdutos->setFont(f);
+    typeView = PRODUTO;
+    qDebug() << "produto";
+}
 
+void MainWindow::on_actionAdd_triggered() {
+
+    if(typeView == COMPRAS) {
+        Compra * c = new Compra;
+        DialogEditarCompra editarcompra(c);
+
+        editarcompra.show();
+        editarcompra.exec();
+        if(editarcompra.acepted)
+            adicionarCompra(c);
+    }
+    else if(typeView == PRODUTO) {
+    }
 }

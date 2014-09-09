@@ -8,6 +8,8 @@ DialogEditarCompra::DialogEditarCompra(Compra* c, QWidget *parent) : QDialog(par
 
     ui->lineEditTitulo->setText(compra->getTitulo());
     ui->dateEdit->setDate(c->getData());
+
+    acepted = false;
 }
 
 DialogEditarCompra::~DialogEditarCompra() {
@@ -20,8 +22,7 @@ void DialogEditarCompra::on_buttonBox_accepted() {
     acepted= true;
 }
 
-QString DialogEditarCompra::getTitulo()
-{
+QString DialogEditarCompra::getTitulo() {
     return ui->lineEditTitulo->text();
 }
 
@@ -30,7 +31,6 @@ QDate DialogEditarCompra::getData()
     return ui->dateEdit->date();
 }
 
-void DialogEditarCompra::on_buttonBox_rejected()
-{
+void DialogEditarCompra::on_buttonBox_rejected() {
     acepted = false;
 }
