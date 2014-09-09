@@ -53,7 +53,7 @@ void MainWindow::adicionarCompra(Compra *c)
         return;
 
     QStandardItem * root = model->invisibleRootItem();
-    QString ch = c->getData().toString().toUpper();
+    QString ch = c->getData().toString("dd/MM/yyyy").toUpper();
     for(int row=0; row < root->rowCount() ; row++){
         QStandardItem * item  = root->child(row, 0);
         if(item->text().toUpper() == ch){
