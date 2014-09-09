@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[16];
-    char stringdata[203];
+    QByteArrayData data[15];
+    char stringdata[190];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -41,17 +41,15 @@ QT_MOC_LITERAL(8, 64, 5),
 QT_MOC_LITERAL(9, 70, 6),
 QT_MOC_LITERAL(10, 77, 16),
 QT_MOC_LITERAL(11, 94, 23),
-QT_MOC_LITERAL(12, 118, 26),
-QT_MOC_LITERAL(13, 145, 24),
-QT_MOC_LITERAL(14, 170, 26),
-QT_MOC_LITERAL(15, 197, 5)
+QT_MOC_LITERAL(12, 118, 22),
+QT_MOC_LITERAL(13, 141, 23),
+QT_MOC_LITERAL(14, 165, 24)
     },
     "MainWindow\0addCompra\0\0Compra*\0c\0close\0"
     "inicializada\0existeCompra\0bool*\0existe\0"
     "atualizarCompras\0on_actionSair_triggered\0"
-    "on_adicionarCompra_clicked\0"
-    "on_excluirCompra_clicked\0"
-    "on_treeViewCompras_clicked\0index"
+    "on_actionAdd_triggered\0treeViewCompras_clicked\0"
+    "treeViewProdutos_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -79,7 +77,7 @@ static const uint qt_meta_data_MainWindow[] = {
       11,    0,   70,    2, 0x08 /* Private */,
       12,    0,   71,    2, 0x08 /* Private */,
       13,    0,   72,    2, 0x08 /* Private */,
-      14,    1,   73,    2, 0x08 /* Private */,
+      14,    0,   73,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
@@ -92,7 +90,7 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QModelIndex,   15,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -108,9 +106,9 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 3: _t->existeCompra((*reinterpret_cast< Compra*(*)>(_a[1])),(*reinterpret_cast< bool*(*)>(_a[2]))); break;
         case 4: _t->atualizarCompras(); break;
         case 5: _t->on_actionSair_triggered(); break;
-        case 6: _t->on_adicionarCompra_clicked(); break;
-        case 7: _t->on_excluirCompra_clicked(); break;
-        case 8: _t->on_treeViewCompras_clicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
+        case 6: _t->on_actionAdd_triggered(); break;
+        case 7: _t->treeViewCompras_clicked(); break;
+        case 8: _t->treeViewProdutos_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {

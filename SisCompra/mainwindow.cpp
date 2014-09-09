@@ -80,16 +80,11 @@ void MainWindow::adicionarCompra(Compra *c)
     emit addCompra(c);
 }
 
-<<<<<<< HEAD
 void MainWindow::carregarCompras()
 {
     QList<Compra *> list = GerenciadorDeArquivos::getAllCompras();
     foreach (Compra * c,list){
-=======
-void MainWindow::carregarCompras() {
-    foreach (Compra * c, GerenciadorDeArquivos::getAllCompras()) {
->>>>>>> b61df2783450638ba5a5378ba5f7712dc2f5f0e0
-        adicionarCompra(c);
+       adicionarCompra(c);
     }
 }
 
