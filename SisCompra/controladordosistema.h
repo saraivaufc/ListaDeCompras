@@ -16,17 +16,22 @@
 
 class ControladorDoSistema : public QObject {
     Q_OBJECT
+
+private:
+    GerenciadorDeCompras gerenciadorDeCompras;
+    GerenciadorDeArquivos gerenciadorDeArquivos;
+
 public:
     MainWindow * interface;
 
     explicit ControladorDoSistema(QObject *parent = 0);
     GerenciadorDeCompras *getGerenciadorCompras();
 
-private:
-    GerenciadorDeCompras gerenciadorDeCompras;
 
 public slots:
     void addCompra(Compra* c );
+    void salvarCompras();
+    void carregarCompras();
 
 };
 

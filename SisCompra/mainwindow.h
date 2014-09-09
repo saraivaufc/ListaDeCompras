@@ -6,6 +6,9 @@
 #include "compra.h"
 #include <QDebug>
 
+#include "dialogeditarcompra.h"
+#include "dialogeditarproduto.h"
+
 #include "gerenciadordearquivos.h"
 
 namespace Ui {
@@ -19,35 +22,35 @@ class MainWindow : public QMainWindow
     QList<QStandardItem *> compraToItemList(QString titulo,
                                             QDate data);
 
+private:
+    Ui::MainWindow *ui;
+    QStandardItemModel listaDeCompras;
+    QStandardItemModel listaDeProdutos;
+
 
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+protected:
+    void closeEvent (QCloseEvent *event);
 
 signals:
     void addCompra(Compra* c);
+    void close();
+    void inicializada();
 
-private:
-    Ui::MainWindow *ui;
-    GerenciadorDeArquivos * gerenciadorArquivos;
-
-
-    QStandardItemModel listaDeCompras;
-    QStandardItemModel listaDeProdutos;
 
 public slots:
     void atualizarCompras();
 
 private slots:
+    void on_actionSair_triggered();
     void on_adicionarCompra_clicked();
 
-    void on_actionSair_triggered();
-
 public:
-    void adicionarCompra(Compra &c);
-    void loadCompras();
-
+    void adicionarCompra(Compra * c);
+    void carregarCompras();
 };
 
 #endif // MAINWINDOW_H

@@ -74,3 +74,8 @@ void GerenciadorDeCompras::editarProdutoCompra(int idCompra, int idProduto)
         }
     }
 }
+
+QList<Compra *> GerenciadorDeCompras::getListaCompras()
+{
+    return listaDeCompras;
+}
