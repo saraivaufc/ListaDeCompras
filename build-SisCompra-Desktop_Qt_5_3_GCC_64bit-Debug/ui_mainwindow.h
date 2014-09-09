@@ -119,6 +119,10 @@ public:
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
         treeViewCompras = new QTreeView(frame);
         treeViewCompras->setObjectName(QStringLiteral("treeViewCompras"));
+        treeViewCompras->setSortingEnabled(true);
+        treeViewCompras->setAnimated(false);
+        treeViewCompras->setHeaderHidden(false);
+        treeViewCompras->header()->setVisible(true);
 
         verticalLayout_3->addWidget(treeViewCompras);
 

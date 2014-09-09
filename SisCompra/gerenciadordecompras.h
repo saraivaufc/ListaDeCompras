@@ -5,6 +5,7 @@
 #include "compra.h"
 #include "dialogeditarcompra.h"
 #include "dialogeditarproduto.h"
+#include <QMessageBox>
 
 /*
  * Classe responsável por gerenciar a lista de compras
@@ -27,6 +28,8 @@ public:
     void editarCompra(int idCompra);
     void editarProdutoCompra(int idCompra, int idProduto);
     QList<Compra *> getListaCompras();
+
+    bool contains(Compra* c);
 };
 
 #endif // GERENCIADORDECOMPRAS_H

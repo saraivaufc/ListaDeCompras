@@ -6,7 +6,7 @@ ControladorDoSistema::ControladorDoSistema(QObject *parent) : QObject(parent) {
 
     connect(interface, SIGNAL(addCompra(Compra*)),this,SLOT(addCompra(Compra*)));
     connect(interface, SIGNAL(close()), this, SLOT(salvarCompras()));
-    connect(interface, SIGNAL(inicializada()), this, SLOT(carregarCompras()));
+    connect(interface, SIGNAL(existeCompra(Compra*,bool*)), this, SLOT(existeCompra(Compra*,bool*)));
 }
 GerenciadorDeCompras *ControladorDoSistema::getGerenciadorCompras() {
     return &gerenciadorDeCompras;
@@ -14,14 +14,21 @@ GerenciadorDeCompras *ControladorDoSistema::getGerenciadorCompras() {
 
 void ControladorDoSistema::salvarCompras()
 {
+    qDebug() << "Salvando todas as compras...";
     GerenciadorDeArquivos::salvarCompra(gerenciadorDeCompras.getListaCompras());
 }
 
-void ControladorDoSistema::carregarCompras()
+void ControladorDoSistema::existeCompra(Compra *c, bool *a)
 {
-    foreach (Compra * c, gerenciadorDeArquivos.getAllCompras()) {
-        gerenciadorDeCompras.addCompra(c);
+    if(gerenciadorDeCompras.contains(c)){
+        qDebug() << "Error!, A lista já comtém esse titulo...";
+        *a=true;
+    }else{
+        qDebug() << "sdajdajd";
+
+        *a=false;
     }
+
 }
 
 void ControladorDoSistema::addCompra(Compra* c)

@@ -39,6 +39,7 @@ signals:
     void addCompra(Compra* c);
     void close();
     void inicializada();
+    void existeCompra(Compra *c, bool *existe);
 
 
 public slots:
@@ -48,9 +49,13 @@ private slots:
     void on_actionSair_triggered();
     void on_adicionarCompra_clicked();
 
+    void on_excluirCompra_clicked();
+
+    void on_treeViewCompras_clicked(const QModelIndex &index);
+
 public:
-    void adicionarCompra(Compra * c);
     void carregarCompras();
+    void adicionarCompra(Compra *c);
 };
 
 #endif // MAINWINDOW_H
