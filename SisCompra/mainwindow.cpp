@@ -78,7 +78,8 @@ void MainWindow::adicionarCompra(Compra *c)
 
 void MainWindow::carregarCompras()
 {
-    foreach (Compra * c, GerenciadorDeArquivos::getAllCompras()) {
+    QList<Compra *> list = GerenciadorDeArquivos::getAllCompras();
+    foreach (Compra * c,list){
         adicionarCompra(c);
     }
 }
