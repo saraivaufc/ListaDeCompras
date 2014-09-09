@@ -13,6 +13,4 @@ GerenciadorDeCompras *ControladorDoSistema::getGerenciadorCompras() {
 
 void ControladorDoSistema::addCompra(Compra* c) {
     gerenciadorDeCompras.addCompra(c);
-
-    //GerenciadorDeArquivos::salvarCompra(&c);
 }
