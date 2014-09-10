@@ -6,6 +6,7 @@
 #include "dialogeditarcompra.h"
 #include "dialogeditarproduto.h"
 #include <QMessageBox>
+#include "gerenciadordearquivos.h"
 
 /*
  * Classe responsável por gerenciar a lista de compras
@@ -21,6 +22,7 @@ public:
 
     bool addCompra(Compra* comp);
     bool removeCompra(QString tituloCompra);
+    bool removeCompra(Compra * c);
 
     bool addProdutoCompra(Compra comp, Produto prod);
     bool removeProdutoCompra(int idCompra, int idProduto);

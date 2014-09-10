@@ -12,8 +12,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     treeViewCompras_clicked();
     connect(ui->treeViewCompras, SIGNAL(mouseClicked()), this, SLOT(treeViewCompras_clicked()));
     connect(ui->treeViewProdutos, SIGNAL(mouseClicked()), this, SLOT(treeViewProdutos_clicked()));
-
-    carregarCompras();
 }
 
 MainWindow::~MainWindow() {
@@ -32,28 +30,16 @@ QList<QStandardItem *> MainWindow::compraToItemList(QString titulo, QDate data) 
 }
 
 
-//adicionar nova compra
-/*void MainWindow::on_adicionarCompra_clicked()
-{
-    Compra * c = new Compra;
-    DialogEditarCompra * editarcompra= new DialogEditarCompra(c);
-    editarcompra->show();
-    editarcompra->exec();
-    if(editarcompra->acepted){
-        adicionarCompra(c);
-    }
-
-}
-*/
-
 void MainWindow::atualizarCompras()
 {
+
 }
 
 
 void MainWindow::adicionarCompra(Compra *c)
 {
-    bool a;
+    bool a=false;
+    qDebug() << "Signal Existe Emitido...";
     emit existeCompra(c, &a);
     if(a){
         QMessageBox mss;
@@ -62,6 +48,8 @@ void MainWindow::adicionarCompra(Compra *c)
         mss.exec();
         return;
     }
+    qDebug() << "Sinal addCompra Emitido...";
+    emit addCompra(c);
     QStandardItem * root = model->invisibleRootItem();
     QString ch = c->getData().toString("dd/MM/yyyy").toUpper();
     for(int row=0; row < root->rowCount() ; row++){
@@ -69,22 +57,23 @@ void MainWindow::adicionarCompra(Compra *c)
         item->setEditable(false);
         if(item->text().toUpper() == ch){
             item->appendRow(compraToItemList(c->getTitulo(), c->getData()));
-            emit addCompra(c);
             return;
         }
     }
+
     QStandardItem * item = new QStandardItem(ch);
     item->setEditable(false);
     root->appendRow(item);
     item->appendRow(compraToItemList(c->getTitulo(), c->getData()));
-    emit addCompra(c);
+    return;
 }
 
 void MainWindow::carregarCompras()
 {
     QList<Compra *> list = GerenciadorDeArquivos::getAllCompras();
-    foreach (Compra * c,list){
-       adicionarCompra(c);
+    foreach (Compra * c, list){
+        Compra * temp = new Compra(*c);
+        adicionarCompra(temp);
     }
 }
 
@@ -100,7 +89,6 @@ void MainWindow::treeViewCompras_clicked() {
     ui->labelCompras->setFont(f);
     ui->labelProdutos->setFont(f2);
     typeView = COMPRAS;
-    qDebug() << "compras";
 }
 
 void MainWindow::treeViewProdutos_clicked() {
@@ -111,7 +99,6 @@ void MainWindow::treeViewProdutos_clicked() {
     ui->labelCompras->setFont(f2);
     ui->labelProdutos->setFont(f);
     typeView = PRODUTO;
-    qDebug() << "produto";
 }
 
 void MainWindow::on_actionAdd_triggered() {
@@ -127,4 +114,31 @@ void MainWindow::on_actionAdd_triggered() {
     }
     else if(typeView == PRODUTO) {
     }
+}
+
+
+void MainWindow::on_treeViewCompras_clicked(const QModelIndex &index)
+{
+    selected = index;
+}
+
+void MainWindow::on_actionRemove_triggered()
+{
+    if(typeView == COMPRAS){
+        qDebug() << "Excluindo Conta...";
+        QStandardItem * item = model->itemFromIndex(selected);
+
+        emit removeComprasPorData(item->text());
+
+        QStandardItem * parentItem = model->itemFromIndex(selected.parent());
+         if(item->rowCount() == 0){
+             Compra c(item->text(), QDate::fromString(parentItem->text(),"dd/MM/yyyy" ));
+             emit removeCompra(&c);
+             qDebug() << c.toString();
+         }
+        ui->treeViewCompras->model()->removeRow(selected.row(), selected.parent());
+    }else if(typeView == PRODUTO){
+        qDebug() << "Excluindo Produto...";
+    }
+
 }

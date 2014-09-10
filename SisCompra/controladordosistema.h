@@ -18,7 +18,8 @@ class ControladorDoSistema : public QObject {
     Q_OBJECT
 
 private:
-    GerenciadorDeCompras gerenciadorDeCompras;
+    GerenciadorDeCompras * gerenciadorDeCompras;
+
 
 public:
     MainWindow * interface;
@@ -28,11 +29,11 @@ public:
 
 
 public slots:
-    void addCompra(Compra* c );
+    void addsCompra(Compra* c);
     void salvarCompras();
     void existeCompra(Compra *c,bool *a);
-
-
+    void removeCompra(Compra * c);
+    void removeComprasPorData(QString data);
 };
 
 #endif // CONTROLADORDOSISTEMA_H

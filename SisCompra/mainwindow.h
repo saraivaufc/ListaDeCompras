@@ -6,6 +6,7 @@
 #include <QTreeView>
 #include "compra.h"
 #include <QDebug>
+#include <QDate>
 
 #include "dialogeditarcompra.h"
 #include "dialogeditarproduto.h"
@@ -32,6 +33,8 @@ private:
     QStandardItemModel listaDeProdutos;
     QStandardItemModel* model;
 
+    QModelIndex selected;
+
     QList<QStandardItem *> compraToItemList(QString titulo,
                                             QDate data);
 
@@ -43,6 +46,8 @@ signals:
     void close();
     void inicializada();
     void existeCompra(Compra *c, bool *existe);
+    void removeCompra(Compra * c);
+    void removeComprasPorData(QString data);
 
 
 public slots:
@@ -56,6 +61,9 @@ private slots:
     void treeViewCompras_clicked();
     void treeViewProdutos_clicked();
 
+    void on_treeViewCompras_clicked(const QModelIndex &index);
+
+    void on_actionRemove_triggered();
 
 public:
     void carregarCompras();

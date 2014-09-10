@@ -22,6 +22,24 @@ bool GerenciadorDeCompras::removeCompra(QString tituloCompra)
     return false;
 }
 
+bool GerenciadorDeCompras::removeCompra(Compra *c)
+{
+    int index=0;
+    qDebug() << "\n\n";
+    foreach (Compra *i, listaDeCompras) {
+        qDebug() << "Procurando Compra...";
+        if(*c == *i){
+            listaDeCompras.removeAt(index);
+            GerenciadorDeArquivos::removeCompra(c);
+            qDebug() << "Compra removia com succeso";
+            return true;
+        }
+        index++;
+    }
+    qDebug("Compra não achada!!!");
+    return false;
+}
+
 bool GerenciadorDeCompras::addProdutoCompra(Compra comp, Produto prod)
 {
     foreach (Compra * c, this->listaDeCompras) {
@@ -79,7 +97,7 @@ QList<Compra *> GerenciadorDeCompras::getListaCompras()
 
 bool GerenciadorDeCompras::contains(Compra *c) {
     foreach (Compra* c2, listaDeCompras) {
-        if(*c2 == c)
+        if(*c2 == *c)
             return true;
     }
 

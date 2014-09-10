@@ -1586,42 +1586,6 @@ mainwindow.o: ../SisCompra/mainwindow.cpp ../SisCompra/mainwindow.h \
 		/opt/Qt5.3.1/5.3/gcc_64/include/QtCore/QJsonArray \
 		/opt/Qt5.3.1/5.3/gcc_64/include/QtCore/qjsonarray.h \
 		ui_mainwindow.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtCore/QVariant \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QAction \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qaction.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qactiongroup.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QApplication \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qapplication.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtCore/qcoreapplication.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtCore/qeventloop.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtGui/qguiapplication.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtGui/qinputmethod.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QButtonGroup \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qbuttongroup.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QFrame \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QHBoxLayout \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qboxlayout.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qlayout.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qlayoutitem.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qgridlayout.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QHeaderView \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qheaderview.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QMenu \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qmenu.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QMenuBar \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qmenubar.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QPushButton \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qpushbutton.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qabstractbutton.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QSplitter \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qsplitter.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QStatusBar \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qstatusbar.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QToolBar \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qtoolbar.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QVBoxLayout \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QWidget \
 		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QMessageBox \
 		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../SisCompra/mainwindow.cpp
@@ -1739,7 +1703,19 @@ gerenciadordecompras.o: ../SisCompra/gerenciadordecompras.cpp /opt/Qt5.3.1/5.3/g
 		/opt/Qt5.3.1/5.3/gcc_64/include/QtGui/qtouchdevice.h \
 		../SisCompra/dialogeditarproduto.h \
 		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QMessageBox \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qmessagebox.h
+		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qmessagebox.h \
+		../SisCompra/gerenciadordearquivos.h \
+		/opt/Qt5.3.1/5.3/gcc_64/include/QtCore/QFile \
+		/opt/Qt5.3.1/5.3/gcc_64/include/QtCore/QDir \
+		/opt/Qt5.3.1/5.3/gcc_64/include/QtCore/qdir.h \
+		/opt/Qt5.3.1/5.3/gcc_64/include/QtCore/qfileinfo.h \
+		/opt/Qt5.3.1/5.3/gcc_64/include/QtCore/QJsonObject \
+		/opt/Qt5.3.1/5.3/gcc_64/include/QtCore/qjsonobject.h \
+		/opt/Qt5.3.1/5.3/gcc_64/include/QtCore/qjsonvalue.h \
+		/opt/Qt5.3.1/5.3/gcc_64/include/QtCore/QJsonDocument \
+		/opt/Qt5.3.1/5.3/gcc_64/include/QtCore/qjsondocument.h \
+		/opt/Qt5.3.1/5.3/gcc_64/include/QtCore/QJsonArray \
+		/opt/Qt5.3.1/5.3/gcc_64/include/QtCore/qjsonarray.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gerenciadordecompras.o ../SisCompra/gerenciadordecompras.cpp
 
 dialogeditarcompra.o: ../SisCompra/dialogeditarcompra.cpp ../SisCompra/dialogeditarcompra.h \
@@ -1851,58 +1827,7 @@ dialogeditarcompra.o: ../SisCompra/dialogeditarcompra.cpp ../SisCompra/dialogedi
 		../SisCompra/produto.h \
 		/opt/Qt5.3.1/5.3/gcc_64/include/QtCore/QString \
 		../SisCompra/Macros.h \
-		ui_dialogeditarcompra.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtCore/QVariant \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QAction \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qaction.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtGui/qicon.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qactiongroup.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QApplication \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qapplication.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtCore/qcoreapplication.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtCore/qeventloop.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtGui/qguiapplication.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtGui/qinputmethod.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QButtonGroup \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qbuttongroup.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QDateEdit \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qdatetimeedit.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qabstractspinbox.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtGui/qvalidator.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtCore/qregularexpression.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QDialogButtonBox \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QHBoxLayout \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qboxlayout.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qlayout.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qlayoutitem.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qgridlayout.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QHeaderView \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qheaderview.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qabstractitemview.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qframe.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtCore/qabstractitemmodel.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtCore/qitemselectionmodel.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qstyleoption.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qslider.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qabstractslider.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qstyle.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qtabbar.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qtabwidget.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qrubberband.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QLabel \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qlabel.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QLineEdit \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qlineedit.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtGui/qtextcursor.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtGui/qtextformat.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtGui/qpen.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtGui/qtextoption.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QSpacerItem \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QVBoxLayout
+		ui_dialogeditarcompra.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialogeditarcompra.o ../SisCompra/dialogeditarcompra.cpp
 
 dialogeditarproduto.o: ../SisCompra/dialogeditarproduto.cpp ../SisCompra/dialogeditarproduto.h \
@@ -2009,59 +1934,7 @@ dialogeditarproduto.o: ../SisCompra/dialogeditarproduto.cpp ../SisCompra/dialoge
 		/opt/Qt5.3.1/5.3/gcc_64/include/QtGui/qtouchdevice.h \
 		../SisCompra/produto.h \
 		/opt/Qt5.3.1/5.3/gcc_64/include/QtCore/QString \
-		ui_dialogeditarproduto.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtCore/QVariant \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QAction \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qaction.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtGui/qicon.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qactiongroup.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QApplication \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qapplication.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtCore/qcoreapplication.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtCore/qeventloop.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtGui/qguiapplication.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtGui/qinputmethod.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QButtonGroup \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qbuttongroup.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QDialogButtonBox \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QDoubleSpinBox \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qspinbox.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qabstractspinbox.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtGui/qvalidator.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtCore/qregularexpression.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QHBoxLayout \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qboxlayout.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qlayout.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qlayoutitem.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qgridlayout.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QHeaderView \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qheaderview.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qabstractitemview.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qframe.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtCore/qabstractitemmodel.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtCore/qitemselectionmodel.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qstyleoption.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qslider.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qabstractslider.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qstyle.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qtabbar.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qtabwidget.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qrubberband.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QLabel \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qlabel.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QLineEdit \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/qlineedit.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtGui/qtextcursor.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtGui/qtextformat.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtGui/qpen.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtGui/qtextoption.h \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QSpacerItem \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QSpinBox \
-		/opt/Qt5.3.1/5.3/gcc_64/include/QtWidgets/QVBoxLayout
+		ui_dialogeditarproduto.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialogeditarproduto.o ../SisCompra/dialogeditarproduto.cpp
 
 compra.o: ../SisCompra/compra.cpp /opt/Qt5.3.1/5.3/gcc_64/include/QtCore/qdebug.h \

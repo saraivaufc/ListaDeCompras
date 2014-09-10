@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_ControladorDoSistema_t {
-    QByteArrayData data[9];
-    char stringdata[77];
+    QByteArrayData data[12];
+    char stringdata[117];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -30,17 +30,22 @@ struct qt_meta_stringdata_ControladorDoSistema_t {
 static const qt_meta_stringdata_ControladorDoSistema_t qt_meta_stringdata_ControladorDoSistema = {
     {
 QT_MOC_LITERAL(0, 0, 20),
-QT_MOC_LITERAL(1, 21, 9),
-QT_MOC_LITERAL(2, 31, 0),
-QT_MOC_LITERAL(3, 32, 7),
-QT_MOC_LITERAL(4, 40, 1),
-QT_MOC_LITERAL(5, 42, 13),
-QT_MOC_LITERAL(6, 56, 12),
-QT_MOC_LITERAL(7, 69, 5),
-QT_MOC_LITERAL(8, 75, 1)
+QT_MOC_LITERAL(1, 21, 10),
+QT_MOC_LITERAL(2, 32, 0),
+QT_MOC_LITERAL(3, 33, 7),
+QT_MOC_LITERAL(4, 41, 1),
+QT_MOC_LITERAL(5, 43, 13),
+QT_MOC_LITERAL(6, 57, 12),
+QT_MOC_LITERAL(7, 70, 5),
+QT_MOC_LITERAL(8, 76, 1),
+QT_MOC_LITERAL(9, 78, 12),
+QT_MOC_LITERAL(10, 91, 20),
+QT_MOC_LITERAL(11, 112, 4)
     },
-    "ControladorDoSistema\0addCompra\0\0Compra*\0"
-    "c\0salvarCompras\0existeCompra\0bool*\0a"
+    "ControladorDoSistema\0addsCompra\0\0"
+    "Compra*\0c\0salvarCompras\0existeCompra\0"
+    "bool*\0a\0removeCompra\0removeComprasPorData\0"
+    "data"
 };
 #undef QT_MOC_LITERAL
 
@@ -50,7 +55,7 @@ static const uint qt_meta_data_ControladorDoSistema[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       5,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -58,14 +63,18 @@ static const uint qt_meta_data_ControladorDoSistema[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,   29,    2, 0x0a /* Public */,
-       5,    0,   32,    2, 0x0a /* Public */,
-       6,    2,   33,    2, 0x0a /* Public */,
+       1,    1,   39,    2, 0x0a /* Public */,
+       5,    0,   42,    2, 0x0a /* Public */,
+       6,    2,   43,    2, 0x0a /* Public */,
+       9,    1,   48,    2, 0x0a /* Public */,
+      10,    1,   51,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 3, 0x80000000 | 7,    4,    8,
+    QMetaType::Void, 0x80000000 | 3,    4,
+    QMetaType::Void, QMetaType::QString,   11,
 
        0        // eod
 };
@@ -75,9 +84,11 @@ void ControladorDoSistema::qt_static_metacall(QObject *_o, QMetaObject::Call _c,
     if (_c == QMetaObject::InvokeMetaMethod) {
         ControladorDoSistema *_t = static_cast<ControladorDoSistema *>(_o);
         switch (_id) {
-        case 0: _t->addCompra((*reinterpret_cast< Compra*(*)>(_a[1]))); break;
+        case 0: _t->addsCompra((*reinterpret_cast< Compra*(*)>(_a[1]))); break;
         case 1: _t->salvarCompras(); break;
         case 2: _t->existeCompra((*reinterpret_cast< Compra*(*)>(_a[1])),(*reinterpret_cast< bool*(*)>(_a[2]))); break;
+        case 3: _t->removeCompra((*reinterpret_cast< Compra*(*)>(_a[1]))); break;
+        case 4: _t->removeComprasPorData((*reinterpret_cast< QString(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -108,13 +119,13 @@ int ControladorDoSistema::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 5;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 5)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 3;
+        _id -= 5;
     }
     return _id;
 }

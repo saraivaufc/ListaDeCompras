@@ -78,9 +78,10 @@ void Compra::setData(QDate data) {
     this->data = data;
 }
 
-bool Compra::operator ==(Compra * c) {
-    qDebug() << "operator";
-    return (data.toString() == c->getData().toString() && titulo == c->getTitulo());
+bool Compra::operator == (Compra c) {
+    qDebug() << "operator usado...";
+    qDebug() << data.toString() << " == " << c.getData().toString();
+    return (data == c.getData() && titulo == c.getTitulo());
 }
 
 QString Compra::toString() {

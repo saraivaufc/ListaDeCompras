@@ -127,5 +127,5 @@ QList<Compra *> GerenciadorDeArquivos::getAllCompras() {
 }
 
 void GerenciadorDeArquivos::removeCompra(Compra *c) {
-    QFile::remove(QString(DIR_JSON) + "/" + c->getTitulo() + ".json");
+    QFile::remove(QString(DIR_JSON) + "/" + c->getData().toString("dd-MM-yy") + "_"+ c->getTitulo() + ".json");
 }
