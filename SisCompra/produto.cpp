@@ -1,41 +1,40 @@
 #include "produto.h"
 
-int Produto::CONTADOR_PRODUTOS = 0;
-
 Produto::Produto() {
-    id = CONTADOR_PRODUTOS++;
     this->nome = "sem nome";
     this->valorUnit = 0.0;
     quantidade = 1;
 }
 
 Produto::Produto(QString nome) {
-    id = CONTADOR_PRODUTOS++;
     this->nome = nome.toLower();
     this->valorUnit = 0.0;
     quantidade = 1;
 }
 
 Produto::Produto(QString nome, float valor) {
-    id = CONTADOR_PRODUTOS++;
     this->nome = nome.toLower();
     this->valorUnit = valor;
     quantidade = 1;
 }
 
 Produto::Produto(QString nome, float valor, int quant) {
-    id = CONTADOR_PRODUTOS++;
     this->nome = nome.toLower();
     this->valorUnit = valor;
     quantidade = quant;
 }
 
-Produto::~Produto() {
 
+Produto::Produto(QString nome, float valor, int quant, QString classe) {
+    this->nome = nome.toLower();
+    this->valorUnit = valor;
+    quantidade = quant;
+    this->classe = classe;
 }
 
-int Produto::getId() {
-    return id;
+
+Produto::~Produto() {
+
 }
 
 QString Produto::getNome() {
@@ -55,15 +54,17 @@ float Produto::getValorTotal() {
 }
 
 QString Produto::toString() {
-    return "Produto [" + QString::number(id) + ": " +\
-            nome + ": " +\
+    return "Produto [" + nome + ": " +\
             QString::number(quantidade) + " unidades: R$ " +\
-            QString::number(valorUnit) + "]";
+            QString::number(valorUnit) +\
+            this->classe + "]";
 }
 
-void Produto::setId(int id) {
-    this->id = id;
+QString Produto::getClass()
+{
+    return this->classe;
 }
+
 
 void Produto::setNome(QString nome) {
     this->nome = nome;
@@ -77,15 +78,20 @@ void Produto::setValorUnit(float valor) {
     valorUnit = valor;
 }
 
+void Produto::setClasse(QString classe)
+{
+    this->classe = classe;
+}
+
 void Produto::operator =(Produto p) {
-    setId(p.getId());
     setNome(p.getNome());
     setQuantidade(p.getQuantidade());
-    setValorUnit(p.getValorUnit());;
+    setValorUnit(p.getValorUnit());
+    setClasse(p.getClass());
 }
 
 bool Produto::operator ==(Produto p) {
-    return nome == p.getNome();
+    return nome == p.getNome() && classe == p.getClass();
 }
 
 void Produto::operator ++(int) {
