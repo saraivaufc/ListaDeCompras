@@ -1,6 +1,6 @@
 #include <qdebug.h>
 #include "compra.h"
-
+#include "gerenciadordecompras.h"
 int Compra::CONTADOR_COMPRAS = 0;
 
 Compra::Compra() {
@@ -30,24 +30,23 @@ bool Compra::addProduto(Produto *prod) {
     }
 
     listaDeProdutos.append(prod);
-
     return true;
 }
 
-bool Compra::removeProduto(int idProduto) {
-    int index=0;
-    foreach (Produto * p, listaDeProdutos) {
-        if(p->getId() == idProduto) {
-            if(p->getQuantidade() == 1){
-                listaDeProdutos.removeAt(index);
-            }else{
-                (*p)--;
-            }
+bool Compra::removeProduto(Produto *p)
+{
+    int counter = 0;
+    foreach (Produto * i, listaDeProdutos) {
+        if( *i == *p){
+            listaDeProdutos.removeAt(counter);
+            qDebug() << "Produto Removido";
             return true;
         }
     }
+    qDebug() << "Falha ao remover Produto";
     return false;
 }
+
 
 Produto *Compra::getProduto(int id) {
     return listaDeProdutos.at(id);

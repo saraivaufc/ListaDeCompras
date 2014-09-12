@@ -20,7 +20,7 @@ public:
     Compra(QString titulo, QDate data);
 
     bool addProduto(Produto* prod);
-    bool removeProduto(int idProduto);
+    bool removeProduto(Produto * p);
     Produto* getProduto(int id);
     QList<Produto*> getProdutos();
 

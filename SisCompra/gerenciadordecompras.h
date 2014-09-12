@@ -25,10 +25,13 @@ public:
     bool removeCompra(Compra * c);
 
     bool addProdutoCompra(Compra comp, Produto prod);
-    bool removeProdutoCompra(int idCompra, int idProduto);
+    bool removeProdutoCompra(Compra *c, Produto * p);
 
-    void editarCompra(int idCompra);
-    void editarProdutoCompra(int idCompra, int idProduto);
+    Compra *buscaCompra(Compra *c);
+    Produto *buscaProduto(Compra * c, Produto *p);
+
+    void editarCompra(Compra * c);
+    void editarProdutoCompra(Compra * c, Produto * p);
     QList<Compra *> getListaCompras();
 
     bool contains(Compra* c);

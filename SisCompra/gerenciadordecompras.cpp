@@ -51,44 +51,68 @@ bool GerenciadorDeCompras::addProdutoCompra(Compra comp, Produto prod)
     return false;
 }
 
-bool GerenciadorDeCompras::removeProdutoCompra(int idCompra, int idProduto)
+bool GerenciadorDeCompras::removeProdutoCompra(Compra *c, Produto *p)
 {
-    foreach (Compra * c, this->listaDeCompras) {
-        if(c->getID() == idCompra){
-            int index = 0;
-            foreach (Produto * p, c->getProdutos()) {
-                if(p->getId() == idProduto){
-                    c->getProdutos().removeAt(index);
+    foreach (Compra * i, listaDeCompras) {
+        if(*i == *c){
+            int counter=0;
+            foreach (Produto *k, i->getProdutos()) {
+                if(*k == *p){
+                    i->getProdutos().removeAt(counter);
+                    qDebug() << "Produto Removido Com Exito!!!";
                     return true;
                 }
-                index++;
+                counter++;
             }
         }
     }
+    qDebug() << "Produto Não Encontrado!!!";
     return false;
 }
 
-void GerenciadorDeCompras::editarCompra(int idCompra)
+Compra *GerenciadorDeCompras::buscaCompra(Compra *c)
 {
-    foreach (Compra * c, this->listaDeCompras) {
-        if(c->getID() == idCompra){
-            DialogEditarCompra editorCompra(c);
+    foreach (Compra *i , listaDeCompras) {
+        if(*i == *c){
+            return i;
         }
     }
+    return NULL;
 }
 
-void GerenciadorDeCompras::editarProdutoCompra(int idCompra, int idProduto)
+Produto *GerenciadorDeCompras::buscaProduto(Compra *c, Produto *p)
 {
-    foreach (Compra * c, this->listaDeCompras) {
-        if(c->getID() == idCompra){
-            foreach (Produto * p, c->getProdutos()) {
-                if(p->getId() == idProduto){
-                    DialogEditarProduto editorProduto(p);
+    foreach (Compra * i, listaDeCompras) {
+        if(*i == *c){
+            foreach (Produto *k, c->getProdutos()) {
+                if(*k == *p){
+                    return k;
                 }
             }
         }
     }
+    return NULL;
 }
+
+
+
+void GerenciadorDeCompras::editarCompra(Compra * c)
+{
+    Compra * i = buscaCompra(c);
+    DialogEditarCompra editorCompra(i);
+    editorCompra.show();
+    editorCompra.exec();
+}
+
+void GerenciadorDeCompras::editarProdutoCompra(Compra *c, Produto *p)
+{
+    Compra * i = buscaCompra(c);
+    Produto * k = buscaProduto(c, p);
+    DialogEditarProduto editorProduto(k);
+    editorProduto.show();
+    editorProduto.exec();
+}
+
 
 QList<Compra *> GerenciadorDeCompras::getListaCompras()
 {

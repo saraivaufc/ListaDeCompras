@@ -29,11 +29,14 @@ public:
 
 
 public slots:
-    void addsCompra(Compra* c);
+    void addCompra(Compra* c);
+    void addProduto(Compra *c, Produto * p);
     void salvarCompras();
     void existeCompra(Compra *c,bool *a);
+    void existeProduto(Compra * c,Produto *p, bool *existe);
     void removeCompra(Compra * c);
     void removeComprasPorData(QString data);
+    void buscaCompra(Compra **c, QString nome, QDate data);
 };
 
 #endif // CONTROLADORDOSISTEMA_H

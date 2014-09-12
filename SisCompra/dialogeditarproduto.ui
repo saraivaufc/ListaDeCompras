@@ -66,6 +66,13 @@
          </property>
         </widget>
        </item>
+       <item>
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>Classe</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </item>
      <item>
@@ -84,6 +91,9 @@
        </item>
        <item>
         <widget class="QDoubleSpinBox" name="doubleSpinBoxValor"/>
+       </item>
+       <item>
+        <widget class="QComboBox" name="comboBox"/>
        </item>
       </layout>
      </item>

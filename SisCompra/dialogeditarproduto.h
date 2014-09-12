@@ -14,6 +14,7 @@ class DialogEditarProduto : public QDialog {
 public:
     explicit DialogEditarProduto(Produto* prod, QWidget *parent = 0);
     ~DialogEditarProduto();
+    bool acepted;
 
 private slots:
     void on_buttonBox_accepted();
@@ -22,7 +23,6 @@ private slots:
 
 private:
     Ui::DialogEditarProduto *ui;
-
     Produto* produto;
 };
 

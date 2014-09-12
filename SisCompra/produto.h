@@ -5,31 +5,31 @@
 
 class Produto{
 private:
-    static int CONTADOR_PRODUTOS;
 
-    int id;
     QString nome;
     int quantidade;
     float valorUnit;
+    QString classe;
 
 public:
     Produto();
     Produto(QString nome);
     Produto(QString nome, float valor);
     Produto(QString nome, float valor, int qtd);
+    Produto(QString nome, float valor, int qtd, QString classe);
     ~Produto();
 
-    int getId();
     QString getNome();
     int getQuantidade();
     float getValorUnit();
     float getValorTotal();
     QString toString();
+    QString getClass();
 
-    void setId(int id);
     void setNome(QString nome);
     void setQuantidade(int quant);
     void setValorUnit(float valor);
+    void setClasse(QString classe);
 
     void operator =(Produto p);
     bool operator ==(Produto p);
