@@ -86,28 +86,26 @@ void MainWindow::adicionarCompra(Compra *c)
     return;
 }
 
-#include <iostream>
-void MainWindow::adicionarProduto(Compra *c, Produto *p)
+void MainWindow::adicionarProduto(Compra *c, Produto *p, bool somenteNaInterface)
 {
 
     qDebug() << "tentando adicionar Produto..";
-    bool a=false;
-    qDebug() << "Signal Existe do Produto Emitido...";
-    qDebug() << "Compra=" + c->toString() + "Produto=" + p->toString();
-    emit existeProduto(c, p, &a);
 
-     if(a){
-        QMessageBox mss;
-        mss.setText("Já existe um Produto dessa Compra!!!");
-        mss.show();
-        mss.exec();
+    bool a=false;
+    qDebug() << "Compra=" + c->toString() + "Produto=" + p->toString();
+
+     qDebug() << "Signal Existe do Produto Emitido...";
+     emit existeProduto(c, p, &a);
+
+     if(a && (somenteNaInterface == false)){
         return;
     }
+     if(!somenteNaInterface){
+         qDebug() << "Sinal addProduto Emitido...";
+         emit addProduto(c, p);
+     }
 
-    qDebug() << "Sinal addProduto Emitido...";
-    emit addProduto(c, p);
 
-    QStandardItem * root = model->invisibleRootItem();
     QStandardItem * root2 = model2->invisibleRootItem();
     QString ch = p->getClass().toUpper();
 
@@ -127,6 +125,7 @@ void MainWindow::adicionarProduto(Compra *c, Produto *p)
         }
     }
 
+    qDebug() << "Adicionada uma nova Classe";
     QStandardItem * item = new QStandardItem(ch);
     item->setEditable(false);
     root2->appendRow(item);
@@ -194,15 +193,27 @@ void MainWindow::on_actionAdd_triggered() {
     if(typeView == COMPRAS) {
         Compra * c = new Compra;
         DialogEditarCompra editarcompra(c);
-
+        editarcompra.setWindowTitle("Adicionar Compra");
+        editarcompra.setDescricao("Nova Compra");
         editarcompra.show();
         editarcompra.exec();
         if(editarcompra.acepted)
             adicionarCompra(c);
     }
     else if(typeView == PRODUTO) {
+        if(!compraIsSelected()){
+            QMessageBox aviso;
+            aviso.setWindowTitle("Aviso!!!");
+            aviso.setText("Error!, Favor Selecionar uma Compra...");
+            aviso.setFocus();
+            aviso.show();
+            aviso.exec();
+            return ;
+        }
         Produto *p = new Produto;
         DialogEditarProduto editarproduto(p);
+        editarproduto.setWindowTitle("Adicionar produto");
+        editarproduto.setDescricao("Novo Produto");
         editarproduto.show();
         editarproduto.exec();
         if(editarproduto.acepted){
@@ -225,12 +236,51 @@ void MainWindow::on_treeViewCompras_clicked(const QModelIndex &index)
 {
     qDebug() << "Compra Selecionada...";
     selected = index;
+
+    QStandardItem * root = model->invisibleRootItem();
+    QStandardItem * root2 = model2->invisibleRootItem();
+
+    //quando eu clica numa compra, eu removo todos os itens da interface, para poder colocar os outros
+    root2->removeColumns(0, root2->columnCount());
+    root2->removeRows(0, root2->rowCount());
+    //Se eu tiver clicado numa Data, então eu limpo os produtos e saio
+    if(index.parent() == root->index()){
+        qDebug() << "Cliquei Numa Data...";
+        return;
+    }
+
+    QString nomeCompra= model->itemFromIndex(index)->text();
+    QDate dataCompra= QDate::fromString(model->itemFromIndex(index.parent())->text(),"dd/MM/yyyy");
+    Compra **a;
+    Compra *b;
+    a=&b;
+    qDebug() << nomeCompra << "-" <<dataCompra.toString();
+    qDebug() << "Sinal Busca Compra Emitido";
+    emit buscaCompra(a,nomeCompra,dataCompra);
+
+
+    qDebug() << "SIGNAL Atualizando Produtos emitido";
+    emit atualizandoProdutosNaGui();
+    foreach (Produto * p, b->getProdutos()){
+        adicionarProduto(b, p, true);
+    }
+
 }
 
 void MainWindow::on_treeViewProdutos_clicked(const QModelIndex &index)
 {
     qDebug() << "Produto Selecionada...";
     selected2 = index;
+}
+
+bool MainWindow::compraIsSelected()
+{
+    return !(selected.parent() == model->invisibleRootItem()->index());
+}
+
+bool MainWindow::produtoIsSelected()
+{
+    return !(selected2.parent() == model2->invisibleRootItem()->index());
 }
 
 

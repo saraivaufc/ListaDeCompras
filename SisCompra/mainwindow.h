@@ -31,10 +31,17 @@ private:
     Ui::MainWindow *ui;
     QStandardItemModel listaDeCompras;
     QStandardItemModel listaDeProdutos;
+    //esse model refere-se a lista de Compras
     QStandardItemModel* model;
+
+    //esse model refere-se a lista de Produtos
     QStandardItemModel* model2;
 
+    //Esse é um intex temporario que armazena a ultima Compra Clicado
     QModelIndex selected;
+
+
+    //Esse é um intex temporario que armazena o ultimo Produto Clicado
     QModelIndex selected2;
 
     QList<QStandardItem *> compraToItemList(QString titulo,
@@ -52,11 +59,14 @@ signals:
     void addCompra(Compra* c);
     void addProduto(Compra * c, Produto *p);
 
+    void atualizandoProdutosNaGui();
+
     void close();
     void inicializada();
 
     void existeCompra(Compra *c, bool *existe);
     void existeProduto(Compra * c,Produto *p, bool *existe);
+
     void removeCompra(Compra * c);
     void removeComprasPorData(QString data);
 
@@ -79,11 +89,13 @@ public slots:
 public:
     void carregarCompras();
     void adicionarCompra(Compra *c);
-    void adicionarProduto(Compra *c, Produto *p);
+    void adicionarProduto(Compra *c, Produto *p, bool somenteNaInterface=false);
     void listaProdutosVisivel(bool estado);
     void listaComprasVisivel(bool estado);
 private slots:
     void on_treeViewProdutos_clicked(const QModelIndex &index);
+    bool compraIsSelected();
+    bool produtoIsSelected();
 };
 
 #endif // MAINWINDOW_H

@@ -9,10 +9,11 @@ ControladorDoSistema::ControladorDoSistema(QObject *parent) : QObject(parent) {
     connect(interface, SIGNAL(addProduto(Compra*,Produto*)), this, SLOT(addProduto(Compra*,Produto*)));
     connect(interface, SIGNAL(close()), this, SLOT(salvarCompras()));
     connect(interface, SIGNAL(existeCompra(Compra*,bool*)), this, SLOT(existeCompra(Compra*,bool*)));
-    connect(interface, SIGNAL(existeProduto(Compra*,Produto*,bool*)),this, SLOT(existeProduto(Compra*,Produto*,bool*)));
+    connect(interface, SIGNAL(existeProduto(Compra*,Produto*, bool*)),this, SLOT(existeProduto(Compra*,Produto*, bool*)));
     connect(interface, SIGNAL(removeCompra(Compra*)), this, SLOT(removeCompra(Compra*)));
     connect(interface, SIGNAL(removeComprasPorData(QString)), this, SLOT(removeComprasPorData(QString)));
     connect(interface, SIGNAL(buscaCompra(Compra**,QString,QDate)), this, SLOT(buscaCompra(Compra**,QString,QDate)));
+    connect(interface, SIGNAL(atualizandoProdutosNaGui()), interface, SLOT(treeViewProdutos_clicked()));
 
     interface->carregarCompras();
 }
@@ -69,15 +70,14 @@ void ControladorDoSistema::existeProduto(Compra * c, Produto *p, bool *existe)
         if(*i == *c){
             foreach (Produto * k, i->getProdutos()) {
                 if(*k == *p){
-                    *existe=true;
-                    qDebug() << "Produto já existe";
+                    *existe = true;
+                    qDebug()<< "Inclementado Produto!!!";
+                    (*k)++;
                     return;
                 }
             }
         }
     }
-    *existe=false;
-    qDebug() << "Produto não existe...";
     return;
 }
 

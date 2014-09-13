@@ -15,6 +15,7 @@ public:
     explicit DialogEditarCompra(Compra* c, QWidget *parent = 0);
     ~DialogEditarCompra();
     bool acepted;
+    void setDescricao(QString text);
 
 private slots:
     void on_buttonBox_accepted();

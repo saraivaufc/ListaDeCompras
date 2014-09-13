@@ -19,6 +19,11 @@ DialogEditarProduto::~DialogEditarProduto() {
     delete ui;
 }
 
+void DialogEditarProduto::setDescricao(QString text)
+{
+    ui->label_4->setText(text);
+}
+
 void DialogEditarProduto::on_buttonBox_accepted() {
     produto->setNome(ui->lineEditNome->text());
     produto->setQuantidade(ui->spinBoxQuant->value());

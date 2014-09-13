@@ -16,6 +16,11 @@ DialogEditarCompra::~DialogEditarCompra() {
     delete ui;
 }
 
+void DialogEditarCompra::setDescricao(QString text)
+{
+    ui->label_3->setText(text);
+}
+
 void DialogEditarCompra::on_buttonBox_accepted() {
     compra->setTitulo(ui->lineEditTitulo->text());
     compra->setData(ui->dateEdit->date());
