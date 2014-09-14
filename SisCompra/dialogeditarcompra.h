@@ -3,7 +3,8 @@
 
 #include <QDialog>
 #include "compra.h"
-
+#include <QMessageBox>
+#include "gerenciadordearquivos.h"
 namespace Ui {
 class DialogEditarCompra;
 }

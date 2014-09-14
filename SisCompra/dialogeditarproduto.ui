@@ -68,6 +68,13 @@
        </item>
        <item>
         <widget class="QLabel" name="label_5">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
          <property name="text">
           <string>Classe</string>
          </property>

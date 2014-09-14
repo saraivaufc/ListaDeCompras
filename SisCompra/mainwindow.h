@@ -58,19 +58,17 @@ protected:
 signals:
     void addCompra(Compra* c);
     void addProduto(Compra * c, Produto *p);
-
     void atualizandoProdutosNaGui();
-
     void close();
     void inicializada();
-
     void existeCompra(Compra *c, bool *existe);
-    void existeProduto(Compra * c,Produto *p, bool *existe);
-
     void removeCompra(Compra * c);
     void removeComprasPorData(QString data);
+    void removeProduto(Compra *c, Produto *p);
+    void removeProdutoPorClasse(QString classe);
 
     void buscaCompra(Compra **c, QString nome, QDate data);
+    void buscaProduto(Compra *c, Produto **p, QString nome, QString classe);
 
 
 public slots:
@@ -92,10 +90,12 @@ public:
     void adicionarProduto(Compra *c, Produto *p, bool somenteNaInterface=false);
     void listaProdutosVisivel(bool estado);
     void listaComprasVisivel(bool estado);
+    void limparProdutosInterface();
 private slots:
     void on_treeViewProdutos_clicked(const QModelIndex &index);
     bool compraIsSelected();
     bool produtoIsSelected();
+    void on_actionEdit_triggered();
 };
 
 #endif // MAINWINDOW_H

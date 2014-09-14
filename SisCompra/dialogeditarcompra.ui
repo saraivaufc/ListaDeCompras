@@ -46,10 +46,18 @@
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
-          <widget class="QLineEdit" name="lineEditTitulo"/>
+          <widget class="QLineEdit" name="lineEditTitulo">
+           <property name="clearButtonEnabled">
+            <bool>true</bool>
+           </property>
+          </widget>
          </item>
          <item>
-          <widget class="QDateEdit" name="dateEdit"/>
+          <widget class="QDateEdit" name="dateEdit">
+           <property name="calendarPopup">
+            <bool>true</bool>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>

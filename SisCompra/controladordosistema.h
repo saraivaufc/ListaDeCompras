@@ -11,6 +11,8 @@
 
 #include "dialogeditarcompra.h"
 #include "dialogeditarproduto.h"
+#include "produto.h"
+
 
 #include "mainwindow.h"
 
@@ -33,10 +35,14 @@ public slots:
     void addProduto(Compra *c, Produto * p);
     void salvarCompras();
     void existeCompra(Compra *c,bool *a);
-    void existeProduto(Compra * c,Produto *p, bool *existe);
+
     void removeCompra(Compra * c);
     void removeComprasPorData(QString data);
+    void removeProduto(Compra *c, Produto *p);
+    void removeProdutoPorClasse(QString classe);
+
     void buscaCompra(Compra **c, QString nome, QDate data);
+    void buscaProduto(Compra *c, Produto **p, QString nome, QString classe);
 };
 
 #endif // CONTROLADORDOSISTEMA_H

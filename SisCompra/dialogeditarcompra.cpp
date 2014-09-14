@@ -22,9 +22,17 @@ void DialogEditarCompra::setDescricao(QString text)
 }
 
 void DialogEditarCompra::on_buttonBox_accepted() {
+    GerenciadorDeArquivos::removeCompra(compra);
     compra->setTitulo(ui->lineEditTitulo->text());
     compra->setData(ui->dateEdit->date());
-    acepted= true;
+    if(ui->lineEditTitulo->text().isEmpty()){
+        QMessageBox msn;
+        msn.setText("Por favor, digite um titulo e tente novamente...");
+        msn.show();
+        msn.exec();
+    }else{
+        acepted= true;
+    }
 }
 
 QString DialogEditarCompra::getTitulo() {

@@ -29,7 +29,15 @@ void DialogEditarProduto::on_buttonBox_accepted() {
     produto->setQuantidade(ui->spinBoxQuant->value());
     produto->setValorUnit(ui->doubleSpinBoxValor->value());
     produto->setClasse(ui->comboBox->currentText());
-    acepted = true;
+    if(ui->lineEditNome->text().isEmpty()){
+        QMessageBox msn;
+        msn.setText("Por favor, digite o nome do produto e tente novamente...");
+        msn.show();
+        msn.exec();
+        acepted=false;
+    }else{
+        acepted = true;
+    }
 }
 
 void DialogEditarProduto::on_buttonBox_rejected() {

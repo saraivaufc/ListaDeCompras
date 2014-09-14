@@ -1,9 +1,17 @@
 #include "produto.h"
 
 Produto::Produto() {
-    this->nome = "sem nome";
+    this->nome = "";
     this->valorUnit = 0.0;
     quantidade = 1;
+}
+
+Produto::Produto(Produto *p)
+{
+    this->nome=p->getNome();
+    this->valorUnit=p->getValorUnit();
+    this->quantidade=p->getQuantidade();
+    this->classe=p->getClass();
 }
 
 Produto::Produto(QString nome) {
@@ -24,12 +32,18 @@ Produto::Produto(QString nome, float valor, int quant) {
     quantidade = quant;
 }
 
+Produto::Produto(QString nome, QString classe)
+{
+    this->nome = nome.toLower();
+    this->classe = classe.toLower();
+}
 
-Produto::Produto(QString nome, float valor, int quant, QString classe) {
+
+Produto::Produto(QString nome, QString classe , float valor, int quant) {
     this->nome = nome.toLower();
     this->valorUnit = valor;
     quantidade = quant;
-    this->classe = classe;
+    this->classe = classe.toLower();
 }
 
 
@@ -91,7 +105,7 @@ void Produto::operator =(Produto p) {
 }
 
 bool Produto::operator ==(Produto p) {
-    return nome == p.getNome() && classe == p.getClass();
+    return nome.toUpper() == p.getNome().toUpper() && classe.toUpper() == p.getClass().toUpper();
 }
 
 void Produto::operator ++(int) {

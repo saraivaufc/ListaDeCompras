@@ -34,6 +34,7 @@ QJsonObject GerenciadorDeArquivos::getJsonFrom(Produto *p) {
     prod["nome"] = p->getNome();
     prod["quantidade"] = p->getQuantidade();
     prod["valor"] = p->getValorUnit();
+    prod["classe"] = p->getClass();
 
     return prod;
 }
@@ -71,14 +72,15 @@ void GerenciadorDeArquivos::fromJson(QJsonObject &j, Produto &p) {
     p.setNome(j["nome"].toString());
     p.setQuantidade(j["quantidade"].toInt());
     p.setValorUnit(j["valor"].toDouble());
+    p.setClasse(j["classe"].toString());
 }
 
 void GerenciadorDeArquivos::fromJson(QJsonObject &j, QDate &d) {
     d.setDate(
-        j["ano"].toInt(),
-        j["mes"].toInt(),
-        j["dia"].toInt()
-    );
+                j["ano"].toInt(),
+            j["mes"].toInt(),
+            j["dia"].toInt()
+            );
 }
 
 

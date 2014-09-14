@@ -13,12 +13,21 @@ private:
 
 public:
     Produto();
+    Produto(Produto * p);
     Produto(QString nome);
     Produto(QString nome, float valor);
     Produto(QString nome, float valor, int qtd);
-    Produto(QString nome, float valor, int qtd, QString classe);
+    Produto(QString nome,QString classe);
+    Produto(QString nome,QString classe, float valor, int qtd);
     ~Produto();
 
+    //sets
+    void setNome(QString nome);
+    void setQuantidade(int quant);
+    void setValorUnit(float valor);
+    void setClasse(QString classe);
+
+    //gets
     QString getNome();
     int getQuantidade();
     float getValorUnit();
@@ -26,11 +35,8 @@ public:
     QString toString();
     QString getClass();
 
-    void setNome(QString nome);
-    void setQuantidade(int quant);
-    void setValorUnit(float valor);
-    void setClasse(QString classe);
 
+    //operators
     void operator =(Produto p);
     bool operator ==(Produto p);
     void operator ++(int);
