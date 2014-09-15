@@ -216,6 +216,12 @@ void MainWindow::treeViewProdutos_clicked() {
 void MainWindow::on_actionAdd_triggered() {
 
     if(typeView == COMPRAS) {
+        DialogConfirmacao confirm("Deseja adicionar uma nova Compra?");
+        confirm.show();
+        confirm.exec();
+        if(!confirm.acepted){
+            return;
+        }
         Compra * c = new Compra;
         DialogEditarCompra editarcompra(c);
         editarcompra.setWindowTitle("Adicionar Compra");
@@ -228,6 +234,12 @@ void MainWindow::on_actionAdd_triggered() {
         return;
     }
     else if(typeView == PRODUTO) {
+        DialogConfirmacao confirm("Deseja adicionar um novo Produto?");
+        confirm.show();
+        confirm.exec();
+        if(!confirm.acepted){
+            return;
+        }
         if(!compraIsSelected()){
             QMessageBox aviso;
             aviso.setWindowTitle("Aviso!!!");
@@ -303,6 +315,12 @@ void MainWindow::on_actionRemove_triggered()
 {
 
     if(typeView == COMPRAS){
+        DialogConfirmacao confirm("Deseja remover essa Compra?");
+        confirm.show();
+        confirm.exec();
+        if(!confirm.acepted){
+            return;
+        }
 
         QStandardItem * item = model->itemFromIndex(selected);
         //se não tiver nenhum item selecionado ele retorna
@@ -322,6 +340,12 @@ void MainWindow::on_actionRemove_triggered()
 
 
     }else if(typeView == PRODUTO){
+        DialogConfirmacao confirm("Deseja remover esse Produto?");
+        confirm.show();
+        confirm.exec();
+        if(!confirm.acepted){
+            return;
+        }
 
         QStandardItem * item = model->itemFromIndex(selected);
         QStandardItem * item2 = model2->itemFromIndex(selected2);

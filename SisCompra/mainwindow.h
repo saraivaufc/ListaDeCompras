@@ -10,6 +10,7 @@
 
 #include "dialogeditarcompra.h"
 #include "dialogeditarproduto.h"
+#include "dialogconfirmacao.h"
 #include "viewproduto.h"
 #include "gerenciadordearquivos.h"
 

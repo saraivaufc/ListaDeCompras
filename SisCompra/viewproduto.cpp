@@ -13,11 +13,10 @@ ViewProduto::ViewProduto(Produto p, QWidget *parent): QDialog(parent), ui(new Ui
     ui->setupUi(this);
     qDebug() << p.toString();
     ui->labelNomeProduto->setText(p.getNome());
-    ui->labelNomeProduto->setText(p.getNome());
-    ui->lineEditQuantidade->setText(QString::number(p.getQuantidade()));
-    ui->lineEditValorUnitario->setText(QString::number(p.getValorUnit()));
-    ui->lineEditClasse->setText(p.getClass());
-    ui->lineEditvalorTotal->setText(QString::number(p.getValorTotal()));
+    ui->labelQuantidade->setText(QString::number(p.getQuantidade()));
+    ui->labelValorUnitario->setText(QString::number(p.getValorUnit()));
+    ui->labelClasse->setText(p.getClass());
+    ui->labelValorTotal->setText(QString::number(p.getValorTotal()));
 }
 
 ViewProduto::~ViewProduto()
