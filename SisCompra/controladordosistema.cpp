@@ -23,17 +23,15 @@ GerenciadorDeCompras *ControladorDoSistema::getGerenciadorCompras() {
 
 void ControladorDoSistema::addCompra(Compra *c)
 {
-    qDebug() << "AddCompra::Sinal Recebido...";
     if(gerenciadorDeCompras->addCompra(c)){
-        qDebug() << "Quantidade de Cartas:" << gerenciadorDeCompras->getListaCompras().length();
+        qDebug() << "Compra Adicionada com Sucesso.";
     }else{
-        qDebug()<<"Falha ao adicionar a compra";
+        qDebug()<<"Falha ao adicionar a compra.";
     }
 }
 
 void ControladorDoSistema::addProduto(Compra *c, Produto *p)
 {
-    qDebug() << "AddProduto::Sinal Recebido...";
     foreach (Compra * i, gerenciadorDeCompras->getListaCompras()) {
         if(*i == *c){
             i->addProduto(p);
@@ -53,12 +51,11 @@ void ControladorDoSistema::salvarCompras()
 
 void ControladorDoSistema::existeCompra(Compra *c, bool *a)
 {
-    qDebug()<< "Signal Existe recebido...";
     if(gerenciadorDeCompras->contains(c)){
-        qDebug() << "Error!, A lista já comtém esse titulo...";
+        qDebug() << "Error!, A lista já comtém esse titulo.";
         *a=true;
     }else{
-        qDebug() << "Pode ser adicionada...";
+        qDebug() << "A Compra Pode ser adicionada.";
         *a=false;
     }
 
@@ -82,7 +79,6 @@ void ControladorDoSistema::removeComprasPorData(QString data)
 
 void ControladorDoSistema::removeProduto(Compra *c, Produto *p)
 {
-    qDebug()<< "Remover Produto recebido";
     Compra **a;
     Compra *b;
     a=&b;
@@ -98,7 +94,7 @@ void ControladorDoSistema::removeProdutoPorClasse(QString classe)
 {
     foreach (Compra * c, gerenciadorDeCompras->getListaCompras()) {
         foreach (Produto * p, c->getProdutos()) {
-            if(p->getClass().toUpper() == classe.toUpper()){
+            if(p->getClass() == classe){
                     removeProduto(c,p);
             }
         }
@@ -107,8 +103,6 @@ void ControladorDoSistema::removeProdutoPorClasse(QString classe)
 
 void ControladorDoSistema::buscaCompra(Compra **c, QString nome, QDate data)
 {
-
-    qDebug() << "Sinal Busca Compra Recebido";
     Compra k(nome, data);
     foreach (Compra * i , gerenciadorDeCompras->getListaCompras()) {
         if(*i == k){
@@ -117,7 +111,6 @@ void ControladorDoSistema::buscaCompra(Compra **c, QString nome, QDate data)
         }
     }
     c=NULL;
-    qDebug() << "Compra não encontrada";
 
 }
 
@@ -127,10 +120,8 @@ void ControladorDoSistema::buscaProduto(Compra *c, Produto **p, QString nome, QS
 
     foreach (Produto * i, c->getProdutos()) {
         if( *i == *produto){
-            qDebug() << "Produto achado...";
-            *p=produto;
+            *p=i;
             return;
         }
     }
-    qDebug() << "Não achei o produto";
 }

@@ -15,35 +15,35 @@ Produto::Produto(Produto *p)
 }
 
 Produto::Produto(QString nome) {
-    this->nome = nome.toLower();
+    this->nome = nome;
     this->valorUnit = 0.0;
     quantidade = 1;
 }
 
 Produto::Produto(QString nome, float valor) {
-    this->nome = nome.toLower();
+    this->nome = nome;
     this->valorUnit = valor;
     quantidade = 1;
 }
 
 Produto::Produto(QString nome, float valor, int quant) {
-    this->nome = nome.toLower();
+    this->nome = nome;
     this->valorUnit = valor;
     quantidade = quant;
 }
 
 Produto::Produto(QString nome, QString classe)
 {
-    this->nome = nome.toLower();
-    this->classe = classe.toLower();
+    this->nome = nome;
+    this->classe = classe;
 }
 
 
 Produto::Produto(QString nome, QString classe , float valor, int quant) {
-    this->nome = nome.toLower();
+    this->nome = nome;
     this->valorUnit = valor;
-    quantidade = quant;
-    this->classe = classe.toLower();
+    this->quantidade = quant;
+    this->classe = classe;
 }
 
 
@@ -105,7 +105,7 @@ void Produto::operator =(Produto p) {
 }
 
 bool Produto::operator ==(Produto p) {
-    return nome.toUpper() == p.getNome().toUpper() && classe.toUpper() == p.getClass().toUpper();
+    return nome == p.getNome() && classe == p.getClass();
 }
 
 void Produto::operator ++(int) {

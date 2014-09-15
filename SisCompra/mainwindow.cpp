@@ -52,7 +52,6 @@ void MainWindow::atualizarCompras()
 void MainWindow::adicionarCompra(Compra *c)
 {
     bool a=false;
-    qDebug() << "Signal Existe Emitido...";
     emit existeCompra(c, &a);
     if(a){
         QMessageBox mss;
@@ -61,15 +60,14 @@ void MainWindow::adicionarCompra(Compra *c)
         mss.exec();
         return;
     }
-    qDebug() << "Sinal addCompra Emitido...";
     emit addCompra(c);
 
     QStandardItem * root = model->invisibleRootItem();
-    QString ch = c->getData().toString("dd/MM/yyyy").toUpper();
+    QString ch = c->getData().toString("dd/MM/yyyy");
     for(int row=0; row < root->rowCount() ; row++){
         QStandardItem * item  = root->child(row, 0);
         item->setEditable(false);
-        if(item->text().toUpper() == ch){
+        if(item->text() == ch){
             item->appendRow(
                         compraToItemList(
                             c->getTitulo(),
@@ -89,27 +87,19 @@ void MainWindow::adicionarCompra(Compra *c)
 
 void MainWindow::adicionarProduto(Compra *c, Produto *p, bool somenteNaInterface)
 {
-
-    qDebug() << "tentando adicionar Produto..";
-
     bool a=false;
-    qDebug() << "Compra=" + c->toString() + "Produto=" + p->toString();
-
-    qDebug() << "Signal Existe do Produto Emitido...";
-
     if(somenteNaInterface == false){
-        qDebug() << "Sinal addProduto Emitido...";
         emit addProduto(c, p);
     }
 
 
     QStandardItem * root2 = model2->invisibleRootItem();
-    QString ch = p->getClass().toUpper();
+    QString ch = p->getClass();
 
     for(int row=0; row < root2->rowCount() ; row++){
         QStandardItem * item  = root2->child(row, 0);
         item->setEditable(false);
-        if(item->text().toUpper() == ch){
+        if(item->text() == ch){
             item->appendRow(    produtoToItemList(
                                     p->getNome(),
                                     p->getQuantidade(),
@@ -121,8 +111,6 @@ void MainWindow::adicionarProduto(Compra *c, Produto *p, bool somenteNaInterface
             return;
         }
     }
-
-    qDebug() << "Adicionada uma nova Classe";
     QStandardItem * item = new QStandardItem(ch);
     item->setEditable(false);
     root2->appendRow(item);
@@ -175,7 +163,6 @@ void MainWindow::carregaProdutoSelecionado(Produto **p)
     c=&c2;
     carregaCompraSelecionada(c);
     //se eu tento editar uma data como se fosse uma compra
-
     if(selected2.parent() == model2->invisibleRootItem()->index()){
         return;
     }
@@ -212,7 +199,7 @@ void MainWindow::treeViewCompras_clicked() {
     ui->labelCompras->setFont(f);
     ui->labelProdutos->setFont(f2);
     typeView = COMPRAS;
-    qDebug() << "Compras Clicada!!!";
+    qDebug() << "Compra Clicada!!!";
 }
 
 void MainWindow::treeViewProdutos_clicked() {
@@ -262,8 +249,6 @@ void MainWindow::on_actionAdd_triggered() {
             Compra **a;
             Compra *b;
             a=&b;
-
-            qDebug() << nomeCompra << "-" <<dataCompra.toString();
             emit buscaCompra(a,nomeCompra,dataCompra);
             qDebug() << b->toString();
             adicionarProduto(b,p);
@@ -275,7 +260,6 @@ void MainWindow::on_actionAdd_triggered() {
 
 void MainWindow::on_treeViewCompras_clicked(const QModelIndex &index)
 {
-    qDebug() << "Compra Selecionada...";
     selected = index;
 
     QStandardItem * root = model->invisibleRootItem();
@@ -284,7 +268,6 @@ void MainWindow::on_treeViewCompras_clicked(const QModelIndex &index)
     limparProdutosInterface();
     //Se eu tiver clicado numa Data, então eu limpo os produtos e saio
     if(index.parent() == root->index()){
-        qDebug() << "Cliquei Numa Data...";
         return;
     }
 
@@ -293,12 +276,7 @@ void MainWindow::on_treeViewCompras_clicked(const QModelIndex &index)
     Compra **a;
     Compra *b;
     a=&b;
-    qDebug() << nomeCompra << "-" <<dataCompra.toString();
-    qDebug() << "Sinal Busca Compra Emitido";
     emit buscaCompra(a,nomeCompra,dataCompra);
-
-
-    qDebug() << "SIGNAL Atualizando Produtos emitido";
     foreach (Produto * p, b->getProdutos()){
         adicionarProduto(b, p, true);
     }
@@ -307,7 +285,6 @@ void MainWindow::on_treeViewCompras_clicked(const QModelIndex &index)
 
 void MainWindow::on_treeViewProdutos_clicked(const QModelIndex &index)
 {
-    qDebug() << "Produto Selecionada...";
     selected2 = index;
 }
 
@@ -332,7 +309,6 @@ void MainWindow::on_actionRemove_triggered()
         if(item == NULL){
             return;
         }
-        qDebug() << "Excluindo Conta...";
 
         if(selected.parent() == model->invisibleRootItem()->index()){
             //emite uma sinal para o controlador com a compra que ele quer remover
@@ -341,7 +317,6 @@ void MainWindow::on_actionRemove_triggered()
         if(item->rowCount() == 0){
             Compra c(item->text(), QDate::fromString(item->parent()->text(),"dd/MM/yyyy" ));
             emit removeCompra(&c);
-            qDebug() << c.toString();
         }
         ui->treeViewCompras->model()->removeRow(selected.row(), selected.parent());
 
@@ -350,9 +325,6 @@ void MainWindow::on_actionRemove_triggered()
 
         QStandardItem * item = model->itemFromIndex(selected);
         QStandardItem * item2 = model2->itemFromIndex(selected2);
-
-        qDebug()<<"Remove Produto Emitido";
-
         if(item == NULL || item2 == NULL){
             return;
         }
@@ -368,7 +340,6 @@ void MainWindow::on_actionRemove_triggered()
         }
 
         ui->treeViewProdutos->model()->removeRow(selected2.row(), selected2.parent());
-        qDebug() << "Excluindo Produto";
 
     }
 
@@ -376,12 +347,10 @@ void MainWindow::on_actionRemove_triggered()
 
 void MainWindow::on_actionEdit_triggered()
 {
-    QString nomeCompra= model->itemFromIndex(selected)->text();
-    QDate dataCompra= QDate::fromString(model->itemFromIndex(selected.parent())->text(),"dd/MM/yyyy");
     Compra **a;
     Compra *b;
     a=&b;
-    emit buscaCompra(a,nomeCompra,dataCompra);
+    carregaCompraSelecionada(a);
 
     if(typeView == COMPRAS){
 
@@ -407,17 +376,12 @@ void MainWindow::on_actionEdit_triggered()
         if(selected2.parent() == model2->invisibleRootItem()->index()){
             return;
         }
-        QString nomeProduto = model2->itemFromIndex(selected2)->text();
-        QString classeProduto = model2->itemFromIndex(selected2.parent())->text();
-        if(nomeProduto == NULL || classeProduto == NULL){
-            return;
-        }
+
         Produto **c;
         Produto *d;
         c=&d;
-        emit buscaProduto(b,c,nomeProduto, classeProduto);
+        carregaProdutoSelecionado(c);
         if(d == NULL){
-            qDebug() << "D vazio";
             return;
         }
         Produto antigo(d);
@@ -443,9 +407,7 @@ void MainWindow::on_treeViewProdutos_doubleClicked(const QModelIndex &index)
         Produto ** p;
         Produto *p2;
         p=&p2;
-        qDebug() << "Temntando carregar o produto";
         carregaProdutoSelecionado(p);
-
         if(p2 == NULL)
             return;
         ViewProduto viewProduto(*p2);
