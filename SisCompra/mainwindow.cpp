@@ -439,3 +439,19 @@ void MainWindow::on_treeViewProdutos_doubleClicked(const QModelIndex &index)
         viewProduto.exec();
     }
 }
+
+void MainWindow::on_treeViewCompras_doubleClicked(const QModelIndex &index)
+{
+    emit on_treeViewCompras_clicked(index);
+    if(index.parent() == model->invisibleRootItem()->index()){
+        return;
+    }else{
+        Compra **c;
+        Compra *c2;
+        c=&c2;
+        carregaCompraSelecionada(c);
+        ViewCompra viewCompra(c2);
+        viewCompra.show();
+        viewCompra.exec();
+    }
+}

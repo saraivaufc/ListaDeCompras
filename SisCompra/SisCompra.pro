@@ -23,7 +23,8 @@ SOURCES += main.cpp\
     controladordosistema.cpp \
     mytreeview.cpp \
     viewproduto.cpp \
-    dialogconfirmacao.cpp
+    dialogconfirmacao.cpp \
+    viewcompra.cpp
 
 HEADERS  += mainwindow.h \
     gerenciadordecompras.h \
@@ -36,13 +37,15 @@ HEADERS  += mainwindow.h \
     controladordosistema.h \
     mytreeview.h \
     viewproduto.h \
-    dialogconfirmacao.h
+    dialogconfirmacao.h \
+    viewcompra.h
 
 FORMS    += mainwindow.ui \
     dialogeditarcompra.ui \
     dialogeditarproduto.ui \
     viewproduto.ui \
-    dialogconfirmacao.ui
+    dialogconfirmacao.ui \
+    viewcompra.ui
 
 RESOURCES += \
     Imagens.qrc

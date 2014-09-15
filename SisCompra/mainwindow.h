@@ -12,6 +12,7 @@
 #include "dialogeditarproduto.h"
 #include "dialogconfirmacao.h"
 #include "viewproduto.h"
+#include "viewcompra.h"
 #include "gerenciadordearquivos.h"
 
 namespace Ui {
@@ -100,6 +101,7 @@ private slots:
     bool produtoIsSelected();
     void on_actionEdit_triggered();
     void on_treeViewProdutos_doubleClicked(const QModelIndex &index);
+    void on_treeViewCompras_doubleClicked(const QModelIndex &index);
 };
 
 #endif // MAINWINDOW_H

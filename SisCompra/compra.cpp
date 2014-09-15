@@ -70,6 +70,15 @@ QDate Compra::getData() {
     return data;
 }
 
+float Compra::getValorTotal()
+{
+    float valor=0;
+    foreach (Produto *p, listaDeProdutos) {
+        valor+=p->getQuantidade()*p->getValorUnit();
+    }
+    return valor;
+}
+
 void Compra::setTitulo(QString titulo) {
     this->titulo = titulo;
 }
