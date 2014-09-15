@@ -56,7 +56,6 @@ void MainWindow::adicionarCompra(Compra *c)
     if(a){
         QMessageBox mss;
         mss.setText("Já existe uma Compra Com esse Titulo nesta Data!!!");
-        mss.show();
         mss.exec();
         return;
     }
@@ -216,8 +215,7 @@ void MainWindow::treeViewProdutos_clicked() {
 void MainWindow::on_actionAdd_triggered() {
 
     if(typeView == COMPRAS) {
-        DialogConfirmacao confirm("Deseja adicionar uma nova Compra?");
-        confirm.show();
+        DialogConfirmacao confirm("Deseja adicionar uma nova Compra?", this);
         confirm.exec();
         if(!confirm.acepted){
             return;
@@ -235,7 +233,6 @@ void MainWindow::on_actionAdd_triggered() {
     }
     else if(typeView == PRODUTO) {
         DialogConfirmacao confirm("Deseja adicionar um novo Produto?");
-        confirm.show();
         confirm.exec();
         if(!confirm.acepted){
             return;
@@ -244,7 +241,6 @@ void MainWindow::on_actionAdd_triggered() {
             QMessageBox aviso;
             aviso.setWindowTitle("Aviso!!!");
             aviso.setText("Error!, Favor Selecionar uma Compra...");
-            aviso.setFocus();
             aviso.show();
             aviso.exec();
             return ;
@@ -253,7 +249,6 @@ void MainWindow::on_actionAdd_triggered() {
         DialogEditarProduto editarproduto(p);
         editarproduto.setWindowTitle("Adicionar produto");
         editarproduto.setDescricao("Novo Produto");
-        editarproduto.show();
         editarproduto.exec();
         if(editarproduto.acepted){
             QDate dataCompra = QDate::fromString(model->itemFromIndex(selected.parent())->text(),"dd/MM/yyyy");
@@ -316,7 +311,6 @@ void MainWindow::on_actionRemove_triggered()
 
     if(typeView == COMPRAS){
         DialogConfirmacao confirm("Deseja remover essa Compra?");
-        confirm.show();
         confirm.exec();
         if(!confirm.acepted){
             return;
@@ -341,7 +335,6 @@ void MainWindow::on_actionRemove_triggered()
 
     }else if(typeView == PRODUTO){
         DialogConfirmacao confirm("Deseja remover esse Produto?");
-        confirm.show();
         confirm.exec();
         if(!confirm.acepted){
             return;
@@ -387,7 +380,6 @@ void MainWindow::on_actionEdit_triggered()
         emit removeCompra(b);
         //edito ela
         DialogEditarCompra editarCompra(b);
-        editarCompra.show();
         editarCompra.exec();
         //adiciono a nova compra na interface e na lista de compras
         ui->treeViewCompras->model()->removeRow(selected.row(), selected.parent());
@@ -413,7 +405,6 @@ void MainWindow::on_actionEdit_triggered()
         DialogEditarProduto editarProduto(d);
         editarProduto.setWindowTitle("Editar Produto");
         editarProduto.setDescricao("Edições");
-        editarProduto.show();
         editarProduto.exec();
         //adiciono a nova compra na interface e na lista de compras
         ui->treeViewProdutos->model()->removeRow(selected2.row(), selected2.parent());
@@ -435,7 +426,6 @@ void MainWindow::on_treeViewProdutos_doubleClicked(const QModelIndex &index)
         if(p2 == NULL)
             return;
         ViewProduto viewProduto(*p2);
-        viewProduto.show();
         viewProduto.exec();
     }
 }
@@ -451,7 +441,6 @@ void MainWindow::on_treeViewCompras_doubleClicked(const QModelIndex &index)
         c=&c2;
         carregaCompraSelecionada(c);
         ViewCompra viewCompra(c2);
-        viewCompra.show();
         viewCompra.exec();
     }
 }
