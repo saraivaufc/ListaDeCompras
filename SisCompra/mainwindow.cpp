@@ -157,6 +157,40 @@ void MainWindow::limparProdutosInterface()
     root->removeRows(0, root->rowCount());
 }
 
+void MainWindow::carregaCompraSelecionada(Compra **c)
+{
+
+    QString nomeCompra= model->itemFromIndex(selected)->text();
+    QDate dataCompra= QDate::fromString(model->itemFromIndex(selected.parent())->text(),"dd/MM/yyyy");
+    Compra **a;
+    a=&(*c);
+    emit buscaCompra(a,nomeCompra,dataCompra);
+    return;
+}
+
+void MainWindow::carregaProdutoSelecionado(Produto **p)
+{
+    Compra ** c;
+    Compra *c2;
+    c=&c2;
+    carregaCompraSelecionada(c);
+    //se eu tento editar uma data como se fosse uma compra
+
+    if(selected2.parent() == model2->invisibleRootItem()->index()){
+        return;
+    }
+    QString nomeProduto = model2->itemFromIndex(selected2)->text();
+    QString classeProduto = model2->itemFromIndex(selected2.parent())->text();
+    if(nomeProduto == NULL || classeProduto == NULL){
+        return;
+    }
+    Produto **k;
+    k=&(*p);
+    emit buscaProduto(c2,k,nomeProduto, classeProduto);
+    return;
+}
+
+
 void MainWindow::carregarCompras()
 {
     QList<Compra *> list = GerenciadorDeArquivos::getAllCompras();
@@ -396,5 +430,26 @@ void MainWindow::on_actionEdit_triggered()
         //adiciono a nova compra na interface e na lista de compras
         ui->treeViewProdutos->model()->removeRow(selected2.row(), selected2.parent());
         adicionarProduto(b,d);
+    }
+}
+
+void MainWindow::on_treeViewProdutos_doubleClicked(const QModelIndex &index)
+{
+    emit on_treeViewProdutos_clicked(index);
+
+    if(index.parent() == model2->invisibleRootItem()->index()){
+        return;
+    }else{
+        Produto ** p;
+        Produto *p2;
+        p=&p2;
+        qDebug() << "Temntando carregar o produto";
+        carregaProdutoSelecionado(p);
+
+        if(p2 == NULL)
+            return;
+        ViewProduto viewProduto(*p2);
+        viewProduto.show();
+        viewProduto.exec();
     }
 }

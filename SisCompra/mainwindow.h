@@ -10,7 +10,7 @@
 
 #include "dialogeditarcompra.h"
 #include "dialogeditarproduto.h"
-
+#include "viewproduto.h"
 #include "gerenciadordearquivos.h"
 
 namespace Ui {
@@ -91,11 +91,14 @@ public:
     void listaProdutosVisivel(bool estado);
     void listaComprasVisivel(bool estado);
     void limparProdutosInterface();
+    void carregaCompraSelecionada(Compra **c);
+    void carregaProdutoSelecionado(Produto **p);
 private slots:
     void on_treeViewProdutos_clicked(const QModelIndex &index);
     bool compraIsSelected();
     bool produtoIsSelected();
     void on_actionEdit_triggered();
+    void on_treeViewProdutos_doubleClicked(const QModelIndex &index);
 };
 
 #endif // MAINWINDOW_H
