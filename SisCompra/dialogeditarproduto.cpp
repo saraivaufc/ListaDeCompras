@@ -19,12 +19,25 @@ DialogEditarProduto::~DialogEditarProduto() {
     delete ui;
 }
 
+void DialogEditarProduto::setDescricao(QString text)
+{
+    ui->label_4->setText(text);
+}
+
 void DialogEditarProduto::on_buttonBox_accepted() {
     produto->setNome(ui->lineEditNome->text());
     produto->setQuantidade(ui->spinBoxQuant->value());
     produto->setValorUnit(ui->doubleSpinBoxValor->value());
     produto->setClasse(ui->comboBox->currentText());
-    acepted = true;
+    if(ui->lineEditNome->text().isEmpty()){
+        QMessageBox msn;
+        msn.setText("Por favor, digite o nome do produto e tente novamente...");
+        msn.show();
+        msn.exec();
+        acepted=false;
+    }else{
+        acepted = true;
+    }
 }
 
 void DialogEditarProduto::on_buttonBox_rejected() {

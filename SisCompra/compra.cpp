@@ -5,7 +5,7 @@ int Compra::CONTADOR_COMPRAS = 0;
 
 Compra::Compra() {
     id = CONTADOR_COMPRAS++;
-    titulo = "sem título";
+    titulo = "";
     data = QDate::currentDate();
 }
 
@@ -42,6 +42,7 @@ bool Compra::removeProduto(Produto *p)
             qDebug() << "Produto Removido";
             return true;
         }
+        counter++;
     }
     qDebug() << "Falha ao remover Produto";
     return false;
@@ -67,6 +68,15 @@ QString Compra::getTitulo() {
 
 QDate Compra::getData() {
     return data;
+}
+
+float Compra::getValorTotal()
+{
+    float valor=0;
+    foreach (Produto *p, listaDeProdutos) {
+        valor+=p->getQuantidade()*p->getValorUnit();
+    }
+    return valor;
 }
 
 void Compra::setTitulo(QString titulo) {

@@ -1,34 +1,48 @@
 #include "produto.h"
 
 Produto::Produto() {
-    this->nome = "sem nome";
+    this->nome = "";
     this->valorUnit = 0.0;
     quantidade = 1;
 }
 
+Produto::Produto(Produto *p)
+{
+    this->nome=p->getNome();
+    this->valorUnit=p->getValorUnit();
+    this->quantidade=p->getQuantidade();
+    this->classe=p->getClass();
+}
+
 Produto::Produto(QString nome) {
-    this->nome = nome.toLower();
+    this->nome = nome;
     this->valorUnit = 0.0;
     quantidade = 1;
 }
 
 Produto::Produto(QString nome, float valor) {
-    this->nome = nome.toLower();
+    this->nome = nome;
     this->valorUnit = valor;
     quantidade = 1;
 }
 
 Produto::Produto(QString nome, float valor, int quant) {
-    this->nome = nome.toLower();
+    this->nome = nome;
     this->valorUnit = valor;
     quantidade = quant;
 }
 
+Produto::Produto(QString nome, QString classe)
+{
+    this->nome = nome;
+    this->classe = classe;
+}
 
-Produto::Produto(QString nome, float valor, int quant, QString classe) {
-    this->nome = nome.toLower();
+
+Produto::Produto(QString nome, QString classe , float valor, int quant) {
+    this->nome = nome;
     this->valorUnit = valor;
-    quantidade = quant;
+    this->quantidade = quant;
     this->classe = classe;
 }
 

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #ifndef MACROS_H
 #define MACROS_H
 
@@ -12,3 +13,19 @@ Icon=SisCompra\n\
 Terminal=false\
 "
 #endif // MACROS_H
+=======
+#ifndef MACROS_H
+#define MACROS_H
+
+#define EXEC_NAME "SisCompra.desktop"
+#define INSTALLATION_FOUDER "/opt/SisCompra"
+#define DESKTOP_FILE_PATH "/usr/share/applications"
+#define SHELL_COMAND "[Desktop Entry]\n\
+Type=Application\n\
+Exec=/opt/SisCom/SisCompra\n\
+Name=Sistema de Compras\n\
+Icon=SisCompra.png\n\
+Terminal=false\
+"
+#endif // MACROS_H
+>>>>>>> b678a198cae01f58662b82bb94045658b64fb426
