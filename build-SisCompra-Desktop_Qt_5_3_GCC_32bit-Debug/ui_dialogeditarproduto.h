@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QDoubleSpinBox>
@@ -36,10 +37,12 @@ public:
     QLabel *label;
     QLabel *label_2;
     QLabel *label_3;
+    QLabel *label_5;
     QVBoxLayout *verticalLayout_2;
     QLineEdit *lineEditNome;
     QSpinBox *spinBoxQuant;
     QDoubleSpinBox *doubleSpinBoxValor;
+    QComboBox *comboBox;
     QSpacerItem *verticalSpacer;
     QDialogButtonBox *buttonBox;
 
@@ -82,6 +85,11 @@ public:
 
         verticalLayout->addWidget(label_3);
 
+        label_5 = new QLabel(DialogEditarProduto);
+        label_5->setObjectName(QStringLiteral("label_5"));
+
+        verticalLayout->addWidget(label_5);
+
 
         horizontalLayout->addLayout(verticalLayout);
 
@@ -102,6 +110,11 @@ public:
         doubleSpinBoxValor->setObjectName(QStringLiteral("doubleSpinBoxValor"));
 
         verticalLayout_2->addWidget(doubleSpinBoxValor);
+
+        comboBox = new QComboBox(DialogEditarProduto);
+        comboBox->setObjectName(QStringLiteral("comboBox"));
+
+        verticalLayout_2->addWidget(comboBox);
 
 
         horizontalLayout->addLayout(verticalLayout_2);
@@ -147,6 +160,7 @@ public:
         label->setText(QApplication::translate("DialogEditarProduto", "Nome", 0));
         label_2->setText(QApplication::translate("DialogEditarProduto", "Quantidade", 0));
         label_3->setText(QApplication::translate("DialogEditarProduto", "Valor unit\303\241rio", 0));
+        label_5->setText(QApplication::translate("DialogEditarProduto", "Classe", 0));
     } // retranslateUi
 
 };

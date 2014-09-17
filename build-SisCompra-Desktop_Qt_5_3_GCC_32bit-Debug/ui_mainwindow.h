@@ -124,7 +124,7 @@ public:
         treeViewCompras->setObjectName(QStringLiteral("treeViewCompras"));
         treeViewCompras->setSortingEnabled(true);
         treeViewCompras->setAnimated(false);
-        treeViewCompras->setHeaderHidden(false);
+        treeViewCompras->setHeaderHidden(true);
         treeViewCompras->header()->setVisible(false);
 
         verticalLayout_3->addWidget(treeViewCompras);
@@ -159,6 +159,9 @@ public:
         treeViewProdutos->setMouseTracking(true);
         treeViewProdutos->setAcceptDrops(true);
         treeViewProdutos->setEditTriggers(QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed);
+        treeViewProdutos->header()->setVisible(false);
+        treeViewProdutos->header()->setCascadingSectionResizes(true);
+        treeViewProdutos->header()->setProperty("showSortIndicator", QVariant(false));
 
         verticalLayout_2->addWidget(treeViewProdutos);
 
@@ -180,7 +183,7 @@ public:
         MainWindow->setStatusBar(statusBar);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 602, 25));
+        menuBar->setGeometry(QRect(0, 0, 602, 28));
         menuMenu = new QMenu(menuBar);
         menuMenu->setObjectName(QStringLiteral("menuMenu"));
         menuEditar = new QMenu(menuBar);
@@ -204,7 +207,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "SisCom", 0));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Compras F\303\241cil", 0));
         actionSair->setText(QApplication::translate("MainWindow", "Sair", 0));
         actionAdd->setText(QApplication::translate("MainWindow", "Adicionar", 0));
         actionRemove->setText(QApplication::translate("MainWindow", "Remover", 0));

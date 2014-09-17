@@ -7,5 +7,5 @@ void FileManager::createDothDesktop() {
     QFile file(EXEC_NAME);
 
     file.open(QIODevice::WriteOnly);
-    file << QString(SHELL_COMAND);
+    file.write(SHELL_COMAND);
 }

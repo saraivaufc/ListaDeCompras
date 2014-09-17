@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Sistema de Compras
+Type=Application
+Exec=/opt/SisCom/SisCompra
+Icon=SisCompra
+Terminal=false
