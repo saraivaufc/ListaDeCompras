@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += printsupport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -24,7 +25,9 @@ SOURCES += main.cpp\
     mytreeview.cpp \
     viewproduto.cpp \
     dialogconfirmacao.cpp \
-    viewcompra.cpp
+    viewcompra.cpp \
+    dialogrelatorio.cpp \
+    mywidget.cpp
 
 HEADERS  += mainwindow.h \
     gerenciadordecompras.h \
@@ -38,14 +41,19 @@ HEADERS  += mainwindow.h \
     mytreeview.h \
     viewproduto.h \
     dialogconfirmacao.h \
-    viewcompra.h
+    viewcompra.h \
+    dialogrelatorio.h \
+    mywidget.h
 
 FORMS    += mainwindow.ui \
     dialogeditarcompra.ui \
     dialogeditarproduto.ui \
     viewproduto.ui \
     dialogconfirmacao.ui \
-    viewcompra.ui
+    viewcompra.ui \
+    dialogrelatorio.ui
 
 RESOURCES += \
     Imagens.qrc
+
+CONFIG += c++11
