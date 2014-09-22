@@ -2,7 +2,7 @@
 #define VIEWCOMPRA_H
 
 #include <QDialog>
-#include "compra.h"s
+#include "compra.h"
 
 namespace Ui {
 class ViewCompra;

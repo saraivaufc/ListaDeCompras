@@ -11,6 +11,7 @@
 
 #include "dialogeditarcompra.h"
 #include "dialogeditarproduto.h"
+#include "dialogrelatorio.h"
 #include "produto.h"
 
 
