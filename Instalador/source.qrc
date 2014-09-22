@@ -1,6 +1,0 @@
-<RCC>
-    <qresource prefix="/source">
-        <file>resource/SisCompra.png</file>
-        <file>resource/SisCompra</file>
-    </qresource>
-</RCC>
