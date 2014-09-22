@@ -21,7 +21,6 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
-#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QVBoxLayout>
 
@@ -43,14 +42,13 @@ public:
     QSpinBox *spinBoxQuant;
     QDoubleSpinBox *doubleSpinBoxValor;
     QComboBox *comboBox;
-    QSpacerItem *verticalSpacer;
     QDialogButtonBox *buttonBox;
 
     void setupUi(QDialog *DialogEditarProduto)
     {
         if (DialogEditarProduto->objectName().isEmpty())
             DialogEditarProduto->setObjectName(QStringLiteral("DialogEditarProduto"));
-        DialogEditarProduto->resize(400, 300);
+        DialogEditarProduto->resize(317, 229);
         verticalLayout_3 = new QVBoxLayout(DialogEditarProduto);
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
         label_4 = new QLabel(DialogEditarProduto);
@@ -87,6 +85,11 @@ public:
 
         label_5 = new QLabel(DialogEditarProduto);
         label_5->setObjectName(QStringLiteral("label_5"));
+        QFont font2;
+        font2.setPointSize(12);
+        font2.setBold(false);
+        font2.setWeight(50);
+        label_5->setFont(font2);
 
         verticalLayout->addWidget(label_5);
 
@@ -124,10 +127,6 @@ public:
 
         verticalLayout_3->addLayout(horizontalLayout);
 
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_3->addItem(verticalSpacer);
-
         buttonBox = new QDialogButtonBox(DialogEditarProduto);
         buttonBox->setObjectName(QStringLiteral("buttonBox"));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
@@ -143,8 +142,7 @@ public:
 
         verticalLayout_3->setStretch(0, 1);
         verticalLayout_3->setStretch(1, 5);
-        verticalLayout_3->setStretch(2, 5);
-        verticalLayout_3->setStretch(3, 1);
+        verticalLayout_3->setStretch(2, 1);
 
         retranslateUi(DialogEditarProduto);
         QObject::connect(buttonBox, SIGNAL(accepted()), DialogEditarProduto, SLOT(accept()));
