@@ -79,6 +79,11 @@ QString Produto::getClass()
     return this->classe;
 }
 
+Produto *Produto::clone()
+{
+    return new Produto(this);
+}
+
 
 void Produto::setNome(QString nome) {
     this->nome = nome;

@@ -77,7 +77,7 @@ void GerenciadorDeArquivos::fromJson(QJsonObject &j, Produto &p) {
 
 void GerenciadorDeArquivos::fromJson(QJsonObject &j, QDate &d) {
     d.setDate(
-                j["ano"].toInt(),
+            j["ano"].toInt(),
             j["mes"].toInt(),
             j["dia"].toInt()
             );
@@ -130,4 +130,14 @@ QList<Compra *> GerenciadorDeArquivos::getAllCompras() {
 
 void GerenciadorDeArquivos::removeCompra(Compra *c) {
     QFile::remove(QString(DIR_JSON) + "/" + c->getData().toString("dd-MM-yy") + "_"+ c->getTitulo() + ".json");
+}
+
+bool GerenciadorDeArquivos::existeCompra(Compra *c)
+{
+    QList<Compra * > compras = getAllCompras();
+    if(compras.contains(c)){
+        return true;
+    }else{
+        return false;
+    }
 }

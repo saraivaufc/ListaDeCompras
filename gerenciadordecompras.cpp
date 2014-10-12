@@ -2,9 +2,16 @@
 #include "gerenciadordecompras.h"
 
 GerenciadorDeCompras::GerenciadorDeCompras() {
+    this->compraCorrente = new Compra(CONTACORRENTE, QDate::currentDate());
 }
 
 bool GerenciadorDeCompras::addCompra(Compra* comp) {
+    foreach (Compra * p, this->listaDeCompras) {
+        if(p->getTitulo() == comp->getTitulo()){
+            p=comp->clone();
+            return true;
+        }
+    }
     listaDeCompras.append(comp);
     return true;
 }
@@ -25,9 +32,7 @@ bool GerenciadorDeCompras::removeCompra(QString tituloCompra)
 bool GerenciadorDeCompras::removeCompra(Compra *c)
 {
     int index=0;
-    qDebug() << "\n\n";
     foreach (Compra *i, listaDeCompras) {
-        qDebug() << "Procurando Compra...";
         if(*c == *i){
             listaDeCompras.removeAt(index);
             GerenciadorDeArquivos::removeCompra(c);
@@ -113,10 +118,20 @@ void GerenciadorDeCompras::editarProdutoCompra(Compra *c, Produto *p)
     editorProduto.exec();
 }
 
+Compra * GerenciadorDeCompras::getCompraCorrente()
+{
+    return this->compraCorrente;
+}
+
 
 QList<Compra *> GerenciadorDeCompras::getListaCompras()
 {
     return listaDeCompras;
+}
+
+void GerenciadorDeCompras::setCompraCorrente(Compra *c)
+{
+    this->compraCorrente = c;
 }
 
 bool GerenciadorDeCompras::contains(Compra *c) {

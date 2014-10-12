@@ -21,6 +21,11 @@ DialogConfirmacao::~DialogConfirmacao()
     delete ui;
 }
 
+void DialogConfirmacao::setText(QString str)
+{
+    ui->labelMenssagem->setText(str);
+}
+
 void DialogConfirmacao::on_buttonBox_accepted()
 {
     acepted=true;

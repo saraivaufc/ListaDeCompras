@@ -16,10 +16,10 @@ public:
     DialogConfirmacao( QString pergunta, QWidget *parent=0);
     ~DialogConfirmacao();
     bool acepted;
+    void setText(QString str);
 
 private slots:
     void on_buttonBox_accepted();
-
     void on_buttonBox_rejected();
 
 private:

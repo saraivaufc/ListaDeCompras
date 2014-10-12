@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -16,6 +19,9 @@
   <property name="windowIcon">
    <iconset resource="Imagens.qrc">
     <normaloff>:/imagens/icones/icon.png</normaloff>:/imagens/icones/icon.png</iconset>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="font">
@@ -108,6 +114,9 @@
           </item>
           <item>
            <widget class="MyTreeView" name="treeViewCompras">
+            <property name="editTriggers">
+             <set>QAbstractItemView::NoEditTriggers</set>
+            </property>
             <property name="sortingEnabled">
              <bool>true</bool>
             </property>
@@ -190,7 +199,7 @@
              <bool>true</bool>
             </property>
             <property name="editTriggers">
-             <set>QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed</set>
+             <set>QAbstractItemView::NoEditTriggers</set>
             </property>
             <attribute name="headerVisible">
              <bool>false</bool>
@@ -227,6 +236,7 @@
    <addaction name="actionAdd"/>
    <addaction name="actionRemove"/>
    <addaction name="actionEdit"/>
+   <addaction name="actionSalvar"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <widget class="QMenuBar" name="menuBar">
@@ -235,7 +245,7 @@
      <x>0</x>
      <y>0</y>
      <width>602</width>
-     <height>28</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMenu">
@@ -285,6 +295,11 @@
    </property>
    <property name="text">
     <string>Editar</string>
+   </property>
+  </action>
+  <action name="actionSalvar">
+   <property name="text">
+    <string>Salvar</string>
    </property>
   </action>
  </widget>

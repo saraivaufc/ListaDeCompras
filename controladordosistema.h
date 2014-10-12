@@ -40,9 +40,10 @@ public slots:
     void removeCompra(Compra * c);
     void removeComprasPorData(QString data);
     void removeProduto(Compra *c, Produto *p);
-    void removeProdutoPorClasse(QString classe);
+    void removeProdutoPorClasse(Compra *c,QString classe);
 
     void buscaCompra(Compra **c, QString nome, QDate data);
+    void buscaCompraCorrente(Compra **c);
     void buscaProduto(Compra *c, Produto **p, QString nome, QString classe);
 };
 

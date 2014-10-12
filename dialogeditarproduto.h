@@ -1,10 +1,10 @@
 #ifndef DIALOGEDITARPRODUTO_H
 #define DIALOGEDITARPRODUTO_H
-
 #include <QDialog>
 #include "produto.h"
 #include "gerenciadordearquivos.h"
 #include <QMessageBox>
+
 
 namespace Ui {
 class DialogEditarProduto;
