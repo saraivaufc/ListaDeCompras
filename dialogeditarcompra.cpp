@@ -3,7 +3,6 @@
 
 DialogEditarCompra::DialogEditarCompra(Compra* c, QWidget *parent) : QDialog(parent), ui(new Ui::DialogEditarCompra) {
     ui->setupUi(this);
-
     this->compra = c;
 
     ui->lineEditTitulo->setText(compra->getTitulo());
@@ -31,6 +30,7 @@ void DialogEditarCompra::on_buttonBox_accepted() {
         msn.show();
         msn.exec();
     }else{
+        GerenciadorDeArquivos::salvarCompra(compra);
         acepted= true;
     }
 }

@@ -21,6 +21,7 @@ public:
     static QList<Compra*> getAllCompras();
 
     static void removeCompra(Compra* c);
+    static bool existeCompra(Compra * c);
 
 private:
     static void criarDir();

@@ -9,6 +9,17 @@ Compra::Compra() {
     data = QDate::currentDate();
 }
 
+Compra::Compra(Compra *c)
+{
+    this->id = c->getID();
+    this->titulo = c->getTitulo();
+    this->data = c->getData();
+    this->CONTADOR_COMPRAS = c->getContadorCompra();
+    foreach (Produto p, c->getProdutos()) {
+        this->listaDeProdutos.append(new Produto(&p));
+    }
+}
+
 Compra::Compra(QString titulo) {
     id = CONTADOR_COMPRAS++;
     this->titulo = titulo;
@@ -79,6 +90,11 @@ float Compra::getValorTotal()
     return valor;
 }
 
+int Compra::getContadorCompra()
+{
+    return this->CONTADOR_COMPRAS;
+}
+
 void Compra::setTitulo(QString titulo) {
     this->titulo = titulo;
 }
@@ -88,9 +104,12 @@ void Compra::setData(QDate data) {
 }
 
 bool Compra::operator == (Compra c) {
-    qDebug() << "operator usado...";
-    qDebug() << data.toString() << " == " << c.getData().toString();
     return (data == c.getData() && titulo == c.getTitulo());
+}
+
+Compra * Compra::clone()
+{
+    return new Compra(this);
 }
 
 QString Compra::toString() {

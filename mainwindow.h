@@ -8,12 +8,14 @@
 #include <QDebug>
 #include <QDate>
 
+
 #include "dialogeditarcompra.h"
 #include "dialogeditarproduto.h"
 #include "dialogconfirmacao.h"
 #include "viewproduto.h"
 #include "viewcompra.h"
 #include "gerenciadordearquivos.h"
+#include "Macros.h"
 
 namespace Ui {
 class MainWindow;
@@ -55,7 +57,11 @@ private:
                                              QString classe);
 
 protected:
-    void closeEvent (QCloseEvent *event);
+    void closeEvent ();
+
+private:
+    Compra *getCompraAtual();
+    Produto *getProdutoAtual();
 
 signals:
     void addCompra(Compra* c);
@@ -67,10 +73,12 @@ signals:
     void removeCompra(Compra * c);
     void removeComprasPorData(QString data);
     void removeProduto(Compra *c, Produto *p);
-    void removeProdutoPorClasse(QString classe);
+    void removeProdutoPorClasse(Compra *c, QString classe);
 
     void buscaCompra(Compra **c, QString nome, QDate data);
+    void buscaCompraCorrente(Compra **c);
     void buscaProduto(Compra *c, Produto **p, QString nome, QString classe);
+
 
 
 public slots:
@@ -81,7 +89,6 @@ public slots:
     //muda a view selecionada
     void treeViewCompras_clicked();
     void treeViewProdutos_clicked();
-
     void on_treeViewCompras_clicked(const QModelIndex &index);
 
     void on_actionRemove_triggered();
@@ -89,12 +96,14 @@ public slots:
 public:
     void carregarCompras();
     void adicionarCompra(Compra *c);
+    void adicionarCompraCorrente(Compra *c);
     void adicionarProduto(Compra *c, Produto *p, bool somenteNaInterface=false);
     void listaProdutosVisivel(bool estado);
     void listaComprasVisivel(bool estado);
     void limparProdutosInterface();
     void carregaCompraSelecionada(Compra **c);
     void carregaProdutoSelecionado(Produto **p);
+
 private slots:
     void on_treeViewProdutos_clicked(const QModelIndex &index);
     bool compraIsSelected();
@@ -102,6 +111,7 @@ private slots:
     void on_actionEdit_triggered();
     void on_treeViewProdutos_doubleClicked(const QModelIndex &index);
     void on_treeViewCompras_doubleClicked(const QModelIndex &index);
+    void on_actionSalvar_triggered();
 };
 
 #endif // MAINWINDOW_H

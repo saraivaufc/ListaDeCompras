@@ -5,6 +5,7 @@ ControladorDoSistema::ControladorDoSistema(QObject *parent) : QObject(parent) {
 
     interface = new MainWindow;
     interface->show();
+
     connect(interface, SIGNAL(addCompra(Compra*)),this,SLOT(addCompra(Compra*)));
     connect(interface, SIGNAL(addProduto(Compra*,Produto*)), this, SLOT(addProduto(Compra*,Produto*)));
     connect(interface, SIGNAL(close()), this, SLOT(salvarCompras()));
@@ -12,9 +13,12 @@ ControladorDoSistema::ControladorDoSistema(QObject *parent) : QObject(parent) {
     connect(interface, SIGNAL(removeCompra(Compra*)), this, SLOT(removeCompra(Compra*)));
     connect(interface, SIGNAL(removeComprasPorData(QString)), this, SLOT(removeComprasPorData(QString)));
     connect(interface, SIGNAL(removeProduto(Compra*,Produto*)), this, SLOT(removeProduto(Compra*,Produto*)));
-    connect(interface, SIGNAL(removeProdutoPorClasse(QString)), this, SLOT(removeProdutoPorClasse(QString)));
+    connect(interface, SIGNAL(removeProdutoPorClasse(Compra*,QString)), this, SLOT(removeProdutoPorClasse(Compra *,QString)));
     connect(interface, SIGNAL(buscaCompra(Compra**,QString,QDate)), this, SLOT(buscaCompra(Compra**,QString,QDate)));
+    connect(interface, SIGNAL(buscaCompraCorrente(Compra**)), this, SLOT(buscaCompraCorrente(Compra**)));
     connect(interface, SIGNAL(buscaProduto(Compra*,Produto**,QString,QString)), this, SLOT(buscaProduto(Compra*,Produto**,QString,QString)));
+
+    interface->adicionarCompraCorrente(gerenciadorDeCompras->getCompraCorrente());
     interface->carregarCompras();
 }
 GerenciadorDeCompras *ControladorDoSistema::getGerenciadorCompras() {
@@ -23,7 +27,10 @@ GerenciadorDeCompras *ControladorDoSistema::getGerenciadorCompras() {
 
 void ControladorDoSistema::addCompra(Compra *c)
 {
-    if(gerenciadorDeCompras->addCompra(c)){
+    if(c->getTitulo() == CONTACORRENTE){
+        gerenciadorDeCompras->setCompraCorrente(c);
+        qDebug() << "Compra Adicionada com Sucesso.";
+    }else if(gerenciadorDeCompras->addCompra(c)){
         qDebug() << "Compra Adicionada com Sucesso.";
     }else{
         qDebug()<<"Falha ao adicionar a compra.";
@@ -32,11 +39,17 @@ void ControladorDoSistema::addCompra(Compra *c)
 
 void ControladorDoSistema::addProduto(Compra *c, Produto *p)
 {
-    foreach (Compra * i, gerenciadorDeCompras->getListaCompras()) {
-        if(*i == *c){
-            i->addProduto(p);
-            qDebug() << "Produto Adicionado com Exito..";
-            return;
+    if(c->getTitulo() == CONTACORRENTE){
+        gerenciadorDeCompras->getCompraCorrente()->addProduto(p);
+        qDebug() << "Produto Adicionado com Exito..";
+        return;
+    }else{
+        foreach (Compra * i, gerenciadorDeCompras->getListaCompras()) {
+            if(*i == *c){
+                i->addProduto(p);
+                qDebug() << "Produto Adicionado com Exito..";
+                return;
+            }
         }
     }
     qDebug() << "Falha ao Adicionar o Produto";
@@ -45,17 +58,15 @@ void ControladorDoSistema::addProduto(Compra *c, Produto *p)
 
 void ControladorDoSistema::salvarCompras()
 {
-    qDebug() << "Salvando todas as compras...";
     GerenciadorDeArquivos::salvarCompra(gerenciadorDeCompras->getListaCompras());
 }
 
 void ControladorDoSistema::existeCompra(Compra *c, bool *a)
 {
     if(gerenciadorDeCompras->contains(c)){
-        qDebug() << "Error!, A lista já comtém esse titulo.";
+        qDebug() << "Error!, A lista já contém esse titulo.";
         *a=true;
     }else{
-        qDebug() << "A Compra Pode ser adicionada.";
         *a=false;
     }
 
@@ -63,7 +74,9 @@ void ControladorDoSistema::existeCompra(Compra *c, bool *a)
 
 void ControladorDoSistema::removeCompra(Compra *c)
 {
-    gerenciadorDeCompras->removeCompra(c);
+    if(!(c->getTitulo() == CONTACORRENTE)){
+        gerenciadorDeCompras->removeCompra(c);
+    }
 }
 
 void ControladorDoSistema::removeComprasPorData(QString data)
@@ -82,23 +95,25 @@ void ControladorDoSistema::removeProduto(Compra *c, Produto *p)
     Compra **a;
     Compra *b;
     a=&b;
-    buscaCompra(a, c->getTitulo(), c->getData());
+    if(c->getTitulo() == CONTACORRENTE){
+        buscaCompraCorrente(a);
+    }else{
+        buscaCompra(a, c->getTitulo(), c->getData());
+    }
     if(b->removeProduto(p)){
-        qDebug() << "Consegui Remover";
+        qDebug() << "Consegui Remover da Compra: " + c->toString() + " O Produto: " + p->toString();
     }else{
         qDebug() << "Fui remover mas não emcontrei";
     }
 }
 
-void ControladorDoSistema::removeProdutoPorClasse(QString classe)
+void ControladorDoSistema::removeProdutoPorClasse(Compra *c,QString classe)
 {
-    foreach (Compra * c, gerenciadorDeCompras->getListaCompras()) {
-        foreach (Produto * p, c->getProdutos()) {
-            if(p->getClass() == classe){
-                    removeProduto(c,p);
-            }
-        }
-    }
+     foreach (Produto * p, c->getProdutos()) {
+         if(p->getClass() == classe){
+             removeProduto(c,p);
+         }
+     }
 }
 
 void ControladorDoSistema::buscaCompra(Compra **c, QString nome, QDate data)
@@ -112,6 +127,11 @@ void ControladorDoSistema::buscaCompra(Compra **c, QString nome, QDate data)
     }
     c=NULL;
 
+}
+
+void ControladorDoSistema::buscaCompraCorrente(Compra **c)
+{
+    *c=this->getGerenciadorCompras()->getCompraCorrente();
 }
 
 void ControladorDoSistema::buscaProduto(Compra *c, Produto **p, QString nome, QString classe)

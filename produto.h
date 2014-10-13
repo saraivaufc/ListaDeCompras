@@ -35,6 +35,7 @@ public:
     QString toString();
     QString getClass();
 
+    Produto *clone();
 
     //operators
     void operator =(Produto p);

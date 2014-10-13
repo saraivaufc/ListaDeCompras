@@ -16,6 +16,7 @@
 class GerenciadorDeCompras {
 private:
     QList<Compra*> listaDeCompras;
+    Compra *compraCorrente;
 
 public:
     GerenciadorDeCompras();
@@ -32,7 +33,11 @@ public:
 
     void editarCompra(Compra * c);
     void editarProdutoCompra(Compra * c, Produto * p);
+
+    Compra * getCompraCorrente();
     QList<Compra *> getListaCompras();
+
+    void setCompraCorrente(Compra *c);
 
     bool contains(Compra* c);
 };

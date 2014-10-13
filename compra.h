@@ -6,7 +6,7 @@
 #include "produto.h"
 #include "Macros.h"
 
-class Compra {
+class Compra{
 private:
     static int CONTADOR_COMPRAS;
     int id;
@@ -16,6 +16,7 @@ private:
 
 public:
     Compra();
+    Compra(Compra *c);
     Compra(QString titulo);
     Compra(QString titulo, QDate data);
 
@@ -31,12 +32,14 @@ public:
     int getQuantidadeTotal();
     float getValorTotal();
     float getValorClasse(ClasseDeProduto classe);
+    int getContadorCompra();
 
     void setTitulo(QString titulo);
     void setData(QDate data);
 
     bool operator == (Compra c);
 
+    Compra * clone();
     QString toString();
 };
 
