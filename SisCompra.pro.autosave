@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #-------------------------------------------------
 #
 # Project created by QtCreator 2014-09-03T20:28:16
@@ -57,3 +58,64 @@ RESOURCES += \
     Imagens.qrc
 
 CONFIG += c++11
+=======
+#-------------------------------------------------
+#
+# Project created by QtCreator 2014-09-03T20:28:16
+#
+#-------------------------------------------------
+
+QT       += core gui
+QT       += printsupport
+
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+   
+TARGET = SisCompra
+TEMPLATE = app
+
+
+SOURCES += main.cpp\
+        mainwindow.cpp \
+    gerenciadordecompras.cpp \
+    dialogeditarcompra.cpp \
+    dialogeditarproduto.cpp \
+    compra.cpp \
+    produto.cpp \
+    gerenciadordearquivos.cpp \
+    controladordosistema.cpp \
+    mytreeview.cpp \
+    viewproduto.cpp \
+    dialogconfirmacao.cpp \
+    viewcompra.cpp \
+    dialogrelatorio.cpp \
+    mywidget.cpp
+
+HEADERS  += mainwindow.h \
+    gerenciadordecompras.h \
+    dialogeditarcompra.h \
+    dialogeditarproduto.h \
+    compra.h \
+    produto.h \
+    Macros.h \
+    gerenciadordearquivos.h \
+    controladordosistema.h \
+    mytreeview.h \
+    viewproduto.h \
+    dialogconfirmacao.h \
+    viewcompra.h \
+    dialogrelatorio.h \
+    mywidget.h
+
+FORMS    += mainwindow.ui \
+    dialogeditarcompra.ui \
+    dialogeditarproduto.ui \
+    viewproduto.ui \
+    dialogconfirmacao.ui \
+    viewcompra.ui \
+    dialogrelatorio.ui
+
+RESOURCES += \
+    Imagens.qrc
+
+CONFIG += c++11
+>>>>>>> 39f381eefdb8a8c2d1c947ccd6862df2067ef649
