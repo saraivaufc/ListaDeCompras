@@ -438,11 +438,13 @@ void MainWindow::on_actionSalvar_triggered()
 {
     Compra *a = this->getCompraAtual();
     Compra *b = a->clone();
+    b->setTitulo(" ");
     DialogEditarCompra editCompra(b);
     editCompra.exec();
     if(editCompra.acepted){
         if(a->getTitulo() != b->getTitulo()){
             adicionarCompra(b);
+            emit clearCompraCorrente();
         }else{
         }
     }
