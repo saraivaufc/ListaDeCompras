@@ -45,6 +45,8 @@ public slots:
     void buscaCompra(Compra **c, QString nome, QDate data);
     void buscaCompraCorrente(Compra **c);
     void buscaProduto(Compra *c, Produto **p, QString nome, QString classe);
+
+    void clearCompraCorrente();
 };
 
 #endif // CONTROLADORDOSISTEMA_H

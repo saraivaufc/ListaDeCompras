@@ -38,8 +38,8 @@ public:
     void setData(QDate data);
 
     bool operator == (Compra c);
-
     Compra * clone();
+    void clear();
     QString toString();
 };
 

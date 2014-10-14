@@ -112,6 +112,11 @@ Compra * Compra::clone()
     return new Compra(this);
 }
 
+void Compra::clear()
+{
+    this->listaDeProdutos.clear();
+}
+
 QString Compra::toString() {
     QString s = "";
     foreach (Produto* p, listaDeProdutos) {

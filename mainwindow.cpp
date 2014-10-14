@@ -224,19 +224,10 @@ void MainWindow::treeViewProdutos_clicked() {
 void MainWindow::on_actionAdd_triggered() {
 
     if(typeView == COMPRAS) {
-        Compra * c = new Compra;
-        DialogEditarCompra editarcompra(c);
-        editarcompra.setWindowTitle("Adicionar Compra");
-        editarcompra.setDescricao("Nova Compra");
-        editarcompra.show();
-        editarcompra.exec();
-        if(editarcompra.acepted){
-            if(c->getTitulo() == CONTACORRENTE){
-                adicionarCompraCorrente(c);
-            }else{
-                adicionarCompra(c);
-            }
-        }
+        emit clearCompraCorrente();
+        QStandardItem * root = model->invisibleRootItem();
+        QStandardItem * item  = root->child(0, 0)->child(0,0);
+        ui->treeViewCompras->setCurrentIndex(item->index());
         return;
     }
     else if(typeView == PRODUTO) {

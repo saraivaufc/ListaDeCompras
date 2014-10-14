@@ -17,6 +17,7 @@ ControladorDoSistema::ControladorDoSistema(QObject *parent) : QObject(parent) {
     connect(interface, SIGNAL(buscaCompra(Compra**,QString,QDate)), this, SLOT(buscaCompra(Compra**,QString,QDate)));
     connect(interface, SIGNAL(buscaCompraCorrente(Compra**)), this, SLOT(buscaCompraCorrente(Compra**)));
     connect(interface, SIGNAL(buscaProduto(Compra*,Produto**,QString,QString)), this, SLOT(buscaProduto(Compra*,Produto**,QString,QString)));
+    connect(interface, SIGNAL(clearCompraCorrente()), this, SLOT(clearCompraCorrente()));
 
     interface->adicionarCompraCorrente(gerenciadorDeCompras->getCompraCorrente());
     interface->carregarCompras();
@@ -144,4 +145,9 @@ void ControladorDoSistema::buscaProduto(Compra *c, Produto **p, QString nome, QS
             return;
         }
     }
+}
+
+void ControladorDoSistema::clearCompraCorrente()
+{
+    gerenciadorDeCompras->clearCompraCorrente();
 }
