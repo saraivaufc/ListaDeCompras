@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QMessageBox>
 
+
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
 
@@ -225,7 +226,7 @@ void MainWindow::on_actionAdd_triggered() {
 
     if(typeView == COMPRAS) {
         Compra * c = new Compra;
-        DialogEditarCompra editarcompra(c);
+        DialogEditarCompra editarcompra(c, this);
         editarcompra.setWindowTitle("Adicionar Compra");
         editarcompra.setDescricao("Nova Compra");
         editarcompra.show();
@@ -249,7 +250,7 @@ void MainWindow::on_actionAdd_triggered() {
             return ;
         }
         Produto *p = new Produto;
-        DialogEditarProduto editarproduto(p);
+        DialogEditarProduto editarproduto(p, this);
         editarproduto.setWindowTitle("Adicionar produto");
         editarproduto.setDescricao("Novo Produto");
         editarproduto.exec();
@@ -481,4 +482,8 @@ void MainWindow::adicionarCompraCorrente(Compra *c)
     root->appendRow(item);
     item->appendRow(compraToItemList(c->getTitulo(), c->getData()));
     return;
+}
+
+void MainWindow::on_actionGerar_Relatorio_Mensal_triggered() {
+    gerarRelatorio(GerenciadorDeRelatorios::GASTO_MES);
 }

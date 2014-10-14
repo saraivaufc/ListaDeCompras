@@ -81,13 +81,19 @@ QDate Compra::getData() {
     return data;
 }
 
-float Compra::getValorTotal()
-{
+float Compra::getValorTotal() {
     float valor=0;
     foreach (Produto *p, listaDeProdutos) {
         valor+=p->getQuantidade()*p->getValorUnit();
     }
     return valor;
+}
+
+float Compra::getValorClasse(QString classe) {
+    double total = 0.0;
+    for(Produto p: listaDeProdutos)
+        if(p.getClass() == classe)
+            total += p.getValorTotal();
 }
 
 int Compra::getContadorCompra()

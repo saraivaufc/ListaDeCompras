@@ -262,8 +262,15 @@
     <addaction name="actionRemove"/>
     <addaction name="actionEdit"/>
    </widget>
+   <widget class="QMenu" name="menuFerramentas">
+    <property name="title">
+     <string>Ferramentas</string>
+    </property>
+    <addaction name="actionGerar_Relatorio_Mensal"/>
+   </widget>
    <addaction name="menuMenu"/>
    <addaction name="menuEditar"/>
+   <addaction name="menuFerramentas"/>
   </widget>
   <action name="actionSair">
    <property name="text">
@@ -300,6 +307,11 @@
   <action name="actionSalvar">
    <property name="text">
     <string>Salvar</string>
+   </property>
+  </action>
+  <action name="actionGerar_Relatorio_Mensal">
+   <property name="text">
+    <string>Gerar Relatorio Mensal</string>
    </property>
   </action>
  </widget>

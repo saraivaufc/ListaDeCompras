@@ -142,3 +142,25 @@ bool GerenciadorDeCompras::contains(Compra *c) {
 
     return false;
 }
+
+double GerenciadorDeCompras::getGastosPorMes(int mes) {
+    double total = 0.0;
+    for(Compra c: listaDeCompras)
+        if(c.getData().month() == mes)
+            total += c.getValorTotal();
+
+    return total;
+}
+
+double GerenciadorDeCompras::getGastosPorClasse(QString classe) {
+    double total = 0.0;
+    for(Compra c: listaDeCompras)
+        total += c.getValorClasse(classe);
+
+    return total;
+}
+
+
+
+
+

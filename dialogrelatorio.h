@@ -7,6 +7,7 @@
 #include <QPrinter>
 #include <QPixmap>
 #include <QFileDialog>
+#include <QStandardItemModel>
 
 namespace Ui {
 class DialogRelatorio;
@@ -18,6 +19,11 @@ class DialogRelatorio : public QDialog {
 public:
     explicit DialogRelatorio(QWidget *parent = 0);
     ~DialogRelatorio();
+
+    /*
+     * Gerenciador de relatorios
+    */
+    void setModel(QStandardItemModel* m);
 
 private slots:
     void on_buttonSalvar_clicked();

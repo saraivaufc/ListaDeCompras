@@ -11,6 +11,10 @@ DialogRelatorio::~DialogRelatorio()
     delete ui;
 }
 
+void DialogRelatorio::setModel(QStandardItemModel *m) {
+    ui->tableView->setModel(m);
+}
+
 QPixmap DialogRelatorio::getPixmapFromWidget() {
     return ui->widgetToPrint->grab();
 }

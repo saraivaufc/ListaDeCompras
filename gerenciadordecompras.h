@@ -40,6 +40,14 @@ public:
     void setCompraCorrente(Compra *c);
 
     bool contains(Compra* c);
+
+    /******************************************
+        Metodos para o gerador de relatorios
+    ******************************************/
+    double getGastosPorMes(int mes);
+    double getGastosPorClasse(QString c);
+    double getGastosPorClasseMes(QString c, int mes);
+
 };
 
 #endif // GERENCIADORDECOMPRAS_H

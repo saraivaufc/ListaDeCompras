@@ -18,6 +18,12 @@ ControladorDoSistema::ControladorDoSistema(QObject *parent) : QObject(parent) {
     connect(interface, SIGNAL(buscaCompraCorrente(Compra**)), this, SLOT(buscaCompraCorrente(Compra**)));
     connect(interface, SIGNAL(buscaProduto(Compra*,Produto**,QString,QString)), this, SLOT(buscaProduto(Compra*,Produto**,QString,QString)));
 
+    /*
+     * para gerenciador de relatorios
+    */
+    connect(interface, SIGNAL(gerarRelatorio(GerenciadorDeRelatorios::TipoRelatorio)),
+            this, SLOT(gerarRelatorio(GerenciadorDeRelatorios::TipoRelatorio)));
+
     interface->adicionarCompraCorrente(gerenciadorDeCompras->getCompraCorrente());
     interface->carregarCompras();
 }
@@ -129,13 +135,11 @@ void ControladorDoSistema::buscaCompra(Compra **c, QString nome, QDate data)
 
 }
 
-void ControladorDoSistema::buscaCompraCorrente(Compra **c)
-{
+void ControladorDoSistema::buscaCompraCorrente(Compra **c) {
     *c=this->getGerenciadorCompras()->getCompraCorrente();
 }
 
-void ControladorDoSistema::buscaProduto(Compra *c, Produto **p, QString nome, QString classe)
-{
+void ControladorDoSistema::buscaProduto(Compra *c, Produto **p, QString nome, QString classe) {
     Produto * produto= new Produto(nome, classe);
 
     foreach (Produto * i, c->getProdutos()) {
@@ -144,4 +148,8 @@ void ControladorDoSistema::buscaProduto(Compra *c, Produto **p, QString nome, QS
             return;
         }
     }
+}
+
+void ControladorDoSistema::gerarRelatorio(GerenciadorDeRelatorios::TipoRelatorio tipo) {
+    GerenciadorDeRelatorios::gerarRelatorio(tipo, gerenciadorDeCompras, interface);
 }
