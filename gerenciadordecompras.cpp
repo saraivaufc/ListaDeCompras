@@ -134,6 +134,11 @@ void GerenciadorDeCompras::setCompraCorrente(Compra *c)
     this->compraCorrente = c;
 }
 
+void GerenciadorDeCompras::clearCompraCorrente()
+{
+    this->compraCorrente->clear();
+}
+
 bool GerenciadorDeCompras::contains(Compra *c) {
     foreach (Compra* c2, listaDeCompras) {
         if(*c2 == *c)

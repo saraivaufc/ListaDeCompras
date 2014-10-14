@@ -225,6 +225,7 @@ void MainWindow::treeViewProdutos_clicked() {
 void MainWindow::on_actionAdd_triggered() {
 
     if(typeView == COMPRAS) {
+<<<<<<< HEAD
         Compra * c = new Compra;
         DialogEditarCompra editarcompra(c, this);
         editarcompra.setWindowTitle("Adicionar Compra");
@@ -238,6 +239,12 @@ void MainWindow::on_actionAdd_triggered() {
                 adicionarCompra(c);
             }
         }
+=======
+        emit clearCompraCorrente();
+        QStandardItem * root = model->invisibleRootItem();
+        QStandardItem * item  = root->child(0, 0)->child(0,0);
+        ui->treeViewCompras->setCurrentIndex(item->index());
+>>>>>>> c0b6b8da8c744406a519a5d119ac903150d7eaca
         return;
     }
     else if(typeView == PRODUTO) {
@@ -448,11 +455,13 @@ void MainWindow::on_actionSalvar_triggered()
 {
     Compra *a = this->getCompraAtual();
     Compra *b = a->clone();
+    b->setTitulo(" ");
     DialogEditarCompra editCompra(b);
     editCompra.exec();
     if(editCompra.acepted){
         if(a->getTitulo() != b->getTitulo()){
             adicionarCompra(b);
+            emit clearCompraCorrente();
         }else{
         }
     }

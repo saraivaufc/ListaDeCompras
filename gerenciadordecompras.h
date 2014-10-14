@@ -38,7 +38,7 @@ public:
     QList<Compra *> getListaCompras();
 
     void setCompraCorrente(Compra *c);
-
+    void clearCompraCorrente();
     bool contains(Compra* c);
 
     /******************************************
