@@ -46,14 +46,12 @@ public slots:
     void buscaCompraCorrente(Compra **c);
     void buscaProduto(Compra *c, Produto **p, QString nome, QString classe);
 
-<<<<<<< HEAD
     /*
         Para gerenciador de relatorios
     */
     void gerarRelatorio(GerenciadorDeRelatorios::TipoRelatorio);
-=======
+
     void clearCompraCorrente();
->>>>>>> c0b6b8da8c744406a519a5d119ac903150d7eaca
 };
 
 #endif // CONTROLADORDOSISTEMA_H

@@ -9,6 +9,7 @@
 #include <QJsonArray>
 #include "compra.h"
 #include "Macros.h"
+#include <QDebug>
 
 class GerenciadorDeArquivos {
 public:

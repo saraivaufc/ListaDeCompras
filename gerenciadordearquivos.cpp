@@ -99,6 +99,7 @@ void GerenciadorDeArquivos::salvarCompra(Compra *c) {
 }
 
 void GerenciadorDeArquivos::salvarCompra(QList<Compra *> compras) {
+    qDebug()<<"Salvando Compras";
     foreach(Compra* c, compras)
         salvarCompra(c);
 }

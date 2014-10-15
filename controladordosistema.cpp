@@ -65,6 +65,7 @@ void ControladorDoSistema::addProduto(Compra *c, Produto *p)
 
 void ControladorDoSistema::salvarCompras()
 {
+    qDebug() << "sdhsd";
     GerenciadorDeArquivos::salvarCompra(gerenciadorDeCompras->getListaCompras());
 }
 
@@ -151,12 +152,10 @@ void ControladorDoSistema::buscaProduto(Compra *c, Produto **p, QString nome, QS
     }
 }
 
-<<<<<<< HEAD
 void ControladorDoSistema::gerarRelatorio(GerenciadorDeRelatorios::TipoRelatorio tipo) {
     GerenciadorDeRelatorios::gerarRelatorio(tipo, gerenciadorDeCompras, interface);
-=======
-void ControladorDoSistema::clearCompraCorrente()
-{
+}
+
+void ControladorDoSistema::clearCompraCorrente() {
     gerenciadorDeCompras->clearCompraCorrente();
->>>>>>> c0b6b8da8c744406a519a5d119ac903150d7eaca
 }

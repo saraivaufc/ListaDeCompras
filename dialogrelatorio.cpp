@@ -1,18 +1,27 @@
 #include "dialogrelatorio.h"
 #include "ui_dialogrelatorio.h"
+#include "Macros.h"
+#include <QStandardItemModel>
 #include <QDebug>
 
 DialogRelatorio::DialogRelatorio(QWidget *parent) : QDialog(parent), ui(new Ui::DialogRelatorio) {
     ui->setupUi(this);
 }
 
-DialogRelatorio::~DialogRelatorio()
-{
+DialogRelatorio::~DialogRelatorio() {
     delete ui;
 }
 
-void DialogRelatorio::setModel(QStandardItemModel *m) {
-    ui->tableView->setModel(m);
+void DialogRelatorio::setLabel(QString text) {
+    ui->label->setText(text);
+}
+
+void DialogRelatorio::setHorizontalHeaderSize(int size) {
+    ui->tableView->horizontalHeader()->setDefaultSectionSize(size);
+}
+
+void DialogRelatorio::setModel(QStandardItemModel* model) {
+    ui->tableView->setModel(model);
 }
 
 QPixmap DialogRelatorio::getPixmapFromWidget() {

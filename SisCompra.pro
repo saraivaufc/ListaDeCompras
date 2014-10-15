@@ -26,9 +26,9 @@ SOURCES += main.cpp\
     viewproduto.cpp \
     dialogconfirmacao.cpp \
     viewcompra.cpp \
-    dialogrelatorio.cpp \
     mywidget.cpp \
-    gerenciadorderelatorios.cpp
+    gerenciadorderelatorios.cpp \
+    dialogrelatorio.cpp
 
 HEADERS  += mainwindow.h \
     gerenciadordecompras.h \
@@ -43,9 +43,9 @@ HEADERS  += mainwindow.h \
     viewproduto.h \
     dialogconfirmacao.h \
     viewcompra.h \
-    dialogrelatorio.h \
     mywidget.h \
-    gerenciadorderelatorios.h
+    gerenciadorderelatorios.h \
+    dialogrelatorio.h
 
 FORMS    += mainwindow.ui \
     dialogeditarcompra.ui \

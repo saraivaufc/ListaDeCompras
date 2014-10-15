@@ -20,10 +20,9 @@ public:
     explicit DialogRelatorio(QWidget *parent = 0);
     ~DialogRelatorio();
 
-    /*
-     * Gerenciador de relatorios
-    */
-    void setModel(QStandardItemModel* m);
+    void setLabel(QString);
+    void setHorizontalHeaderSize(int);
+    void setModel(QStandardItemModel*);
 
 private slots:
     void on_buttonSalvar_clicked();

@@ -6,7 +6,7 @@
 
 class GerenciadorDeRelatorios {
 private:
-    static QStandardItemModel model;
+    static QStandardItemModel* model;
     static void gerarRelatorioGastoMes(GerenciadorDeCompras*);
     static void gerarRelatorioGastoClasse(GerenciadorDeCompras*);
     static void gerarRelatorioGastoClasseMes(GerenciadorDeCompras*);
