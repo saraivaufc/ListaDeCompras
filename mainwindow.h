@@ -56,9 +56,6 @@ private:
                                              int qtd,
                                              QString classe);
 
-protected:
-    void closeEvent ();
-
 private:
     Compra *getCompraAtual();
     Produto *getProdutoAtual();
@@ -67,7 +64,6 @@ signals:
     void addCompra(Compra* c);
     void addProduto(Compra * c, Produto *p);
     void atualizandoProdutosNaGui();
-    void close();
     void inicializada();
     void existeCompra(Compra *c, bool *existe);
     void removeCompra(Compra * c);

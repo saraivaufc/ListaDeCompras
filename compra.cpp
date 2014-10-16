@@ -50,6 +50,7 @@ bool Compra::removeProduto(Produto *p)
     foreach (Produto * i, listaDeProdutos) {
         if( *i == *p){
             listaDeProdutos.removeAt(counter);
+            GerenciadorDeArquivos::salvarCompra(this);
             qDebug() << "Produto Removido";
             return true;
         }

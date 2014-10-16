@@ -8,7 +8,6 @@ ControladorDoSistema::ControladorDoSistema(QObject *parent) : QObject(parent) {
 
     connect(interface, SIGNAL(addCompra(Compra*)),this,SLOT(addCompra(Compra*)));
     connect(interface, SIGNAL(addProduto(Compra*,Produto*)), this, SLOT(addProduto(Compra*,Produto*)));
-    connect(interface, SIGNAL(close()), this, SLOT(salvarCompras()));
     connect(interface, SIGNAL(existeCompra(Compra*,bool*)), this, SLOT(existeCompra(Compra*,bool*)));
     connect(interface, SIGNAL(removeCompra(Compra*)), this, SLOT(removeCompra(Compra*)));
     connect(interface, SIGNAL(removeComprasPorData(QString)), this, SLOT(removeComprasPorData(QString)));
@@ -54,6 +53,7 @@ void ControladorDoSistema::addProduto(Compra *c, Produto *p)
         foreach (Compra * i, gerenciadorDeCompras->getListaCompras()) {
             if(*i == *c){
                 i->addProduto(p);
+                GerenciadorDeArquivos::salvarCompra(i);
                 qDebug() << "Produto Adicionado com Exito..";
                 return;
             }
@@ -61,12 +61,6 @@ void ControladorDoSistema::addProduto(Compra *c, Produto *p)
     }
     qDebug() << "Falha ao Adicionar o Produto";
 
-}
-
-void ControladorDoSistema::salvarCompras()
-{
-    qDebug() << "sdhsd";
-    GerenciadorDeArquivos::salvarCompra(gerenciadorDeCompras->getListaCompras());
 }
 
 void ControladorDoSistema::existeCompra(Compra *c, bool *a)

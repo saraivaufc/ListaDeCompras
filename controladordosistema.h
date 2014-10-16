@@ -34,7 +34,6 @@ public:
 public slots:
     void addCompra(Compra* c);
     void addProduto(Compra *c, Produto * p);
-    void salvarCompras();
     void existeCompra(Compra *c,bool *a);
 
     void removeCompra(Compra * c);

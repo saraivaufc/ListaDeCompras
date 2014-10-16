@@ -20,10 +20,6 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
-void MainWindow::closeEvent() {
-    emit close();
-}
-
 Compra *MainWindow::getCompraAtual()
 {
     QDate dataCompra = QDate::fromString(model->itemFromIndex(selected.parent())->text(),"dd/MM/yyyy");
@@ -225,20 +221,8 @@ void MainWindow::treeViewProdutos_clicked() {
 void MainWindow::on_actionAdd_triggered() {
 
     if(typeView == COMPRAS) {
-        Compra * c = new Compra;
-        DialogEditarCompra editarcompra(c, this);
-        editarcompra.setWindowTitle("Adicionar Compra");
-        editarcompra.setDescricao("Nova Compra");
-        editarcompra.show();
-        editarcompra.exec();
-        if(editarcompra.acepted){
-            if(c->getTitulo() == CONTACORRENTE){
-                adicionarCompraCorrente(c);
-            }else{
-                adicionarCompra(c);
-            }
-        }
         emit clearCompraCorrente();
+        limparProdutosInterface();
         QStandardItem * root = model->invisibleRootItem();
         QStandardItem * item  = root->child(0, 0)->child(0,0);
         ui->treeViewCompras->setCurrentIndex(item->index());
