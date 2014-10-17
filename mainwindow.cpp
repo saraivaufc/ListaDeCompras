@@ -53,7 +53,7 @@ Produto *MainWindow::getProdutoAtual()
 
 QList<QStandardItem *> MainWindow::compraToItemList(QString titulo, QDate data) {
     QList<QStandardItem*> res;
-    res << new QStandardItem(QIcon(ICON), titulo)
+    res << new QStandardItem(QIcon(ICON_COMPRA), titulo)
         << new QStandardItem(data.toString());
     return res;
 }
@@ -61,7 +61,7 @@ QList<QStandardItem *> MainWindow::compraToItemList(QString titulo, QDate data) 
 QList<QStandardItem *> MainWindow::produtoToItemList(QString nome, float valor, int qtd, ClasseDeProduto classe)
 {
     QList<QStandardItem*> res;
-    res << new QStandardItem(QIcon(classeToIcon(classe)), nome)
+    res << new QStandardItem(nome)
         << new QStandardItem(QString::number(valor))
         << new QStandardItem(QString::number(qtd))
         << new QStandardItem(classeToString(classe));

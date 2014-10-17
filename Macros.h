@@ -4,8 +4,7 @@
 #include <QString>
 
 #define CONTACORRENTE "empty"
-#define ICON ":imagens/icones/icon.png"
-
+#define ICON_COMPRA ":imagens/icones/icon.png"
 #define ICON_COMIDA ":imagens/icones/comida.png"
 #define ICON_UTENSILIO ":imagens/icones/utensilio.png"
 #define ICON_LIMPEZA ":imagens/icones/limpeza.png"

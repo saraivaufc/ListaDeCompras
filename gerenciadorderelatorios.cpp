@@ -61,7 +61,7 @@ void GerenciadorDeRelatorios::gerarRelatorioGastoMes(GerenciadorDeCompras* g) {
 
     QList<QStandardItem*> itens;
 
-    for(int i = 0; i < 12; i++) {
+    for(int i = 1; i <= 12; i++) {
         QString s = QString::number(g->getGastosPorMes(i), 'f', 2);
         itens << new QStandardItem(s);
     }
