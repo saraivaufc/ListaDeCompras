@@ -5,6 +5,7 @@
 #include <QStandardItemModel>
 #include <QTreeView>
 #include "compra.h"
+#include "Macros.h"
 #include <QDebug>
 #include <QDate>
 
@@ -54,10 +55,7 @@ private:
     QList<QStandardItem *> produtoToItemList(QString nome,
                                              float valor,
                                              int qtd,
-                                             QString classe);
-
-protected:
-    void closeEvent ();
+                                             ClasseDeProduto classe);
 
 private:
     Compra *getCompraAtual();
@@ -67,17 +65,16 @@ signals:
     void addCompra(Compra* c);
     void addProduto(Compra * c, Produto *p);
     void atualizandoProdutosNaGui();
-    void close();
     void inicializada();
     void existeCompra(Compra *c, bool *existe);
     void removeCompra(Compra * c);
     void removeComprasPorData(QString data);
     void removeProduto(Compra *c, Produto *p);
-    void removeProdutoPorClasse(Compra *c, QString classe);
+    void removeProdutoPorClasse(Compra *c, ClasseDeProduto classe);
 
     void buscaCompra(Compra **c, QString nome, QDate data);
     void buscaCompraCorrente(Compra **c);
-    void buscaProduto(Compra *c, Produto **p, QString nome, QString classe);
+    void buscaProduto(Compra *c, Produto **p, QString nome, ClasseDeProduto classe);
     void clearCompraCorrente();
 
     /*

@@ -31,7 +31,7 @@ public:
     int getQuantidadeProduto();
     int getQuantidadeTotal();
     float getValorTotal();
-    float getValorClasse(QString classe);
+    float getValorClasse(ClasseDeProduto classe);
     int getContadorCompra();
 
     void setTitulo(QString titulo);

@@ -9,10 +9,12 @@ bool GerenciadorDeCompras::addCompra(Compra* comp) {
     foreach (Compra * p, this->listaDeCompras) {
         if(p->getTitulo() == comp->getTitulo()){
             p=comp->clone();
+            GerenciadorDeArquivos::salvarCompra(comp);
             return true;
         }
     }
     listaDeCompras.append(comp);
+    GerenciadorDeArquivos::salvarCompra(comp);
     return true;
 }
 
@@ -49,6 +51,7 @@ bool GerenciadorDeCompras::addProdutoCompra(Compra comp, Produto prod)
 {
     foreach (Compra * c, this->listaDeCompras) {
         if (c->getTitulo() == comp.getTitulo()){
+            GerenciadorDeArquivos::salvarCompra(&comp);
             c->addProduto(&prod);
             return true;
         }
@@ -64,6 +67,7 @@ bool GerenciadorDeCompras::removeProdutoCompra(Compra *c, Produto *p)
             foreach (Produto *k, i->getProdutos()) {
                 if(*k == *p){
                     i->getProdutos().removeAt(counter);
+                    GerenciadorDeArquivos::salvarCompra(i);
                     qDebug() << "Produto Removido Com Exito!!!";
                     return true;
                 }
@@ -111,7 +115,6 @@ void GerenciadorDeCompras::editarCompra(Compra * c)
 
 void GerenciadorDeCompras::editarProdutoCompra(Compra *c, Produto *p)
 {
-    Compra * i = buscaCompra(c);
     Produto * k = buscaProduto(c, p);
     DialogEditarProduto editorProduto(k);
     editorProduto.show();
@@ -157,7 +160,7 @@ double GerenciadorDeCompras::getGastosPorMes(int mes) {
     return total;
 }
 
-double GerenciadorDeCompras::getGastosPorClasse(QString classe) {
+double GerenciadorDeCompras::getGastosPorClasse(ClasseDeProduto classe) {
     double total = 0.0;
     for(Compra c: listaDeCompras)
         total += c.getValorClasse(classe);

@@ -252,6 +252,7 @@
     <property name="title">
      <string>Menu</string>
     </property>
+    <addaction name="actionSalvar"/>
     <addaction name="actionSair"/>
    </widget>
    <widget class="QMenu" name="menuEditar">
@@ -305,8 +306,15 @@
    </property>
   </action>
   <action name="actionSalvar">
+   <property name="icon">
+    <iconset resource="Imagens.qrc">
+     <normaloff>:/imagens/icones/salvar.png</normaloff>:/imagens/icones/salvar.png</iconset>
+   </property>
    <property name="text">
     <string>Salvar</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
    </property>
   </action>
   <action name="actionGerar_Relatorio_Mensal">

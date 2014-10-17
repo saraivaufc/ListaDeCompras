@@ -8,15 +8,14 @@ ControladorDoSistema::ControladorDoSistema(QObject *parent) : QObject(parent) {
 
     connect(interface, SIGNAL(addCompra(Compra*)),this,SLOT(addCompra(Compra*)));
     connect(interface, SIGNAL(addProduto(Compra*,Produto*)), this, SLOT(addProduto(Compra*,Produto*)));
-    connect(interface, SIGNAL(close()), this, SLOT(salvarCompras()));
     connect(interface, SIGNAL(existeCompra(Compra*,bool*)), this, SLOT(existeCompra(Compra*,bool*)));
     connect(interface, SIGNAL(removeCompra(Compra*)), this, SLOT(removeCompra(Compra*)));
     connect(interface, SIGNAL(removeComprasPorData(QString)), this, SLOT(removeComprasPorData(QString)));
     connect(interface, SIGNAL(removeProduto(Compra*,Produto*)), this, SLOT(removeProduto(Compra*,Produto*)));
-    connect(interface, SIGNAL(removeProdutoPorClasse(Compra*,QString)), this, SLOT(removeProdutoPorClasse(Compra *,QString)));
+    connect(interface, SIGNAL(removeProdutoPorClasse(Compra*,ClasseDeProduto)), this, SLOT(removeProdutoPorClasse(Compra *,ClasseDeProduto)));
     connect(interface, SIGNAL(buscaCompra(Compra**,QString,QDate)), this, SLOT(buscaCompra(Compra**,QString,QDate)));
     connect(interface, SIGNAL(buscaCompraCorrente(Compra**)), this, SLOT(buscaCompraCorrente(Compra**)));
-    connect(interface, SIGNAL(buscaProduto(Compra*,Produto**,QString,QString)), this, SLOT(buscaProduto(Compra*,Produto**,QString,QString)));
+    connect(interface, SIGNAL(buscaProduto(Compra*,Produto**,QString,ClasseDeProduto)), this, SLOT(buscaProduto(Compra*,Produto**,QString,ClasseDeProduto)));
     connect(interface, SIGNAL(clearCompraCorrente()), this, SLOT(clearCompraCorrente()));
 
     /*
@@ -54,6 +53,7 @@ void ControladorDoSistema::addProduto(Compra *c, Produto *p)
         foreach (Compra * i, gerenciadorDeCompras->getListaCompras()) {
             if(*i == *c){
                 i->addProduto(p);
+                GerenciadorDeArquivos::salvarCompra(i);
                 qDebug() << "Produto Adicionado com Exito..";
                 return;
             }
@@ -61,12 +61,6 @@ void ControladorDoSistema::addProduto(Compra *c, Produto *p)
     }
     qDebug() << "Falha ao Adicionar o Produto";
 
-}
-
-void ControladorDoSistema::salvarCompras()
-{
-    qDebug() << "sdhsd";
-    GerenciadorDeArquivos::salvarCompra(gerenciadorDeCompras->getListaCompras());
 }
 
 void ControladorDoSistema::existeCompra(Compra *c, bool *a)
@@ -115,7 +109,7 @@ void ControladorDoSistema::removeProduto(Compra *c, Produto *p)
     }
 }
 
-void ControladorDoSistema::removeProdutoPorClasse(Compra *c,QString classe)
+void ControladorDoSistema::removeProdutoPorClasse(Compra *c,ClasseDeProduto classe)
 {
      foreach (Produto * p, c->getProdutos()) {
          if(p->getClass() == classe){
@@ -141,7 +135,7 @@ void ControladorDoSistema::buscaCompraCorrente(Compra **c) {
     *c=this->getGerenciadorCompras()->getCompraCorrente();
 }
 
-void ControladorDoSistema::buscaProduto(Compra *c, Produto **p, QString nome, QString classe) {
+void ControladorDoSistema::buscaProduto(Compra *c, Produto **p, QString nome, ClasseDeProduto classe) {
     Produto * produto= new Produto(nome, classe);
 
     foreach (Produto * i, c->getProdutos()) {

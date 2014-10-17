@@ -15,7 +15,7 @@ ViewProduto::ViewProduto(Produto p, QWidget *parent): QDialog(parent), ui(new Ui
     ui->labelNomeProduto->setText(p.getNome());
     ui->labelQuantidade->setText(QString::number(p.getQuantidade()));
     ui->labelValorUnitario->setText(QString::number(p.getValorUnit()));
-    ui->labelClasse->setText(p.getClass());
+    ui->labelClasse->setText(classeToString(p.getClass()));
     ui->labelValorTotal->setText(QString::number(p.getValorTotal()));
 }
 

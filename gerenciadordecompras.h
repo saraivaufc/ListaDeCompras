@@ -45,8 +45,8 @@ public:
         Metodos para o gerador de relatorios
     ******************************************/
     double getGastosPorMes(int mes);
-    double getGastosPorClasse(QString c);
-    double getGastosPorClasseMes(QString c, int mes);
+    double getGastosPorClasse(ClasseDeProduto c);
+    double getGastosPorClasseMes(ClasseDeProduto c, int mes);
 
 };
 

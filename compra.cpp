@@ -50,6 +50,7 @@ bool Compra::removeProduto(Produto *p)
     foreach (Produto * i, listaDeProdutos) {
         if( *i == *p){
             listaDeProdutos.removeAt(counter);
+            GerenciadorDeArquivos::salvarCompra(this);
             qDebug() << "Produto Removido";
             return true;
         }
@@ -89,11 +90,12 @@ float Compra::getValorTotal() {
     return valor;
 }
 
-float Compra::getValorClasse(QString classe) {
+float Compra::getValorClasse(ClasseDeProduto classe) {
     double total = 0.0;
     for(Produto p: listaDeProdutos)
         if(p.getClass() == classe)
             total += p.getValorTotal();
+    return total;
 }
 
 int Compra::getContadorCompra()

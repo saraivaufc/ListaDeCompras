@@ -2,6 +2,7 @@
 #define PRODUTO_H
 
 #include <QString>
+#include "Macros.h"
 
 class Produto{
 private:
@@ -9,7 +10,7 @@ private:
     QString nome;
     int quantidade;
     float valorUnit;
-    QString classe;
+    ClasseDeProduto classe;
 
 public:
     Produto();
@@ -17,15 +18,15 @@ public:
     Produto(QString nome);
     Produto(QString nome, float valor);
     Produto(QString nome, float valor, int qtd);
-    Produto(QString nome,QString classe);
-    Produto(QString nome,QString classe, float valor, int qtd);
+    Produto(QString nome,ClasseDeProduto classe);
+    Produto(QString nome,ClasseDeProduto classe, float valor, int qtd);
     ~Produto();
 
     //sets
     void setNome(QString nome);
     void setQuantidade(int quant);
     void setValorUnit(float valor);
-    void setClasse(QString classe);
+    void setClasse(ClasseDeProduto classe);
 
     //gets
     QString getNome();
@@ -33,7 +34,7 @@ public:
     float getValorUnit();
     float getValorTotal();
     QString toString();
-    QString getClass();
+    ClasseDeProduto getClass();
 
     Produto *clone();
 

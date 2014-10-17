@@ -32,14 +32,14 @@ Produto::Produto(QString nome, float valor, int quant) {
     quantidade = quant;
 }
 
-Produto::Produto(QString nome, QString classe)
+Produto::Produto(QString nome, ClasseDeProduto classe)
 {
     this->nome = nome;
     this->classe = classe;
 }
 
 
-Produto::Produto(QString nome, QString classe , float valor, int quant) {
+Produto::Produto(QString nome, ClasseDeProduto classe , float valor, int quant) {
     this->nome = nome;
     this->valorUnit = valor;
     this->quantidade = quant;
@@ -74,7 +74,7 @@ QString Produto::toString() {
             this->classe + "]";
 }
 
-QString Produto::getClass()
+ClasseDeProduto Produto::getClass()
 {
     return this->classe;
 }
@@ -97,7 +97,7 @@ void Produto::setValorUnit(float valor) {
     valorUnit = valor;
 }
 
-void Produto::setClasse(QString classe)
+void Produto::setClasse(ClasseDeProduto classe)
 {
     this->classe = classe;
 }

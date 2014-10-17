@@ -10,9 +10,9 @@ DialogEditarProduto::DialogEditarProduto(Produto* prod, QWidget *parent) : QDial
     ui->spinBoxQuant->setValue(produto->getQuantidade());
     ui->doubleSpinBoxValor->setValue(produto->getValorUnit());
 
-    ui->comboBox->addItem("Limpeza");
-    ui->comboBox->addItem("Alimentar");
-    ui->comboBox->addItem("Utensílio");
+    ui->comboBox->addItem("LIMPESA");
+    ui->comboBox->addItem("COMIDA");
+    ui->comboBox->addItem("UTENSILIOS");
 }
 
 DialogEditarProduto::~DialogEditarProduto() {
@@ -28,7 +28,7 @@ void DialogEditarProduto::on_buttonBox_accepted() {
     produto->setNome(ui->lineEditNome->text());
     produto->setQuantidade(ui->spinBoxQuant->value());
     produto->setValorUnit(ui->doubleSpinBoxValor->value());
-    produto->setClasse(ui->comboBox->currentText());
+    produto->setClasse(stringToClasse(ui->comboBox->currentText()));
     if(ui->lineEditNome->text().isEmpty()){
         QMessageBox msn;
         msn.setText("Por favor, digite o nome do produto e tente novamente...");

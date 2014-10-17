@@ -4,5 +4,9 @@
         <file>icones/edit.png</file>
         <file>icones/icon.png</file>
         <file>icones/remove.png</file>
+        <file>icones/salvar.png</file>
+        <file>icones/alimento.png</file>
+        <file>icones/limpesa.png</file>
+        <file>icones/utensilio.png</file>
     </qresource>
 </RCC>

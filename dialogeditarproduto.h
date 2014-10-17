@@ -3,6 +3,7 @@
 #include <QDialog>
 #include "produto.h"
 #include "gerenciadordearquivos.h"
+#include "Macros.h"
 #include <QMessageBox>
 
 

@@ -34,17 +34,16 @@ public:
 public slots:
     void addCompra(Compra* c);
     void addProduto(Compra *c, Produto * p);
-    void salvarCompras();
     void existeCompra(Compra *c,bool *a);
 
     void removeCompra(Compra * c);
     void removeComprasPorData(QString data);
     void removeProduto(Compra *c, Produto *p);
-    void removeProdutoPorClasse(Compra *c,QString classe);
+    void removeProdutoPorClasse(Compra *c, ClasseDeProduto classe);
 
     void buscaCompra(Compra **c, QString nome, QDate data);
     void buscaCompraCorrente(Compra **c);
-    void buscaProduto(Compra *c, Produto **p, QString nome, QString classe);
+    void buscaProduto(Compra *c, Produto **p, QString nome, ClasseDeProduto classe);
 
     /*
         Para gerenciador de relatorios
