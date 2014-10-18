@@ -2,6 +2,8 @@
 #define GERENCIADORDERELATORIOS_H
 
 #include <QStandardItemModel>
+#include <QTableView>
+
 #include "gerenciadordecompras.h"
 
 class GerenciadorDeRelatorios {

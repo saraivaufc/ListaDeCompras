@@ -265,9 +265,12 @@
    </widget>
    <widget class="QMenu" name="menuFerramentas">
     <property name="title">
-     <string>Ferramentas</string>
+     <string>Relatórios</string>
     </property>
     <addaction name="actionGerar_Relatorio_Mensal"/>
+    <addaction name="actionGerar_Relat_rio_por_Classe_de_Produto"/>
+    <addaction name="actionGerar_Relat_rio_Mensal_Classe"/>
+    <addaction name="actionMaiores_Gastos"/>
    </widget>
    <addaction name="menuMenu"/>
    <addaction name="menuEditar"/>
@@ -319,7 +322,22 @@
   </action>
   <action name="actionGerar_Relatorio_Mensal">
    <property name="text">
-    <string>Gerar Relatorio Mensal</string>
+    <string>Relatorio Mensal</string>
+   </property>
+  </action>
+  <action name="actionGerar_Relat_rio_por_Classe_de_Produto">
+   <property name="text">
+    <string>Relatório por Classe de Produto</string>
+   </property>
+  </action>
+  <action name="actionGerar_Relat_rio_Mensal_Classe">
+   <property name="text">
+    <string>Relatório Mensal + Classe</string>
+   </property>
+  </action>
+  <action name="actionMaiores_Gastos">
+   <property name="text">
+    <string>Maiores Gastos</string>
    </property>
   </action>
  </widget>

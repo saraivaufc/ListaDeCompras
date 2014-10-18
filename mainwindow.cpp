@@ -482,3 +482,18 @@ void MainWindow::adicionarCompraCorrente(Compra *c)
 void MainWindow::on_actionGerar_Relatorio_Mensal_triggered() {
     gerarRelatorio(GerenciadorDeRelatorios::GASTO_MES);
 }
+
+void MainWindow::on_actionGerar_Relat_rio_por_Classe_de_Produto_triggered()
+{
+    gerarRelatorio(GerenciadorDeRelatorios::GASTO_CLASSE);
+}
+
+void MainWindow::on_actionGerar_Relat_rio_Mensal_Classe_triggered()
+{
+    gerarRelatorio(GerenciadorDeRelatorios::GASTO_CLASSE_MES);
+}
+
+void MainWindow::on_actionMaiores_Gastos_triggered()
+{
+    gerarRelatorio(GerenciadorDeRelatorios::GASTO_MAX);
+}

@@ -114,6 +114,9 @@ private slots:
     void on_treeViewCompras_doubleClicked(const QModelIndex &index);
     void on_actionSalvar_triggered();
     void on_actionGerar_Relatorio_Mensal_triggered();
+    void on_actionGerar_Relat_rio_por_Classe_de_Produto_triggered();
+    void on_actionGerar_Relat_rio_Mensal_Classe_triggered();
+    void on_actionMaiores_Gastos_triggered();
 };
 
 #endif // MAINWINDOW_H

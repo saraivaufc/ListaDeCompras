@@ -47,6 +47,9 @@ public:
     double getGastosPorMes(int mes);
     double getGastosPorClasse(ClasseDeProduto c);
     double getGastosPorClasseMes(ClasseDeProduto c, int mes);
+    QList<int> getMesMaiorGasto();
+    QList<Compra *> getCompraMaiorGasto();
+    QList<ClasseDeProduto>getClasseMaiorGasto();
 
 };
 

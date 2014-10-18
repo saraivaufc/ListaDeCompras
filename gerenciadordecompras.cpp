@@ -168,6 +168,84 @@ double GerenciadorDeCompras::getGastosPorClasse(ClasseDeProduto classe) {
     return total;
 }
 
+double GerenciadorDeCompras::getGastosPorClasseMes(ClasseDeProduto c, int mes)
+{
+    double total = 0.0;
+    for(Compra compra : listaDeCompras){
+        if(compra.getData().month() == mes){
+            for(Produto p : compra.getProdutos()){
+                if(p.getClass() == c){
+                    total += p.getValorTotal();
+                }
+            }
+        }
+    }
+    return total;
+}
+
+QList<int> GerenciadorDeCompras::getMesMaiorGasto()
+{
+    int mes = 1;
+    for(int i=2 ; i<=12;i++){
+        if(this->getGastosPorMes(i) >= this->getGastosPorMes(mes)){
+            mes = i;
+        }
+    }
+    QList<int> meses;
+    for(int i=1 ; i<=12;i++){
+        if(this->getGastosPorMes(i) == this->getGastosPorMes(mes)){
+            meses.append(i);
+        }
+    }
+    return meses;
+}
+
+QList<Compra *> GerenciadorDeCompras::getCompraMaiorGasto()
+{
+    int v=-1;
+    for(Compra *c : this->getListaCompras()){
+        if(c->getValorTotal() >= v){
+            v=c->getValorTotal();
+        }
+    }
+
+    QList<Compra*> compras;
+    for(Compra *c : this->getListaCompras()){
+        if(c->getValorTotal() == v){
+            compras.append(c);
+        }
+    }
+    return compras;
+}
+
+QList<ClasseDeProduto> GerenciadorDeCompras::getClasseMaiorGasto()
+{
+    int v=-1;
+    if(this->getGastosPorClasse(LIMPESA) >= v ){
+         v = this->getGastosPorClasse(LIMPESA);
+    }
+    if(this->getGastosPorClasse(COMIDA) >= v ){
+         v = this->getGastosPorClasse(COMIDA);
+    }
+    if(this->getGastosPorClasse(UTENSILIOS) >= v ){
+         v = this->getGastosPorClasse(UTENSILIOS);
+    }
+
+    QList<ClasseDeProduto> classe;
+
+    if(this->getGastosPorClasse(LIMPESA) == v ){
+        classe.append(LIMPESA);
+    }
+    if(this->getGastosPorClasse(COMIDA) == v ){
+        classe.append(COMIDA);
+    }
+    if(this->getGastosPorClasse(UTENSILIOS) == v ){
+        classe.append(UTENSILIOS);
+    }
+    return classe;
+
+}
+
 
 
 
