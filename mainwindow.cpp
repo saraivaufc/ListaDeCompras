@@ -1,7 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QMessageBox>
-
+#include <QThread>
+#include <QDesktopWidget>
+#include <cmath>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
@@ -14,6 +16,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     treeViewCompras_clicked();
     connect(ui->treeViewCompras, SIGNAL(mouseClicked()), this, SLOT(treeViewCompras_clicked()));
     connect(ui->treeViewProdutos, SIGNAL(mouseClicked()), this, SLOT(treeViewProdutos_clicked()));
+
+    preferedSize = size();
+    aW = aH = 10;
+    setFixedSize(aW, aH);
+    speedW = speedH = 0;
 }
 
 MainWindow::~MainWindow() {
@@ -68,8 +75,7 @@ QList<QStandardItem *> MainWindow::produtoToItemList(QString nome, float valor, 
     return res;
 }
 
-void MainWindow::atualizarCompras()
-{
+void MainWindow::atualizarCompras() {
 
 }
 
@@ -358,8 +364,38 @@ void MainWindow::on_actionRemove_triggered()
 
 }
 
-void MainWindow::on_actionEdit_triggered()
-{
+void MainWindow::updateSize() {
+    for(int i = 0; i < 15; i++) {
+        double defAscel = 0.2;
+
+        double W = preferedSize.width() - aW;
+        double H = preferedSize.height() - aH;
+
+        double D = sqrt(pow(W, 2) + pow(H, 2));
+
+        if(D < 0.01) {
+            D = 0;
+            return;
+        }
+
+        double ascelW = (W)*defAscel/D;
+        double ascelH = (H)*defAscel/D;
+
+        speedW += ascelW;
+        speedH += ascelH;
+
+        aW = aW + speedW + ascelW/2;
+        aH = aH + speedH + ascelH/2;
+
+        setFixedSize(aW, aH);
+        move(QApplication::desktop()->availableGeometry().center() - this->rect().center());
+
+        speedW *= 0.97;
+        speedH *= 0.97;
+    }
+}
+
+void MainWindow::on_actionEdit_triggered() {
     Compra * a = this->getCompraAtual();
 
     if(typeView == COMPRAS){

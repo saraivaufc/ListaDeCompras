@@ -144,11 +144,13 @@ void GerenciadorDeRelatorios::gerarRelatorioGastoMax(GerenciadorDeCompras *g)
     model->setVerticalHeaderLabels(list);
 
 
+    int index=0;
     for(int i : g->getMesMaiorGasto()){
-        model->setItem(0,i-1, new QStandardItem(QDate::shortMonthName(i)));
+        model->setItem(0,index, new QStandardItem(QDate::shortMonthName(i)));
+        index++;
     }
 
-    int index=0;
+    index=0;
     for(Compra *c : g->getCompraMaiorGasto()){
         model->setItem(1,index, new QStandardItem(c->getTitulo()));
         index++;

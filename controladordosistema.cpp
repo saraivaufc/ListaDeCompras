@@ -1,10 +1,15 @@
 #include "controladordosistema.h"
+#include <QTimer>
 
 ControladorDoSistema::ControladorDoSistema(QObject *parent) : QObject(parent) {
     gerenciadorDeCompras = new GerenciadorDeCompras;
 
     interface = new MainWindow;
     interface->show();
+
+    QTimer* timer = new QTimer(interface);
+    connect(timer, SIGNAL(timeout()), interface, SLOT(updateSize()));
+    timer->start(10);
 
     connect(interface, SIGNAL(addCompra(Compra*)),this,SLOT(addCompra(Compra*)));
     connect(interface, SIGNAL(addProduto(Compra*,Produto*)), this, SLOT(addProduto(Compra*,Produto*)));

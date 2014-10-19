@@ -36,6 +36,10 @@ private:
     Ui::MainWindow *ui;
     QStandardItemModel listaDeCompras;
     QStandardItemModel listaDeProdutos;
+    QSize preferedSize;
+    double aW, aH;
+    double speedW, speedH;
+
     //esse model refere-se a lista de Compras
     QStandardItemModel* model;
 
@@ -44,7 +48,6 @@ private:
 
     //Esse é um intex temporario que armazena a ultima Compra Clicado
     QModelIndex selected;
-
 
     //Esse é um intex temporario que armazena o ultimo Produto Clicado
     QModelIndex selected2;
@@ -93,6 +96,8 @@ public slots:
     void on_treeViewCompras_clicked(const QModelIndex &index);
 
     void on_actionRemove_triggered();
+
+    void updateSize();
 
 public:
     void carregarCompras();

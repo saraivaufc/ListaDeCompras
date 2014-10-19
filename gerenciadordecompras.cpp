@@ -202,7 +202,7 @@ QList<int> GerenciadorDeCompras::getMesMaiorGasto()
 
 QList<Compra *> GerenciadorDeCompras::getCompraMaiorGasto()
 {
-    int v=-1;
+    double v=-1;
     for(Compra *c : this->getListaCompras()){
         if(c->getValorTotal() >= v){
             v=c->getValorTotal();
