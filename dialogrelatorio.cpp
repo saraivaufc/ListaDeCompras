@@ -16,12 +16,18 @@ void DialogRelatorio::setLabel(QString text) {
     ui->label->setText(text);
 }
 
-void DialogRelatorio::setHorizontalHeaderSize(int size) {
+void DialogRelatorio::updateHorizontalHeaderSize(int colunCount) {
+    int w = ui->tableView->width() - ui->tableView->verticalHeader()->width();
+    int size = w/colunCount;
     ui->tableView->horizontalHeader()->setDefaultSectionSize(size);
 }
 
 void DialogRelatorio::setModel(QStandardItemModel* model) {
     ui->tableView->setModel(model);
+}
+
+void DialogRelatorio::enableVerticalHeader(bool b) {
+    ui->tableView->verticalHeader()->setVisible(b);
 }
 
 QPixmap DialogRelatorio::getPixmapFromWidget() {

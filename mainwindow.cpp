@@ -373,7 +373,7 @@ void MainWindow::updateSize() {
 
         double D = sqrt(pow(W, 2) + pow(H, 2));
 
-        if(D < 0.01) {
+        if(D < 0.01 && speedW < 0.01) {
             D = 0;
             return;
         }

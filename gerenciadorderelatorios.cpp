@@ -6,23 +6,28 @@ QStandardItemModel* GerenciadorDeRelatorios::model = new QStandardItemModel();
 void GerenciadorDeRelatorios::gerarRelatorio(GerenciadorDeRelatorios::TipoRelatorio tipoRelatorio, GerenciadorDeCompras *g, QWidget* parent) {
 
     QString label;
+    bool horizontalHeaderVisible = true;
 
     switch(tipoRelatorio) {
     case GASTO_MES:
         gerarRelatorioGastoMes(g);
         label = "Relatório de gastos por mês";
+        horizontalHeaderVisible = false;
         break;
     case GASTO_CLASSE:
         gerarRelatorioGastoClasse(g);
         label = "Relatório de gastos por classe de produto";
+        horizontalHeaderVisible = false;
         break;
     case GASTO_CLASSE_MES:
         gerarRelatorioGastoClasseMes(g);
         label = "Relatório de gastos por classe de produto e mês";
+        horizontalHeaderVisible = true;
         break;
     case GASTO_MAX:
         gerarRelatorioGastoMax(g);
         label = "Relatório de maiores gastos";
+        horizontalHeaderVisible = true;
         break;
     }
 
@@ -32,8 +37,10 @@ void GerenciadorDeRelatorios::gerarRelatorio(GerenciadorDeRelatorios::TipoRelato
 
     d.setModal(true);
     d.setLabel(label);
-    d.setHorizontalHeaderSize(40);
+    d.enableVerticalHeader(horizontalHeaderVisible);
+
     d.setModel(model);
+    d.updateHorizontalHeaderSize(model->columnCount());
 
     d.show();
     d.exec();

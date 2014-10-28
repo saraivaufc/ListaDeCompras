@@ -21,8 +21,9 @@ public:
     ~DialogRelatorio();
 
     void setLabel(QString);
-    void setHorizontalHeaderSize(int);
+    void updateHorizontalHeaderSize(int);
     void setModel(QStandardItemModel*);
+    void enableVerticalHeader(bool b);
 
 private slots:
     void on_buttonSalvar_clicked();
