@@ -86,6 +86,9 @@ void GerenciadorDeArquivos::fromJson(QJsonObject &j, QDate &d) {
 
 
 void GerenciadorDeArquivos::salvarCompra(Compra *c) {
+    if(c->getTitulo() == COMPRACORRENTE){
+        return;
+    }
     criarDir();
 
     QJsonObject compra = getJsonFrom(c);

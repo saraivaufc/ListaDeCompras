@@ -9,9 +9,5 @@ int main(int argc, char *argv[]) {
 
     new ControladorDoSistema();
 
-    //DialogRelatorio dr;
-    //dr.show();
-    //dr.exec();
-
     return a.exec();
 }

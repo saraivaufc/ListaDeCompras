@@ -86,7 +86,6 @@ signals:
     void gerarRelatorio(GerenciadorDeRelatorios::TipoRelatorio);
 
 public slots:
-    void atualizarCompras();
     void on_actionSair_triggered();
     void on_actionAdd_triggered();
 

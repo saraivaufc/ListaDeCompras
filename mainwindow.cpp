@@ -8,6 +8,7 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
 
+    //Crio aqui dois modelos
     model = new QStandardItemModel(this);
     model2 = new QStandardItemModel(this);
     ui->treeViewCompras->setModel(model);
@@ -17,6 +18,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(ui->treeViewCompras, SIGNAL(mouseClicked()), this, SLOT(treeViewCompras_clicked()));
     connect(ui->treeViewProdutos, SIGNAL(mouseClicked()), this, SLOT(treeViewProdutos_clicked()));
 
+
+    //Esquema Designer
     preferedSize = size();
     aW = aH = 10;
     setFixedSize(aW, aH);
@@ -74,11 +77,6 @@ QList<QStandardItem *> MainWindow::produtoToItemList(QString nome, float valor, 
         << new QStandardItem(classeToString(classe));
     return res;
 }
-
-void MainWindow::atualizarCompras() {
-
-}
-
 
 void MainWindow::adicionarCompra(Compra *c)
 {
@@ -269,6 +267,7 @@ void MainWindow::on_treeViewCompras_clicked(const QModelIndex &index)
         return;
     }
 
+    //Se eu tiver clicado numa compra, eu preciso recarregar os produtos
     QString nomeCompra= model->itemFromIndex(index)->text();
     QDate dataCompra= QDate::fromString(model->itemFromIndex(index.parent())->text(),"dd/MM/yyyy");
     Compra **a;
@@ -403,6 +402,9 @@ void MainWindow::updateSize() {
 
 void MainWindow::on_actionEdit_triggered() {
     Compra * a = this->getCompraAtual();
+    if(a->getTitulo() == COMPRACORRENTE){
+        return;
+    }
 
     if(typeView == COMPRAS){
 
