@@ -2,7 +2,7 @@
 #include "gerenciadordecompras.h"
 
 GerenciadorDeCompras::GerenciadorDeCompras() {
-    this->compraCorrente = new Compra(CONTACORRENTE, QDate::currentDate());
+    this->compraCorrente = new Compra(COMPRACORRENTE, QDate::currentDate());
 }
 
 bool GerenciadorDeCompras::addCompra(Compra* comp) {
@@ -33,6 +33,10 @@ bool GerenciadorDeCompras::removeCompra(QString tituloCompra)
 
 bool GerenciadorDeCompras::removeCompra(Compra *c)
 {
+    if(c->getTitulo() == COMPRACORRENTE){
+        c->clear();
+        return true;
+    }
     int index=0;
     foreach (Compra *i, listaDeCompras) {
         if(*c == *i){
@@ -134,6 +138,7 @@ QList<Compra *> GerenciadorDeCompras::getListaCompras()
 
 void GerenciadorDeCompras::setCompraCorrente(Compra *c)
 {
+    delete [] this->compraCorrente;
     this->compraCorrente = c;
 }
 

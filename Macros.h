@@ -3,7 +3,7 @@
 
 #include <QString>
 
-#define CONTACORRENTE "empty"
+#define COMPRACORRENTE "empty"
 #define ICON_COMPRA ":imagens/icones/icon.png"
 #define ICON_COMIDA ":imagens/icones/comida.png"
 #define ICON_UTENSILIO ":imagens/icones/utensilio.png"

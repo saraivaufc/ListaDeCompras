@@ -38,7 +38,7 @@ GerenciadorDeCompras *ControladorDoSistema::getGerenciadorCompras() {
 
 void ControladorDoSistema::addCompra(Compra *c)
 {
-    if(c->getTitulo() == CONTACORRENTE){
+    if(c->getTitulo() == COMPRACORRENTE){
         gerenciadorDeCompras->setCompraCorrente(c);
         qDebug() << "Compra Adicionada com Sucesso.";
     }else if(gerenciadorDeCompras->addCompra(c)){
@@ -50,7 +50,7 @@ void ControladorDoSistema::addCompra(Compra *c)
 
 void ControladorDoSistema::addProduto(Compra *c, Produto *p)
 {
-    if(c->getTitulo() == CONTACORRENTE){
+    if(c->getTitulo() == COMPRACORRENTE){
         gerenciadorDeCompras->getCompraCorrente()->addProduto(p);
         qDebug() << "Produto Adicionado com Exito..";
         return;
@@ -81,15 +81,17 @@ void ControladorDoSistema::existeCompra(Compra *c, bool *a)
 
 void ControladorDoSistema::removeCompra(Compra *c)
 {
-    if(!(c->getTitulo() == CONTACORRENTE)){
+    if(!(c->getTitulo() == COMPRACORRENTE)){
         gerenciadorDeCompras->removeCompra(c);
     }
 }
 
 void ControladorDoSistema::removeComprasPorData(QString data)
 {
+    if(this->gerenciadorDeCompras->getCompraCorrente()->getData() == QDate::fromString(data,  "dd/MM/yyyy")){
+        this->gerenciadorDeCompras->getCompraCorrente()->clear();
+    }
     foreach (Compra * c, gerenciadorDeCompras->getListaCompras()) {
-        qDebug() << c->getData().toString() << " + " << data;
         if(c->getData() == QDate::fromString(data, "dd/MM/yyyy")){
             removeCompra(c);
 
@@ -102,7 +104,7 @@ void ControladorDoSistema::removeProduto(Compra *c, Produto *p)
     Compra **a;
     Compra *b;
     a=&b;
-    if(c->getTitulo() == CONTACORRENTE){
+    if(c->getTitulo() == COMPRACORRENTE){
         buscaCompraCorrente(a);
     }else{
         buscaCompra(a, c->getTitulo(), c->getData());

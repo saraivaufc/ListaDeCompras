@@ -34,7 +34,7 @@ Compra *MainWindow::getCompraAtual()
     Compra **a=NULL;
     Compra *b=NULL;
     a=&b;
-    if(nomeCompra == CONTACORRENTE){
+    if(nomeCompra == COMPRACORRENTE){
         emit buscaCompraCorrente(a);
     }else{
         emit buscaCompra(a,nomeCompra,dataCompra);
@@ -82,7 +82,7 @@ void MainWindow::atualizarCompras() {
 
 void MainWindow::adicionarCompra(Compra *c)
 {
-    if(c->getTitulo() == CONTACORRENTE){
+    if(c->getTitulo() == COMPRACORRENTE){
         adicionarCompraCorrente(c);
         return;
     }
@@ -90,7 +90,7 @@ void MainWindow::adicionarCompra(Compra *c)
 
     bool a=false;
     emit existeCompra(c, &a);
-    if(a && c->getTitulo() != CONTACORRENTE ){
+    if(a && c->getTitulo() != COMPRACORRENTE ){
         DialogConfirmacao msn("Já existe uma compra com esse nome, deseja substituilá?");
         msn.exec();
         if(msn.acepted){
@@ -274,7 +274,7 @@ void MainWindow::on_treeViewCompras_clicked(const QModelIndex &index)
     Compra **a;
     Compra *b;
     a=&b;
-    if(nomeCompra == CONTACORRENTE){
+    if(nomeCompra == COMPRACORRENTE){
         emit buscaCompraCorrente(a);
     }else{
         emit buscaCompra(a,nomeCompra,dataCompra);
@@ -310,7 +310,7 @@ void MainWindow::on_actionRemove_triggered()
         if(item == NULL){
             return;
         }
-        if(item->text() == CONTACORRENTE){
+        if(item->text() == COMPRACORRENTE){
             limparProdutosInterface();
             return;
         }
@@ -319,17 +319,23 @@ void MainWindow::on_actionRemove_triggered()
         if(!confirm.acepted){
             return;
         }
-
+        bool removerPorData = false;
         if(selected.parent() == model->invisibleRootItem()->index()){
             //emite uma sinal para o controlador com a compra que ele quer remover
             emit removeComprasPorData(item->text());
+            removerPorData = true;
         }
         if(item->rowCount() == 0){
             Compra c(item->text(), QDate::fromString(item->parent()->text(),"dd/MM/yyyy" ));
             emit removeCompra(&c);
         }
         ui->treeViewCompras->model()->removeRow(selected.row(), selected.parent());
-        limparProdutosInterface();
+        if(removerPorData){
+            Compra * p = new Compra(COMPRACORRENTE);
+            adicionarCompraCorrente(p);
+        }else{
+            limparProdutosInterface();
+        }
 
 
     }else if(typeView == PRODUTO){
@@ -412,7 +418,7 @@ void MainWindow::on_actionEdit_triggered() {
         editarCompra.exec();
         //adiciono a nova compra na interface e na lista de compras
         ui->treeViewCompras->model()->removeRow(selected.row(), selected.parent());
-        if(a->getTitulo() == CONTACORRENTE){
+        if(a->getTitulo() == COMPRACORRENTE){
             adicionarCompraCorrente(a);
         }else{
             adicionarCompra(a);
@@ -472,7 +478,7 @@ void MainWindow::on_treeViewCompras_doubleClicked(const QModelIndex &index)
 void MainWindow::on_actionSalvar_triggered()
 {
     Compra *a = this->getCompraAtual();
-    if(a->getTitulo() != CONTACORRENTE){
+    if(a->getTitulo() != COMPRACORRENTE){
         GerenciadorDeArquivos::salvarCompra(a);
         return;
     }
@@ -512,6 +518,7 @@ void MainWindow::adicionarCompraCorrente(Compra *c)
     item->setEditable(false);
     root->appendRow(item);
     item->appendRow(compraToItemList(c->getTitulo(), c->getData()));
+    ui->treeViewCompras->setCurrentIndex(item->index());
     return;
 }
 
